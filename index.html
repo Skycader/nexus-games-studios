@@ -776,7 +776,7 @@
             <div
               class="perk-card"
               data-type="count"
-              data-base-cost="0.2,0.5,1.0,1.8,3.0"
+              data-base-cost="0.01, 0.05, 0.1, 0.2, 0.3"
               data-id="side_quests"
             >
               <div class="perk-header">
@@ -816,7 +816,7 @@
               </div>
               <div class="quantity-control">
                 <div class="quality-label">
-                  <span>Количество квестов</span>
+                  <span>Суммарные часы второстепенных квестов</span>
                   <span class="quantity-display">0</span>
                 </div>
                 <div class="quantity-input">
@@ -835,7 +835,7 @@
             <div
               class="perk-card"
               data-type="count"
-              data-base-cost="0.4,0.9,1.8,3.2,5.0"
+              data-base-cost="0.1,0.2,0.4,0.8,1.2"
               data-id="closed_locations"
             >
               <div class="perk-header">
@@ -877,7 +877,7 @@
               </div>
               <div class="quantity-control">
                 <div class="quality-label">
-                  <span>Общая площадь (м²)</span>
+                  <span>Общая площадь (100 м²)</span>
                   <span class="quantity-display">0</span>
                 </div>
                 <div class="quantity-input">
@@ -997,7 +997,7 @@
             <div
               class="perk-card"
               data-type="count"
-              data-base-cost="0.1,0.3,0.7,1.5,3.0"
+              data-base-cost="0.02, 0.05, 0.1, 0.2, 0.3"
               data-id="unique_items"
             >
               <div class="perk-header">
@@ -1164,7 +1164,7 @@
             <div
               class="perk-card"
               data-type="count"
-              data-base-cost="0.1,0.3,0.6,1.2,2.0"
+              data-base-cost="0.01, 0.02, 0.03, 0.04 ,0.1"
               data-id="achievements"
             >
               <div class="perk-header">
@@ -1482,7 +1482,7 @@
             <div
               class="perk-card"
               data-type="km2"
-              data-base-cost="0.5,1.2,2.5,4.5,7.0"
+              data-base-cost="0.5, 1.2, 2.5, 4.5, 7.0"
               data-id="open_world"
             >
               <div class="perk-header">
@@ -2199,7 +2199,7 @@
             <div
               class="perk-card"
               data-type="count"
-              data-base-cost="0.2,0.5,1.2,2.5,4.5"
+              data-base-cost="0.02,0.05,0.2,0.5,1"
               data-id="cutscenes"
             >
               <div class="perk-header">
@@ -2241,7 +2241,284 @@
               </div>
               <div class="quantity-control">
                 <div class="quality-label">
-                  <span>Количество кат-сцен</span>
+                  <span>Время кат-сцен (минуты)</span>
+                  <span class="quantity-display">0</span>
+                </div>
+                <div class="quantity-input">
+                  <input
+                    type="number"
+                    min="0"
+                    value="0"
+                    class="quantity-number"
+                  />
+                </div>
+              </div>
+              <div class="cost-display">
+                Стоимость: <strong>0 чел-лет</strong>
+              </div>
+            </div>
+            <div
+              class="perk-card"
+              data-type="count"
+              data-base-cost="10,22,45,80,140"
+              data-id="coop_mode"
+            >
+              <div class="perk-header">
+                <span class="perk-title">Кооперативный режим</span>
+                <label class="perk-toggle">
+                  <input type="checkbox" />
+                  <span class="perk-toggle-slider"></span>
+                </label>
+              </div>
+              <p class="perk-description">
+                Синхронный мультиплеер: совместное прохождение с друзьями,
+                разделение наград, баланс сложности под число игроков.
+              </p>
+              <div class="quality-control">
+                <div class="quality-label">
+                  <span>Качество</span>
+                  <span class="quality-value">1</span>
+                </div>
+                <input
+                  type="range"
+                  min="1"
+                  max="5"
+                  value="1"
+                  class="quality-slider"
+                />
+                <div class="quality-levels">
+                  <div class="quality-level active"></div>
+                  <div class="quality-level"></div>
+                  <div class="quality-level"></div>
+                  <div class="quality-level"></div>
+                  <div class="quality-level"></div>
+                </div>
+                <div class="quality-description">
+                  Уровень 1: 2 игрока, базовая синхронизация без критических
+                  десинхронов. Пример: простой кооп в Stardew Valley —
+                  разделение ресурсов, общая карта.
+                </div>
+              </div>
+              <div class="quantity-control">
+                <div class="quality-label">
+                  <span>Макс. игроков</span>
+                  <span class="quantity-display">0</span>
+                </div>
+                <div class="quantity-input">
+                  <input
+                    type="number"
+                    min="0"
+                    value="0"
+                    class="quantity-number"
+                  />
+                </div>
+              </div>
+              <div class="cost-display">
+                Стоимость: <strong>0 чел-лет</strong>
+              </div>
+            </div>
+
+            <div
+              class="perk-card"
+              data-type="fixed"
+              data-base-cost="15,35,70,120,200"
+              data-id="async_online"
+            >
+              <div class="perk-header">
+                <span class="perk-title">Асинхронный онлайн</span>
+                <label class="perk-toggle">
+                  <input type="checkbox" />
+                  <span class="perk-toggle-slider"></span>
+                </label>
+              </div>
+              <p class="perk-description">
+                Взаимодействие без одновременного присутствия: сообщения,
+                предметы, следы других игроков в вашем мире (как в Death
+                Stranding).
+              </p>
+              <div class="quality-control">
+                <div class="quality-label">
+                  <span>Качество</span>
+                  <span class="quality-value">1</span>
+                </div>
+                <input
+                  type="range"
+                  min="1"
+                  max="5"
+                  value="1"
+                  class="quality-slider"
+                />
+                <div class="quality-levels">
+                  <div class="quality-level active"></div>
+                  <div class="quality-level"></div>
+                  <div class="quality-level"></div>
+                  <div class="quality-level"></div>
+                  <div class="quality-level"></div>
+                </div>
+                <div class="quality-description">
+                  Уровень 1: Таблицы лидеров без багов. Пример: простые рейтинги
+                  в платформерах — без серверных ошибок, но без глубокой
+                  интеграции в геймплей.
+                </div>
+              </div>
+              <div class="cost-display">
+                Стоимость: <strong>15 чел-лет</strong>
+              </div>
+            </div>
+
+            <div
+              class="perk-card"
+              data-type="fixed"
+              data-base-cost="5,12,25,45,80"
+              data-id="testing"
+            >
+              <div class="perk-header">
+                <span class="perk-title">Тестирование и QA</span>
+                <label class="perk-toggle">
+                  <input type="checkbox" />
+                  <span class="perk-toggle-slider"></span>
+                </label>
+              </div>
+              <p class="perk-description">
+                Глубина поиска багов до релиза: ручное тестирование,
+                автоматизация, плейтест-сообщество, стресс-тесты.
+              </p>
+              <div class="quality-control">
+                <div class="quality-label">
+                  <span>Качество</span>
+                  <span class="quality-value">1</span>
+                </div>
+                <input
+                  type="range"
+                  min="1"
+                  max="5"
+                  value="1"
+                  class="quality-slider"
+                />
+                <div class="quality-levels">
+                  <div class="quality-level active"></div>
+                  <div class="quality-level"></div>
+                  <div class="quality-level"></div>
+                  <div class="quality-level"></div>
+                  <div class="quality-level"></div>
+                </div>
+                <div class="quality-description">
+                  Уровень 1: Ручное тестирование основных сценариев. Пример:
+                  тестирование линейных уровней на критические баги
+                  (застревания, краши) без автоматизации.
+                </div>
+              </div>
+              <div class="cost-display">
+                Стоимость: <strong>5 чел-лет</strong>
+              </div>
+            </div>
+
+            <div
+              class="perk-card"
+              data-type="count"
+              data-base-cost="10,20,35,55,90"
+              data-id="multiplatform"
+            >
+              <div class="perk-header">
+                <span class="perk-title">Мультиплатформенность</span>
+                <label class="perk-toggle">
+                  <input type="checkbox" />
+                  <span class="perk-toggle-slider"></span>
+                </label>
+              </div>
+              <p class="perk-description">
+                Поддержка ПК/консолей/мобилок: адаптация управления, интерфейса,
+                производительности под разные архитектуры.
+              </p>
+              <div class="quality-control">
+                <div class="quality-label">
+                  <span>Качество</span>
+                  <span class="quality-value">1</span>
+                </div>
+                <input
+                  type="range"
+                  min="1"
+                  max="5"
+                  value="1"
+                  class="quality-slider"
+                />
+                <div class="quality-levels">
+                  <div class="quality-level active"></div>
+                  <div class="quality-level"></div>
+                  <div class="quality-level"></div>
+                  <div class="quality-level"></div>
+                  <div class="quality-level"></div>
+                </div>
+                <div class="quality-description">
+                  Уровень 1: Базовый порт без оптимизации. Пример: простой порт
+                  инди-игры на 2 платформы — работает, но с просадками на слабых
+                  консолях.
+                </div>
+              </div>
+              <div class="quantity-control">
+                <div class="quality-label">
+                  <span>Количество платформ</span>
+                  <span class="quantity-display">0</span>
+                </div>
+                <div class="quantity-input">
+                  <input
+                    type="number"
+                    min="0"
+                    value="0"
+                    class="quantity-number"
+                  />
+                </div>
+              </div>
+              <div class="cost-display">
+                Стоимость: <strong>0 чел-лет</strong>
+              </div>
+            </div>
+
+            <div
+              class="perk-card"
+              data-type="count"
+              data-base-cost="0.5,1.5,4,8,15"
+              data-id="localization"
+            >
+              <div class="perk-header">
+                <span class="perk-title">Локализация</span>
+                <label class="perk-toggle">
+                  <input type="checkbox" />
+                  <span class="perk-toggle-slider"></span>
+                </label>
+              </div>
+              <p class="perk-description">
+                Поддержка языков: перевод текстов, озвучка, адаптация культурных
+                отсылок, синхронизация губ.
+              </p>
+              <div class="quality-control">
+                <div class="quality-label">
+                  <span>Качество</span>
+                  <span class="quality-value">1</span>
+                </div>
+                <input
+                  type="range"
+                  min="1"
+                  max="5"
+                  value="1"
+                  class="quality-slider"
+                />
+                <div class="quality-levels">
+                  <div class="quality-level active"></div>
+                  <div class="quality-level"></div>
+                  <div class="quality-level"></div>
+                  <div class="quality-level"></div>
+                  <div class="quality-level"></div>
+                </div>
+                <div class="quality-description">
+                  Уровень 1: Машинный перевод + правка. Пример: базовая
+                  локализация инди-игр — текст понятен, но без литературной
+                  выразительности, озвучки нет.
+                </div>
+              </div>
+              <div class="quantity-control">
+                <div class="quality-label">
+                  <span>Количество языков</span>
                   <span class="quantity-display">0</span>
                 </div>
                 <div class="quantity-input">
@@ -2396,52 +2673,102 @@
         {
           name: "Minecraft (Alpha)",
           cost: 2,
-          desc: "Чистая идея и базовая процедурная генерация",
+          desc: "Процедурный базис, минимум ручного контента",
         },
         {
           name: "Portal 1",
           cost: 15,
-          desc: "Короткая головоломка, минимум контента, одна механика",
+          desc: "Короткая камерная игра, одна ключевая механика",
         },
         {
-          name: "Assassin's Creed 1",
-          cost: 120,
-          desc: "Технологично, но геймплейно это 3 типа миссий в 3 городах",
+          name: "Half-Life 1",
+          cost: 60,
+          desc: "Линейный коридорный шутер, база для жанра",
         },
         {
-          name: "Morrowind",
+          name: "BioShock 2",
+          cost: 110,
+          desc: "Повторное использование ассетов и механик первой части",
+        },
+        {
+          name: "Dead Space",
+          cost: 130,
+          desc: "Узкоспециализированный хоррор, упор на звук и расчлененку",
+        },
+        {
+          name: "Crysis 1",
+          cost: 150,
+          desc: "Технологичная песочница, но сюжетно довольно короткая",
+        },
+        {
+          name: "Metro 2033",
+          cost: 160,
+          desc: "Линейные туннели, высокая детализация окружения",
+        },
+        {
+          name: "Dead Space 2",
           cost: 180,
-          desc: "Огромный лор, тонны текста, но технически все очень просто",
+          desc: "Рост масштаба, больше уникальных ситуаций и врагов",
         },
         {
-          name: "Dishonored",
+          name: "Crysis 2",
+          cost: 190,
+          desc: "Вертикальный геймплей в городе, больше скриптов",
+        },
+        {
+          name: "Crysis 3",
+          cost: 210,
+          desc: "Пиковая графика, новые механики охоты, но малая длина",
+        },
+        {
+          name: "Half-Life 2",
           cost: 220,
-          desc: "Сложный левел-дизайн с кучей путей и вариативностью",
+          desc: "Разнообразие глав: гравипушка, транспорт, хоррор, война",
         },
         {
-          name: "Portal 2",
-          cost: 250,
-          desc: "Эталонная полировка механик, физики и постановки",
+          name: "Far Cry 1",
+          cost: 240,
+          desc: "Огромные открытые уровни и сложный для того времени ИИ",
+        },
+        {
+          name: "S.T.A.L.K.E.R.: Тень Чернобыля",
+          cost: 300,
+          desc: "Система симуляции жизни A-Life и сложная структура мира",
+        },
+        {
+          name: "BioShock Infinite",
+          cost: 350,
+          desc: "Экстремальная проработка арта и ИИ-напарника",
+        },
+        {
+          name: "Far Cry 2",
+          cost: 380,
+          desc: "Системный мир: распространение огня, износ оружия, малярия",
+        },
+        {
+          name: "Far Cry 3",
+          cost: 420,
+          desc: "Масса контента: охота, аванпосты, крафт, побочные квесты",
         },
         {
           name: "Skyrim",
           cost: 450,
-          desc: "Сотни подземелий, квестов и систем (крафт, магия, крики)",
+          desc: "Гигантское количество квестов, подземелий и систем",
         },
         {
-          name: "Fallout 4",
-          cost: 600,
-          desc: "Skyrim + строительство + сложная стрельба + диалоговые ветки",
+          name: "Far Cry 4",
+          cost: 500,
+          desc: "Расширение идей FC3, еще больше активностей и коопа",
         },
         {
           name: "The Witcher 3",
           cost: 900,
-          desc: "Запредельный объем уникальных квестов и режиссуры",
+          desc: "Эталон ручной работы: каждый квест — уникальная история",
         },
         {
           name: "GTA V",
           cost: 2500,
-          desc: "Три героя, бесшовный мир, сотни механик и онлайн-базис",
+          desc: "Три героя, детальный мегаполис и сотни вложенных механик",
         },
       ];
       // Описания уровней качества для каждого перка (полностью переработаны с примерами)
@@ -2655,6 +2982,41 @@
           "Уровень 3: Ин-движковые кат-сцены с хорошей анимацией. Пример: кат-сцены в God of War (2018) — полностью ин-движковые сцены с качественной анимацией и кинематографичной камерой.",
           "Уровень 4: Кинематографическое качество (камеры, освещение, монтаж). Пример: кат-сцены в The Last of Us Part II — ин-движковые сцены с кинематографичным качеством, сложные ракурсы камеры, профессиональный монтаж.",
           "Уровень 5: Пререндер + запись актёров (фотореализм). Пример: кат-сцены в Final Fantasy VII Remake — пререндеренные сцены с записью актёров, фотореалистичная графика, качество как в аниме-блокбастерах.",
+        ],
+        coop_mode: [
+          "Уровень 1: 2 игрока, базовая синхронизация без критических десинхронов. Пример: простой кооп в Stardew Valley — разделение ресурсов, общая карта.",
+          "Уровень 2: 4 игрока, баланс сложности под число участников. Пример: кооп в Deep Rock Galactic — враги адаптируются под количество игроков, награды делятся справедливо.",
+          "Уровень 3: 8 игроков, разделение наград и прогресса. Пример: рейды в Destiny 2 — уникальные роли, лут для каждого, синхронизация без лагов на хорошем интернете.",
+          "Уровень 4: 16 игроков, бесшовный переход между сольной и кооп-игрой. Пример: кооп в Monster Hunter: World — вход/выход без загрузок, сохранение прогресса для всех.",
+          "Уровень 5: 32+ игроков, без лагов даже при плохом соединении. Пример: идеальный кооп как в мечтах — серверная архитектура компенсирует пинг, десинхроны невозможны.",
+        ],
+        async_online: [
+          "Уровень 1: Таблицы лидеров без багов. Пример: простые рейтинги в платформерах — без серверных ошибок, но без глубокой интеграции в геймплей.",
+          "Уровень 2: Сообщения от других игроков. Пример: надписи в Dark Souls — игроки оставляют подсказки/предупреждения, которые видят другие.",
+          "Уровень 3: Асинхронное взаимодействие влияет на мир. Пример: следы в Journey — игроки видят тени других путешественников, могут помочь без слов.",
+          "Уровень 4: Глобальные события от действий сообщества. Пример: события в EVE Online — решения тысяч игроков влияют на экономику и политику вселенной.",
+          "Уровень 5: Мир меняется от действий всех игроков без онлайна. Пример: идеал как в Death Stranding — каждый игрок оставляет мосты/лестницы, которые спасают других от опасностей, создавая коллективный опыт.",
+        ],
+        testing: [
+          "Уровень 1: Ручное тестирование основных сценариев. Пример: тестирование линейных уровней на критические баги (застревания, краши) без автоматизации.",
+          "Уровень 2: Автоматизированные тесты для критических путей. Пример: скрипты для проверки сохранения/загрузки, боя с боссами — без ручного прогона перед каждым билдом.",
+          "Уровень 3: Плейтест-сообщество до релиза. Пример: закрытые бета-тесты как у Valve — сотни игроков находят баги, которые упустили разработчики.",
+          "Уровень 4: Стресс-тестирование на 1000+ конфигурациях. Пример: тестирование как перед релизом CDPR — проверка на слабых ПК, консолях прошлого поколения, экзотических сборках.",
+          "Уровень 5: Почти нулевые критические баги при релизе. Пример: релиз как у FromSoftware — сложная игра, но без крашей, десинхронов и блокирующих прогресс багов.",
+        ],
+        multiplatform: [
+          "Уровень 1: Базовый порт без оптимизации. Пример: простой порт инди-игры на 2 платформы — работает, но с просадками на слабых консолях.",
+          "Уровень 2: Оптимизация под особенности каждой платформы. Пример: порт как в Hollow Knight — 60 FPS на всех платформах, адаптация управления под геймпад/мышь.",
+          "Уровень 3: Кроссплатформенный прогресс. Пример: сохранения в облаке как в Fortnite — начали на ПК, продолжили на телефоне без потери прогресса.",
+          "Уровень 4: Идеальная стабильность на 5+ платформах. Пример: мультиплатформа как в Minecraft — один код, стабильная работа на ПК, консолях, мобилках, даже на Raspberry Pi.",
+          "Уровень 5: Единый код для всех платформ без ответвлений. Пример: идеал как в мечтах — один билд компилируется под все платформы, включая будущие (без переписывания под новые консоли).",
+        ],
+        localization: [
+          "Уровень 1: Машинный перевод + правка. Пример: базовая локализация инди-игр — текст понятен, но без литературной выразительности, озвучки нет.",
+          "Уровень 2: Профессиональный перевод без озвучки. Пример: локализация как в ранних инди-хитах — качественный текст, идиомы адаптированы, но только субтитры.",
+          "Уровень 3: Перевод + базовая озвучка. Пример: озвучка как в средних проектах — актёры среднего уровня, синхронизация губ приблизительная, но без артефактов.",
+          "Уровень 4: Качественная озвучка актёрами. Пример: озвучка как в The Witcher 3 — профессиональные актёры, эмоциональная выразительность, синхронизация губ на уровне кино.",
+          "Уровень 5: Озвучка звёздами. Пример: звёздная озвучка как в Голливуде — Кевин Спейси в *Call of Duty*, Геральт озвучен звездой польского кино, маркетинг на озвучке.",
         ],
       };
       // Ключ для localStorage
