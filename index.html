@@ -23,13 +23,11 @@
         --shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
         --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
       }
-
       * {
         margin: 0;
         padding: 0;
         box-sizing: border-box;
       }
-
       body {
         font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
         background: linear-gradient(135deg, var(--bg-primary) 0%, #161625 100%);
@@ -38,19 +36,16 @@
         padding: 20px;
         min-height: 100vh;
       }
-
       .container {
         max-width: 1400px;
         margin: 0 auto;
       }
-
       header {
         text-align: center;
         margin-bottom: 30px;
         padding: 25px 0;
         position: relative;
       }
-
       header::after {
         content: "";
         position: absolute;
@@ -66,7 +61,6 @@
         );
         border-radius: 2px;
       }
-
       h1 {
         font-size: 3.2rem;
         margin-bottom: 10px;
@@ -81,13 +75,11 @@
         font-weight: 800;
         letter-spacing: -1px;
       }
-
       .subtitle {
         font-size: 1.15rem;
         color: var(--text-secondary);
         margin-top: 12px;
       }
-
       .save-indicator {
         display: inline-block;
         margin-top: 8px;
@@ -96,24 +88,20 @@
         opacity: 0;
         transition: opacity 0.3s;
       }
-
       .save-indicator.show {
         opacity: 1;
       }
-
       .dashboard {
         display: grid;
         grid-template-columns: 1fr 380px;
         gap: 30px;
         margin-bottom: 40px;
       }
-
       @media (max-width: 1100px) {
         .dashboard {
           grid-template-columns: 1fr;
         }
       }
-
       .form-section {
         background: var(--bg-card);
         border-radius: var(--border-radius);
@@ -121,7 +109,6 @@
         box-shadow: var(--shadow);
         margin-bottom: 25px;
       }
-
       .form-section h2 {
         font-size: 1.7rem;
         margin-bottom: 20px;
@@ -130,11 +117,9 @@
         align-items: center;
         gap: 10px;
       }
-
       .form-group {
         margin-bottom: 20px;
       }
-
       .form-group label {
         display: block;
         margin-bottom: 8px;
@@ -142,7 +127,6 @@
         color: var(--text-secondary);
         font-size: 0.95rem;
       }
-
       .form-control {
         width: 100%;
         padding: 14px 16px;
@@ -153,35 +137,29 @@
         font-size: 1rem;
         transition: var(--transition);
       }
-
       .form-control:focus {
         outline: none;
         border-color: var(--accent);
         box-shadow: 0 0 0 3px rgba(108, 92, 231, 0.2);
       }
-
       .form-control::placeholder {
         color: var(--text-muted);
       }
-
       textarea.form-control {
         min-height: 100px;
         resize: vertical;
       }
-
       .perks-grid {
         display: grid;
         grid-template-columns: repeat(auto-fill, minmax(400px, 1fr));
         gap: 25px;
         margin-top: 20px;
       }
-
       @media (max-width: 900px) {
         .perks-grid {
           grid-template-columns: 1fr;
         }
       }
-
       .perk-card {
         background: var(--bg-card);
         border-radius: var(--border-radius);
@@ -191,22 +169,18 @@
         border: 2px solid transparent;
         opacity: 0.6;
       }
-
       .perk-card.active {
         opacity: 1;
         border-color: rgba(108, 92, 231, 0.3);
       }
-
       .perk-card:hover {
         transform: translateY(-3px);
         box-shadow: 0 10px 35px rgba(0, 0, 0, 0.4);
       }
-
       .perk-card.active:hover {
         border-color: var(--accent);
         background: rgba(108, 92, 231, 0.05);
       }
-
       .perk-header {
         display: flex;
         justify-content: space-between;
@@ -215,26 +189,22 @@
         padding-bottom: 12px;
         border-bottom: 1px solid rgba(255, 255, 255, 0.1);
       }
-
       .perk-title {
         font-size: 1.3rem;
         font-weight: 700;
         color: var(--accent-secondary);
       }
-
       .perk-toggle {
         position: relative;
         display: inline-block;
         width: 60px;
         height: 34px;
       }
-
       .perk-toggle input {
         opacity: 0;
         width: 0;
         height: 0;
       }
-
       .perk-toggle-slider {
         position: absolute;
         cursor: pointer;
@@ -246,7 +216,6 @@
         transition: var(--transition);
         border-radius: 34px;
       }
-
       .perk-toggle-slider:before {
         position: absolute;
         content: "";
@@ -258,34 +227,28 @@
         transition: var(--transition);
         border-radius: 50%;
       }
-
       .perk-toggle input:checked + .perk-toggle-slider {
         background-color: var(--accent);
       }
-
       .perk-toggle input:checked + .perk-toggle-slider:before {
         transform: translateX(26px);
         background-color: white;
       }
-
       .perk-description {
         font-size: 0.9rem;
         color: var(--text-muted);
         margin-bottom: 20px;
         line-height: 1.5;
       }
-
       .quality-control {
         margin-bottom: 15px;
       }
-
       .quality-label {
         display: flex;
         justify-content: space-between;
         margin-bottom: 8px;
         font-size: 0.9rem;
       }
-
       .quality-slider {
         width: 100%;
         height: 8px;
@@ -295,7 +258,6 @@
         transition: var(--transition);
         cursor: pointer;
       }
-
       .quality-slider::-webkit-slider-thumb {
         -webkit-appearance: none;
         appearance: none;
@@ -307,12 +269,10 @@
         transition: var(--transition);
         box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
       }
-
       .quality-slider::-webkit-slider-thumb:hover {
         transform: scale(1.2);
         background: var(--accent-hover);
       }
-
       .quality-slider::-moz-range-thumb {
         width: 24px;
         height: 24px;
@@ -323,7 +283,6 @@
         transition: var(--transition);
         box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
       }
-
       .quality-value {
         display: inline-block;
         width: 32px;
@@ -337,7 +296,6 @@
         margin-left: 10px;
         transition: var(--transition);
       }
-
       .quality-description {
         font-size: 0.85rem;
         color: var(--text-secondary);
@@ -345,20 +303,18 @@
         padding: 10px 12px;
         background: rgba(255, 255, 255, 0.05);
         border-radius: 6px;
-        min-height: 36px;
+        min-height: 50px;
         line-height: 1.4;
+        font-style: italic;
       }
-
       .quantity-control {
         margin-bottom: 15px;
       }
-
       .quantity-input {
         display: flex;
         align-items: center;
         gap: 12px;
       }
-
       .quantity-input input {
         width: 100px;
         padding: 10px 12px;
@@ -369,12 +325,10 @@
         font-size: 1rem;
         text-align: center;
       }
-
       .quantity-input input:focus {
         outline: none;
         border-color: var(--accent);
       }
-
       .cost-display {
         background: var(--bg-secondary);
         border-left: 4px solid var(--accent);
@@ -383,11 +337,9 @@
         margin-top: 15px;
         font-size: 0.95rem;
       }
-
       .cost-display strong {
         color: var(--accent-secondary);
       }
-
       .summary-card {
         background: var(--bg-card);
         border-radius: var(--border-radius);
@@ -397,14 +349,12 @@
         top: 30px;
         height: fit-content;
       }
-
       .summary-header {
         text-align: center;
         margin-bottom: 25px;
         padding-bottom: 20px;
         border-bottom: 1px solid rgba(255, 255, 255, 0.1);
       }
-
       .game-name-display {
         font-size: 2rem;
         font-weight: 700;
@@ -412,20 +362,17 @@
         color: var(--accent-secondary);
         min-height: 2.5rem;
       }
-
       .game-desc-display {
         font-size: 0.95rem;
         color: var(--text-secondary);
         min-height: 3rem;
         line-height: 1.6;
       }
-
       .summary-stats {
         display: grid;
         gap: 18px;
         margin-bottom: 25px;
       }
-
       .stat-item {
         display: flex;
         justify-content: space-between;
@@ -434,21 +381,74 @@
         border-radius: 8px;
         transition: var(--transition);
       }
-
       .stat-item:hover {
         background: rgba(255, 255, 255, 0.08);
       }
-
       .stat-label {
         font-weight: 600;
         color: var(--text-secondary);
       }
-
       .stat-value {
         font-weight: 700;
         color: var(--accent-secondary);
       }
-
+      .progress-section {
+        background: var(--bg-secondary);
+        border-radius: var(--border-radius);
+        padding: 20px;
+        margin-bottom: 25px;
+      }
+      .progress-label {
+        display: flex;
+        justify-content: space-between;
+        margin-bottom: 10px;
+        font-weight: 600;
+        color: var(--text-secondary);
+      }
+      .progress-container {
+        background: rgba(0, 0, 0, 0.3);
+        border-radius: 10px;
+        height: 24px;
+        overflow: hidden;
+        margin-bottom: 8px;
+        position: relative;
+      }
+      .progress-bar {
+        height: 100%;
+        background: linear-gradient(90deg, var(--success), #00d2d3);
+        border-radius: 10px;
+        transition: width 0.5s ease;
+        position: relative;
+      }
+      .progress-bar::after {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: linear-gradient(
+          90deg,
+          rgba(255, 255, 255, 0.1) 0%,
+          rgba(255, 255, 255, 0.2) 50%,
+          rgba(255, 255, 255, 0.1) 100%
+        );
+        animation: progressShine 2s infinite;
+      }
+      @keyframes progressShine {
+        0% {
+          transform: translateX(-100%);
+        }
+        100% {
+          transform: translateX(100%);
+        }
+      }
+      .progress-text {
+        text-align: center;
+        font-weight: 700;
+        color: var(--success);
+        font-size: 1.2rem;
+      }
       .total-cost {
         background: linear-gradient(135deg, var(--accent), var(--accent-hover));
         padding: 25px;
@@ -457,20 +457,17 @@
         margin-bottom: 25px;
         box-shadow: 0 8px 25px rgba(108, 92, 231, 0.4);
       }
-
       .total-cost-label {
         font-size: 1.1rem;
         color: rgba(255, 255, 255, 0.9);
         margin-bottom: 8px;
       }
-
       .total-cost-value {
         font-size: 3rem;
         font-weight: 800;
         color: white;
         text-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
       }
-
       .comparison-card {
         background: var(--bg-secondary);
         border-radius: var(--border-radius);
@@ -478,25 +475,21 @@
         text-align: center;
         margin-bottom: 20px;
       }
-
       .comparison-title {
         font-size: 1.1rem;
         color: var(--text-secondary);
         margin-bottom: 12px;
       }
-
       .comparison-game {
         font-size: 1.7rem;
         font-weight: 700;
         color: var(--accent-secondary);
         margin-bottom: 8px;
       }
-
       .comparison-desc {
         font-size: 0.9rem;
         color: var(--text-muted);
       }
-
       .btn {
         display: inline-block;
         padding: 14px 32px;
@@ -512,50 +505,41 @@
         text-align: center;
         box-shadow: 0 4px 15px rgba(108, 92, 231, 0.4);
       }
-
       .btn:hover {
         transform: translateY(-2px);
         box-shadow: 0 6px 20px rgba(108, 92, 231, 0.6);
         background: linear-gradient(135deg, var(--accent-hover), #4a3cb8);
       }
-
       .btn:active {
         transform: translateY(0);
       }
-
       .btn-reset {
         background: linear-gradient(135deg, #ff7675, #e84341);
         margin-top: 15px;
         box-shadow: 0 4px 15px rgba(255, 118, 117, 0.4);
       }
-
       .btn-reset:hover {
         box-shadow: 0 6px 20px rgba(255, 118, 117, 0.6);
         background: linear-gradient(135deg, #e84341, #d62d20);
       }
-
       .btn-clear {
         background: linear-gradient(135deg, #636e72, #2d3436);
         margin-top: 10px;
         box-shadow: 0 4px 15px rgba(99, 110, 114, 0.4);
       }
-
       .btn-clear:hover {
         box-shadow: 0 6px 20px rgba(99, 110, 114, 0.6);
         background: linear-gradient(135deg, #2d3436, #1a1a1a);
       }
-
       .btn-import-export {
         background: linear-gradient(135deg, #00cec9, #0083b0);
         margin-top: 10px;
         box-shadow: 0 4px 15px rgba(0, 206, 201, 0.4);
       }
-
       .btn-import-export:hover {
         box-shadow: 0 6px 20px rgba(0, 206, 201, 0.6);
         background: linear-gradient(135deg, #0083b0, #006380);
       }
-
       .category-divider {
         margin: 40px 0 25px;
         padding-bottom: 15px;
@@ -564,13 +548,11 @@
         align-items: center;
         gap: 15px;
       }
-
       .category-title {
         font-size: 1.6rem;
         font-weight: 700;
         color: var(--accent);
       }
-
       .category-badge {
         background: var(--accent);
         color: white;
@@ -579,13 +561,11 @@
         font-size: 0.85rem;
         font-weight: 700;
       }
-
       .quality-levels {
         display: flex;
         gap: 4px;
         margin-top: 8px;
       }
-
       .quality-level {
         width: 20px;
         height: 20px;
@@ -593,25 +573,21 @@
         background: var(--bg-input);
         transition: var(--transition);
       }
-
       .quality-level.active {
         background: var(--accent);
         transform: scale(1.2);
       }
-
       .import-export-section {
         background: var(--bg-secondary);
         padding: 20px;
         border-radius: var(--border-radius);
         margin-top: 20px;
       }
-
       .import-export-section h3 {
         margin-bottom: 15px;
         color: var(--accent-secondary);
         font-size: 1.3rem;
       }
-
       textarea.export-textarea {
         width: 100%;
         min-height: 100px;
@@ -625,30 +601,24 @@
         resize: vertical;
         margin-bottom: 15px;
       }
-
       .import-export-buttons {
         display: grid;
         grid-template-columns: 1fr 1fr;
         gap: 10px;
       }
-
       @media (max-width: 768px) {
         body {
           padding: 15px;
         }
-
         h1 {
           font-size: 2.3rem;
         }
-
         .dashboard {
           grid-template-columns: 1fr;
         }
-
         .perks-grid {
           grid-template-columns: 1fr;
         }
-
         .summary-card {
           position: relative;
           top: 0;
@@ -661,14 +631,13 @@
       <header>
         <h1>🎮 GameDev Planner</h1>
         <p class="subtitle">
-          Спланируй свою игру: выбери параметры, рассчитай бюджет и сравни с
-          реальными проектами
+          Спланируй свою игру: выбери параметры, рассчитай бюджет и отслеживай
+          прогресс разработки
         </p>
         <div class="save-indicator" id="saveIndicator">
           💾 Автосохранение включено
         </div>
       </header>
-
       <div class="dashboard">
         <div class="left-column">
           <!-- Основная информация об игре -->
@@ -692,13 +661,11 @@
               ></textarea>
             </div>
           </div>
-
           <!-- Сюжет и контент -->
           <div class="category-divider">
             <h2 class="category-title">📖 Сюжет и контент</h2>
             <span class="category-badge">4 перка</span>
           </div>
-
           <div class="perks-grid">
             <div
               class="perk-card"
@@ -738,15 +705,15 @@
                   <div class="quality-level"></div>
                 </div>
                 <div class="quality-description">
-                  Базовый фон без противоречий: краткая предыстория мира, 1–2
-                  ключевых события
+                  Уровень 1: Базовый фон без противоречий. Пример: простая
+                  предыстория в Stardew Valley — дед оставил ферму, вы её
+                  восстанавливаете. Минимум деталей, но нет логических дыр.
                 </div>
               </div>
               <div class="cost-display">
                 Стоимость: <strong>5 чел-лет</strong>
               </div>
             </div>
-
             <div
               class="perk-card"
               data-type="hours"
@@ -783,7 +750,9 @@
                   <div class="quality-level"></div>
                 </div>
                 <div class="quality-description">
-                  Линейная история без изъянов
+                  Уровень 1: Линейная история без изъянов. Пример: классические
+                  платформеры (Celeste) — чёткая цель, минимум диалогов, но
+                  история логична и не отвлекает от геймплея.
                 </div>
               </div>
               <div class="quantity-control">
@@ -804,7 +773,6 @@
                 Стоимость: <strong>0 чел-лет</strong>
               </div>
             </div>
-
             <div
               class="perk-card"
               data-type="count"
@@ -841,7 +809,9 @@
                   <div class="quality-level"></div>
                 </div>
                 <div class="quality-description">
-                  «Убей 10 крыс» без повторяющихся фраз
+                  Уровень 1: «Убей 10 крыс» без повторяющихся фраз. Пример:
+                  ранние RPG вроде старых частей The Elder Scrolls — простые
+                  задания без глубины, но без технических ошибок.
                 </div>
               </div>
               <div class="quantity-control">
@@ -862,7 +832,6 @@
                 Стоимость: <strong>0 чел-лет</strong>
               </div>
             </div>
-
             <div
               class="perk-card"
               data-type="count"
@@ -878,7 +847,8 @@
               </div>
               <p class="perk-description">
                 Локации, в которые игрок попадает из открытого мира (подземелья,
-                дома, квестовые зоны).
+                дома, квестовые зоны). Указывается общая площадь всех закрытых
+                локаций в квадратных метрах.
               </p>
               <div class="quality-control">
                 <div class="quality-label">
@@ -900,12 +870,14 @@
                   <div class="quality-level"></div>
                 </div>
                 <div class="quality-description">
-                  Базовые локации без повторяющихся текстур
+                  Уровень 1: Базовые локации без повторяющихся текстур. Пример:
+                  простые дома в деревне из Skyrim — 1-2 комнаты, минимум
+                  деталей, но без технических багов и клиппинга.
                 </div>
               </div>
               <div class="quantity-control">
                 <div class="quality-label">
-                  <span>Площадь локаций (100 м²)</span>
+                  <span>Общая площадь (м²)</span>
                   <span class="quantity-display">0</span>
                 </div>
                 <div class="quantity-input">
@@ -921,7 +893,6 @@
                 Стоимость: <strong>0 чел-лет</strong>
               </div>
             </div>
-
             <div
               class="perk-card"
               data-type="fixed"
@@ -959,7 +930,9 @@
                   <div class="quality-level"></div>
                 </div>
                 <div class="quality-description">
-                  Базовый выбор пола и цвета волос
+                  Уровень 1: Базовый выбор пола и цвета волос. Пример: редактор
+                  в Mass Effect 1 — минимум опций, но работает стабильно без
+                  багов при создании персонажа.
                 </div>
               </div>
               <div class="cost-display">
@@ -967,13 +940,11 @@
               </div>
             </div>
           </div>
-
           <!-- Системы выживания и достижений -->
           <div class="category-divider">
             <h2 class="category-title">⚡ Системы геймплея</h2>
-            <span class="category-badge">3 перка</span>
+            <span class="category-badge">5 перков</span>
           </div>
-
           <div class="perks-grid">
             <div
               class="perk-card"
@@ -1013,8 +984,10 @@
                   <div class="quality-level"></div>
                 </div>
                 <div class="quality-description">
-                  Базовые механики без критических багов: стрельба попадает в
-                  цель, стелс работает в тени, можно поднимать предметы
+                  Уровень 1: Базовые механики без критических багов. Пример:
+                  стрельба в старых шутерах (Doom 1993) — попадает в цель, стелс
+                  в первых частях Splinter Cell — работает в тени, можно
+                  поднимать предметы как в Half-Life 1.
                 </div>
               </div>
               <div class="cost-display">
@@ -1058,7 +1031,10 @@
                   <div class="quality-level"></div>
                 </div>
                 <div class="quality-description">
-                  Базовые модели без багов, 1–2 вариации текстур
+                  Уровень 1: Базовые модели без багов, 1–2 вариации текстур.
+                  Пример: оружие в ранних играх серии Diablo — простые модели,
+                  базовые иконки, без уникальных эффектов, но без критических
+                  ошибок.
                 </div>
               </div>
               <div class="quantity-control">
@@ -1116,14 +1092,15 @@
                   <div class="quality-level"></div>
                 </div>
                 <div class="quality-description">
-                  1–2 параметра без раздражения (голод + жажда)
+                  Уровень 1: 1–2 параметра без раздражения. Пример: голод и
+                  жажда в Minecraft — простая механика, которая не мешает
+                  геймплею, но добавляет базовый вызов.
                 </div>
               </div>
               <div class="cost-display">
                 Стоимость: <strong>10 чел-лет</strong>
               </div>
             </div>
-
             <div
               class="perk-card"
               data-type="count"
@@ -1161,7 +1138,9 @@
                   <div class="quality-level"></div>
                 </div>
                 <div class="quality-description">
-                  3 режима сложности без багов
+                  Уровень 1: 3 режима сложности без багов. Пример: классические
+                  режимы (Легкий/Средний/Сложный) в DOOM 2016 — отличаются
+                  здоровьем врагов и уроном, но без технических проблем.
                 </div>
               </div>
               <div class="quantity-control">
@@ -1182,7 +1161,6 @@
                 Стоимость: <strong>0 чел-лет</strong>
               </div>
             </div>
-
             <div
               class="perk-card"
               data-type="count"
@@ -1218,7 +1196,12 @@
                   <div class="quality-level"></div>
                   <div class="quality-level"></div>
                 </div>
-                <div class="quality-description">Простые достижения</div>
+                <div class="quality-description">
+                  Уровень 1: Простые достижения без дублирования. Пример:
+                  базовые достижения в ранних играх на Steam — "Завершите первую
+                  миссию", "Найдите 10 секретов" — без технических ошибок
+                  отслеживания.
+                </div>
               </div>
               <div class="quantity-control">
                 <div class="quality-label">
@@ -1239,13 +1222,11 @@
               </div>
             </div>
           </div>
-
           <!-- Персонажи -->
           <div class="category-divider">
             <h2 class="category-title">👥 Персонажи</h2>
             <span class="category-badge">2 перка</span>
           </div>
-
           <div class="perks-grid">
             <div
               class="perk-card"
@@ -1283,7 +1264,10 @@
                   <div class="quality-level"></div>
                 </div>
                 <div class="quality-description">
-                  Персонаж без «деревянности»
+                  Уровень 1: Персонаж без «деревянности». Пример: главные герои
+                  в классических играх вроде Prince of Persia — базовая
+                  мотивация, простая арка развития, но без технических багов
+                  анимации.
                 </div>
               </div>
               <div class="quantity-control">
@@ -1304,7 +1288,6 @@
                 Стоимость: <strong>0 чел-лет</strong>
               </div>
             </div>
-
             <div
               class="perk-card"
               data-type="count"
@@ -1341,7 +1324,9 @@
                   <div class="quality-level"></div>
                 </div>
                 <div class="quality-description">
-                  НПС без повторяющихся фраз
+                  Уровень 1: НПС без повторяющихся фраз. Пример: торговцы в
+                  старых RPG вроде Diablo II — уникальные реплики при первом
+                  разговоре, без технических ошибок диалоговой системы.
                 </div>
               </div>
               <div class="quantity-control">
@@ -1363,13 +1348,11 @@
               </div>
             </div>
           </div>
-
           <!-- Системы прокачки -->
           <div class="category-divider">
             <h2 class="category-title">⚡ Системы прокачки</h2>
             <span class="category-badge">2 перка</span>
           </div>
-
           <div class="perks-grid">
             <div
               class="perk-card"
@@ -1408,7 +1391,9 @@
                   <div class="quality-level"></div>
                 </div>
                 <div class="quality-description">
-                  3–5 веток без бесполезных навыков
+                  Уровень 1: 3–5 веток без бесполезных навыков. Пример: базовое
+                  дерево навыков в Skyrim — несколько веток развития, все навыки
+                  полезны, без технических багов прокачки.
                 </div>
               </div>
               <div class="quantity-control">
@@ -1429,7 +1414,6 @@
                 Стоимость: <strong>0 чел-лет</strong>
               </div>
             </div>
-
             <div
               class="perk-card"
               data-type="count"
@@ -1464,7 +1448,11 @@
                   <div class="quality-level"></div>
                   <div class="quality-level"></div>
                 </div>
-                <div class="quality-description">5–10 рецептов без ошибок</div>
+                <div class="quality-description">
+                  Уровень 1: 5–10 рецептов без ошибок. Пример: базовый крафт в
+                  Minecraft — простые рецепты (стол для крафта), без технических
+                  ошибок при создании предметов.
+                </div>
               </div>
               <div class="quantity-control">
                 <div class="quality-label">
@@ -1485,13 +1473,11 @@
               </div>
             </div>
           </div>
-
           <!-- Мир и окружение -->
           <div class="category-divider">
             <h2 class="category-title">🌍 Мир и окружение</h2>
             <span class="category-badge">2 перка</span>
           </div>
-
           <div class="perks-grid">
             <div
               class="perk-card"
@@ -1528,7 +1514,11 @@
                   <div class="quality-level"></div>
                   <div class="quality-level"></div>
                 </div>
-                <div class="quality-description">Мир без «пустых» зон</div>
+                <div class="quality-description">
+                  Уровень 1: Мир без «пустых» зон. Пример: небольшие локации в
+                  Hollow Knight — компактные зоны без пустот, каждая область
+                  наполнена контентом, без технических багов загрузки.
+                </div>
               </div>
               <div class="quantity-control">
                 <div class="quality-label">
@@ -1548,7 +1538,6 @@
                 Стоимость: <strong>0 чел-лет</strong>
               </div>
             </div>
-
             <div
               class="perk-card"
               data-type="fixed"
@@ -1587,7 +1576,10 @@
                   <div class="quality-level"></div>
                 </div>
                 <div class="quality-description">
-                  День/ночь + базовая погода (солнце/дождь) без багов
+                  Уровень 1: День/ночь + базовая погода без багов. Пример: цикл
+                  в старых играх серии GTA — смена времени суток и базовые
+                  погодные условия (солнце/дождь), НПС стоят на месте или ходят
+                  по простому паттерну. Сезоны отсутствуют.
                 </div>
               </div>
               <div class="cost-display">
@@ -1595,13 +1587,11 @@
               </div>
             </div>
           </div>
-
           <!-- Интеллект -->
           <div class="category-divider">
             <h2 class="category-title">🤖 Интеллект</h2>
             <span class="category-badge">2 перка</span>
           </div>
-
           <div class="perks-grid">
             <div
               class="perk-card"
@@ -1639,14 +1629,15 @@
                   <div class="quality-level"></div>
                 </div>
                 <div class="quality-description">
-                  НПС не застревают в текстурах
+                  Уровень 1: НПС не застревают в текстурах. Пример: базовый ИИ в
+                  классических шутерах (Half-Life) — враги двигаются к игроку,
+                  стреляют, но без сложной тактики. Минимум багов навигации.
                 </div>
               </div>
               <div class="cost-display">
                 Стоимость: <strong>10 чел-лет</strong>
               </div>
             </div>
-
             <div
               class="perk-card"
               data-type="fixed"
@@ -1682,20 +1673,22 @@
                   <div class="quality-level"></div>
                   <div class="quality-level"></div>
                 </div>
-                <div class="quality-description">Напарник не мешает</div>
+                <div class="quality-description">
+                  Уровень 1: Напарник не мешает. Пример: напарники в первых
+                  частях Left 4 Dead — следуют за игроком, не застревают
+                  постоянно, базовая поддержка в бою без критических багов.
+                </div>
               </div>
               <div class="cost-display">
                 Стоимость: <strong>14 чел-лет</strong>
               </div>
             </div>
           </div>
-
           <!-- Технические параметры -->
           <div class="category-divider">
             <h2 class="category-title">⚙️ Технические параметры</h2>
-            <span class="category-badge">7 перков</span>
+            <span class="category-badge">12 перков</span>
           </div>
-
           <div class="perks-grid">
             <div
               class="perk-card"
@@ -1733,14 +1726,16 @@
                   <div class="quality-level"></div>
                 </div>
                 <div class="quality-description">
-                  Физика без критических багов
+                  Уровень 1: Физика без критических багов. Пример: базовая
+                  физика в Half-Life 2 — объекты падают, сталкиваются, но без
+                  сложных симуляций. Минимум случаев, когда объекты застревают
+                  или ведут себя нелогично.
                 </div>
               </div>
               <div class="cost-display">
                 Стоимость: <strong>10 чел-лет</strong>
               </div>
             </div>
-
             <div
               class="perk-card"
               data-type="fixed"
@@ -1776,13 +1771,17 @@
                   <div class="quality-level"></div>
                   <div class="quality-level"></div>
                 </div>
-                <div class="quality-description">Без рывков и клиппинга</div>
+                <div class="quality-description">
+                  Уровень 1: Без рывков и клиппинга. Пример: базовые анимации в
+                  старых играх (Prince of Persia) — плавные переходы между
+                  основными действиями (ходьба, прыжок), без технических
+                  артефактов.
+                </div>
               </div>
               <div class="cost-display">
                 Стоимость: <strong>8 чел-лет</strong>
               </div>
             </div>
-
             <div
               class="perk-card"
               data-type="fixed"
@@ -1819,14 +1818,16 @@
                   <div class="quality-level"></div>
                 </div>
                 <div class="quality-description">
-                  30 FPS на минимальных настройках без крашей
+                  Уровень 1: 30 FPS на минимальных настройках без крашей.
+                  Пример: базовая оптимизация в инди-играх (Stardew Valley) —
+                  стабильная частота кадров на слабых ПК, без вылетов в
+                  стандартных сценариях.
                 </div>
               </div>
               <div class="cost-display">
                 Стоимость: <strong>12 чел-лет</strong>
               </div>
             </div>
-
             <div
               class="perk-card"
               data-type="fixed"
@@ -1861,14 +1862,15 @@
                   <div class="quality-level"></div>
                 </div>
                 <div class="quality-description">
-                  Загрузка <30 секунд на HDD
+                  Уровень 1: Загрузка <30 секунд на HDD. Пример: загрузки в
+                  классических играх (Skyrim) — экран загрузки с советами, время
+                  загрузки в пределах 20-30 секунд на HDD без зависаний.
                 </div>
               </div>
               <div class="cost-display">
                 Стоимость: <strong>8 чел-лет</strong>
               </div>
             </div>
-
             <div
               class="perk-card"
               data-type="fixed"
@@ -1905,14 +1907,16 @@
                   <div class="quality-level"></div>
                 </div>
                 <div class="quality-description">
-                  Игра <20 ГБ без критической потери качества
+                  Уровень 1: Игра <20 ГБ без критической потери качества.
+                  Пример: оптимизация в инди-играх (Hollow Knight) — компактный
+                  размер (~8 ГБ) с хорошим качеством ассетов, без артефактов
+                  сжатия.
                 </div>
               </div>
               <div class="cost-display">
                 Стоимость: <strong>10 чел-лет</strong>
               </div>
             </div>
-
             <div
               class="perk-card"
               data-type="fixed"
@@ -1949,14 +1953,16 @@
                   <div class="quality-level"></div>
                 </div>
                 <div class="quality-description">
-                  Ручное сохранение без потери данных
+                  Уровень 1: Ручное сохранение без потери данных. Пример:
+                  базовая система сохранений в классических RPG (Diablo II) —
+                  сохранение в меню, без потери прогресса при нормальном выходе
+                  из игры.
                 </div>
               </div>
               <div class="cost-display">
                 Стоимость: <strong>6 чел-лет</strong>
               </div>
             </div>
-
             <div
               class="perk-card"
               data-type="fixed"
@@ -1993,14 +1999,16 @@
                   <div class="quality-level"></div>
                 </div>
                 <div class="quality-description">
-                  Без критических багов навигации
+                  Уровень 1: Без критических багов навигации. Пример: базовый
+                  интерфейс в старых играх (Half-Life) — понятное меню,
+                  интуитивная навигация, без зависаний и невозможности выбрать
+                  опции.
                 </div>
               </div>
               <div class="cost-display">
                 Стоимость: <strong>8 чел-лет</strong>
               </div>
             </div>
-
             <div
               class="perk-card"
               data-type="fixed"
@@ -2037,14 +2045,16 @@
                   <div class="quality-level"></div>
                 </div>
                 <div class="quality-description">
-                  3+ трека без повторов в короткий промежуток
+                  Уровень 1: 3+ трека без повторов в короткий промежуток.
+                  Пример: музыка в классических играх (Tetris) — несколько
+                  запоминающихся треков, которые не повторяются слишком часто,
+                  создают атмосферу без раздражения.
                 </div>
               </div>
               <div class="cost-display">
                 Стоимость: <strong>6 чел-лет</strong>
               </div>
             </div>
-
             <div
               class="perk-card"
               data-type="fixed"
@@ -2082,14 +2092,16 @@
                   <div class="quality-level"></div>
                 </div>
                 <div class="quality-description">
-                  Без повторяющихся клипов в короткий промежуток
+                  Уровень 1: Без повторяющихся клипов в короткий промежуток.
+                  Пример: звуки в классических шутерах (Doom) — разные звуки
+                  выстрелов, крики врагов не повторяются слишком часто, базовое
+                  позиционирование звука.
                 </div>
               </div>
               <div class="cost-display">
                 Стоимость: <strong>8 чел-лет</strong>
               </div>
             </div>
-
             <div
               class="perk-card"
               data-type="fixed"
@@ -2127,14 +2139,16 @@
                   <div class="quality-level"></div>
                 </div>
                 <div class="quality-description">
-                  Базовая графика без артефактов на целевых настройках
+                  Уровень 1: Базовая графика без артефактов на целевых
+                  настройках. Пример: графика в инди-играх (Stardew Valley) —
+                  простая, но чистая визуальная стилизация, без артефактов и
+                  багов отображения на заявленных конфигурациях.
                 </div>
               </div>
               <div class="cost-display">
                 Стоимость: <strong>10 чел-лет</strong>
               </div>
             </div>
-
             <div
               class="perk-card"
               data-type="fixed"
@@ -2172,14 +2186,16 @@
                   <div class="quality-level"></div>
                 </div>
                 <div class="quality-description">
-                  Поддержка простых модов (замена текстур)
+                  Уровень 1: Поддержка простых модов (замена текстур). Пример:
+                  базовая поддержка модов в Skyrim — возможность заменять
+                  текстуры и модели через папку Data, без официальных
+                  инструментов, но с документацией от сообщества.
                 </div>
               </div>
               <div class="cost-display">
                 Стоимость: <strong>5 чел-лет</strong>
               </div>
             </div>
-
             <div
               class="perk-card"
               data-type="count"
@@ -2217,7 +2233,10 @@
                   <div class="quality-level"></div>
                 </div>
                 <div class="quality-description">
-                  Текст + статичные изображения
+                  Уровень 1: Текст + статичные изображения. Пример: кат-сцены в
+                  старых играх (ретро RPG) — текстовые описания событий с
+                  неподвижными иллюстрациями, без анимации, но с хорошей
+                  читаемостью и отсутствием багов отображения.
                 </div>
               </div>
               <div class="quantity-control">
@@ -2239,7 +2258,6 @@
               </div>
             </div>
           </div>
-
           <!-- Импорт/Экспорт -->
           <div class="import-export-section">
             <h3>📤 Импорт / Экспорт параметров</h3>
@@ -2272,7 +2290,6 @@
             </p>
           </div>
         </div>
-
         <!-- Правая колонка: итоги -->
         <div class="right-column">
           <div class="summary-card">
@@ -2282,7 +2299,6 @@
                 Описание отсутствует
               </div>
             </div>
-
             <div class="summary-stats">
               <div class="stat-item">
                 <span class="stat-label">Активных перков:</span>
@@ -2306,7 +2322,44 @@
               </div>
               <div class="stat-item">
                 <span class="stat-label">Закрытых локаций:</span>
-                <span class="stat-value" id="closedLocations">0</span>
+                <span class="stat-value" id="closedLocations">0 м²</span>
+              </div>
+            </div>
+
+            <!-- НОВЫЙ БЛОК: Прогресс разработки -->
+            <div class="progress-section">
+              <div class="progress-label">
+                <span>Вложено человеко-лет</span>
+                <span id="investedDisplay">0</span>
+              </div>
+              <input
+                type="number"
+                id="investedInput"
+                class="form-control"
+                min="0"
+                value="0"
+                step="1"
+                style="margin-bottom: 15px"
+              />
+              <div class="progress-label">
+                <span>Прогресс разработки</span>
+                <span id="progressPercent">0%</span>
+              </div>
+              <div class="progress-container">
+                <div
+                  class="progress-bar"
+                  id="progressBar"
+                  style="width: 0%"
+                ></div>
+              </div>
+              <div
+                style="
+                  margin-top: 8px;
+                  font-size: 0.85rem;
+                  color: var(--text-muted);
+                "
+              >
+                Осталось: <span id="remainingYears">0</span> человеко-лет
               </div>
             </div>
 
@@ -2323,13 +2376,11 @@
                 человеко-лет
               </div>
             </div>
-
             <div class="comparison-card">
               <div class="comparison-title">Ближайший аналог:</div>
               <div class="comparison-game" id="comparisonGame">—</div>
               <div class="comparison-desc" id="comparisonDesc">—</div>
             </div>
-
             <button class="btn" id="calculateBtn">🔄 Пересчитать</button>
             <button class="btn btn-reset" id="resetBtn">↺ Сбросить всё</button>
             <button class="btn btn-clear" id="clearStorageBtn">
@@ -2339,7 +2390,6 @@
         </div>
       </div>
     </div>
-
     <script>
       // Данные для сравнения с реальными играми
       const gameComparisons = [
@@ -2376,247 +2426,238 @@
           desc: "Гипер-ААА с поддержкой 5+ лет",
         },
       ];
-
-      // Описания уровней качества для каждого перка
+      // Описания уровней качества для каждого перка (полностью переработаны с примерами)
       const qualityDescriptions = {
         lore: [
-          "Базовый фон без противоречий: краткая предыстория мира, 1–2 ключевых события, минимальная мотивация персонажей",
-          "Связная история с 2–3 фракциями: у каждой фракции — мотивация, история конфликта, базовые культурные особенности",
-          "Документированная вселенная: книги в игре раскрывают историю, правила магии/технологий логичны, фракции имеют внутреннюю иерархию и конфликты",
-          "Богатая мифология с артефактами и легендами: древние цивилизации, пророчества, артефакты с историей, игрок сам собирает пазл лора через исследование",
-          "Энциклопедическая глубина: фанаты пишут вики, лор раскрыт в книгах/комиксах/других играх, каждая деталь мира имеет объяснение, противоречий нет даже при внимательном изучении",
+          "Уровень 1: Базовый фон без противоречий. Пример: простая предыстория в Stardew Valley — дед оставил ферму, вы её восстанавливаете. Минимум деталей, но нет логических дыр.",
+          "Уровень 2: Связная история с 2–3 фракциями. Пример: фракции в Mass Effect 1 — Альянс, Цитадель, Гетхи, у каждой есть мотивация и базовая история конфликта.",
+          "Уровень 3: Документированная вселенная. Пример: книги в The Witcher 3 — раскрывают историю мира, правила магии логичны, фракции имеют внутреннюю иерархию.",
+          "Уровень 4: Богатая мифология с артефактами. Пример: мир Dark Souls — древние цивилизации, пророчества, артефакты с историей, игрок сам собирает пазл лора.",
+          "Уровень 5: Энциклопедическая глубина. Пример: вселенная The Elder Scrolls — тысячи страниц текстов, фракции с тысячелетней историей, фанаты пишут вики, противоречий нет даже при детальном изучении.",
         ],
         main_story: [
-          "Линейная история без изъянов",
-          "Чёткая арка с кульминацией",
-          "Ветвления с осмысленным выбором",
-          "Несколько концовок с весомыми последствиями",
-          "Динамический сюжет, перестраивающийся под игрока",
+          "Уровень 1: Линейная история без изъянов. Пример: классические платформеры (Celeste) — чёткая цель, минимум диалогов, но история логична и не отвлекает от геймплея.",
+          "Уровень 2: Чёткая арка с кульминацией. Пример: сюжет God of War (2018) — путешествие отца и сына с эмоциональной кульминацией и развязкой.",
+          "Уровень 3: Ветвления с осмысленным выбором. Пример: Mass Effect 2 — решения влияют на состав команды и финал, выбор имеет весомые последствия.",
+          "Уровень 4: Несколько концовок с последствиями. Пример: The Witcher 3 — решения в квестах влияют на финал, разные концовки отражают путь игрока.",
+          "Уровень 5: Динамический сюжет под игрока. Пример: Disco Elysium — сюжет перестраивается под навыки и решения персонажа, уникальный опыт для каждого прохождения.",
         ],
         side_quests: [
-          "«Убей 10 крыс» без повторяющихся фраз",
-          "Уникальный сценарий для каждого квеста",
-          "Квесты влияют на мир после завершения",
-          "Побочные квесты не уступают основным",
-          "Игрок сам ищет квесты без маркеров",
+          "Уровень 1: «Убей 10 крыс» без повторяющихся фраз. Пример: ранние квесты в The Elder Scrolls — простые задания без глубины, но без технических ошибок.",
+          "Уровень 2: Уникальный сценарий для каждого квеста. Пример: побочные квесты в The Witcher 1 — каждый имеет свою историю и персонажей.",
+          "Уровень 3: Квесты влияют на мир после завершения. Пример: квесты в Kingdom Come: Deliverance — решения меняют отношения с НПС и доступ к локациям.",
+          "Уровень 4: Побочные квесты не уступают основным. Пример: квесты в The Witcher 3 — история Белого Волка или Радовиды по глубине не уступает основному сюжету.",
+          "Уровень 5: Игрок сам ищет квесты без маркеров. Пример: квесты в Elden Ring — обнаружение через исследование мира, без указателей, но с логичными подсказками.",
         ],
         closed_locations: [
-          "Базовые локации без повторяющихся текстур",
-          "Уникальный дизайн каждой локации",
-          "Локации влияют на геймплей",
-          "Секретные комнаты и скрытые пути",
-          "Полностью интерактивные локации с множеством решений",
+          "Уровень 1: Базовые локации без повторяющихся текстур. Пример: простые дома в деревне из Skyrim — 1-2 комнаты, минимум деталей, но без технических багов.",
+          "Уровень 2: Уникальный дизайн каждой локации. Пример: подземелья в Dark Souls — каждое имеет уникальную архитектуру и атмосферу, 3-5 комнат с базовыми секретами.",
+          "Уровень 3: Локации влияют на геймплей. Пример: миссии в Dishonored — многоуровневые локации с альтернативными путями (вентиляция, люки), влияющими на тактику.",
+          "Уровень 4: Секретные комнаты и скрытые пути. Пример: локации в Bloodborne — сложная архитектура с 10+ комнатами, секретными проходами и ловушками.",
+          "Уровень 5: Полностью интерактивные локации. Пример: локации в Hitman — десятки комнат, разрушаемость, динамическое освещение, каждый предмет можно использовать, множество решений для задач.",
         ],
         character_editor: [
-          "Базовый выбор пола и цвета волос",
-          "Кастомизация внешности (лицо, телосложение)",
-          "Выбор класса и начальных характеристик",
-          "Глубокая кастомизация с пресетами",
-          "Процедурная генерация уникальных персонажей",
+          "Уровень 1: Базовый выбор пола и цвета волос. Пример: редактор в Mass Effect 1 — минимум опций, но работает стабильно без багов.",
+          "Уровень 2: Кастомизация внешности. Пример: редактор в Skyrim — настройка лица, телосложения, цвета кожи с предпросмотром.",
+          "Уровень 3: Выбор класса и характеристик. Пример: редактор в Dragon Age: Inquisition — выбор класса, расы, распределение начальных характеристик.",
+          "Уровень 4: Глубокая кастомизация с пресетами. Пример: редактор в Cyberpunk 2077 — детальная настройка лица, тела, имплантов, сохранение пресетов.",
+          "Уровень 5: Процедурная генерация персонажей. Пример: редактор в Black Desert Online — фотореалистичная кастомизация с процедурной генерацией уникальных черт лица.",
         ],
         player_abilities: [
-          "Базовые механики без критических багов: стрельба попадает в цель, стелс работает в тени, можно поднимать предметы",
-          "Механики дополняют друг друга: укрытия влияют на точность стрельбы, шум привлекает врагов, можно толкать предметы для отвлечения",
-          "Глубина без сложности: комбо из прыжка+выстрела, использование окружения (масло+огонь), тактические укрытия, реакция мира на действия игрока",
-          "Мастерство вознаграждается: синергия механик (стелс+магия=невидимость+удушение), альтернативные пути решения (оглушить/убить/обойти), тактическое использование окружения (подвесные грузы, пар)",
-          "Идеальная отзывчивость + глубина: каждая механика работает как инструмент, бесшовная интеграция всех систем, игрок чувствует себя «в теле персонажа», мир реагирует на все действия предсказуемо и логично",
+          "Уровень 1: Базовые механики без критических багов. Пример: стрельба в Doom (1993) — попадает в цель, стелс в Splinter Cell — работает в тени, поднятие предметов в Half-Life.",
+          "Уровень 2: Механики дополняют друг друга. Пример: укрытия в Gears of War влияют на точность, шум в Metal Gear Solid привлекает врагов, толкание предметов для отвлечения в Dishonored.",
+          "Уровень 3: Глубина без сложности. Пример: комбо из прыжка+выстрела в DOOM 2016, использование окружения (масло+огонь) в Dishonored, тактические укрытия в XCOM.",
+          "Уровень 4: Мастерство вознаграждается. Пример: синергия механик в Dishonored (стелс+магия=невидимость+удушение), альтернативные пути решения (оглушить/убить/обойти), тактическое использование окружения (подвесные грузы, пар).",
+          "Уровень 5: Идеальная отзывчивость + глубина. Пример: механики в Elden Ring — каждое действие отзывчиво, бесшовная интеграция всех систем, игрок чувствует себя «в теле персонажа», мир реагирует на все действия предсказуемо и логично.",
         ],
         survival_system: [
-          "1–2 параметра без раздражения (голод + жажда)",
-          "Параметры влияют на тактику",
-          "Выживание — часть атмосферы, не помеха",
-          "Параметры взаимодействуют между собой",
-          "Реалистично, но не утомительно",
+          "Уровень 1: 1–2 параметра без раздражения. Пример: голод и жажда в Minecraft — простая механика, которая не мешает геймплею, но добавляет базовый вызов.",
+          "Уровень 2: Параметры влияют на тактику. Пример: температура в The Long Dark — влияет на выбор экипировки и маршрута, голод требует планирования ресурсов.",
+          "Уровень 3: Выживание — часть атмосферы. Пример: система выживания в Subnautica — параметры интегрированы в исследование, не раздражают, но усиливают погружение.",
+          "Уровень 4: Параметры взаимодействуют между собой. Пример: выживание в Green Hell — голод, жажда, сон, здоровье, психика взаимосвязаны, требуют комплексного подхода.",
+          "Уровень 5: Реалистично, но не утомительно. Пример: система выживания в Valheim — баланс между реализмом и игровым удовольствием, параметры важны, но не превращают игру в рутину.",
         ],
         achievements: [
-          "Простые достижения",
-          "Достижения раскрывают секреты мира",
-          "Креативные цели без гриндинга",
-          "Достижения мотивируют к новым прохождениям",
-          "Сообщество создаёт челленджи на основе достижений",
+          "Уровень 1: Простые достижения без дублирования. Пример: базовые достижения в ранних играх на Steam — «Завершите первую миссию», «Найдите 10 секретов» — без технических ошибок отслеживания.",
+          "Уровень 2: Достижения раскрывают секреты мира. Пример: достижения в Hollow Knight — побуждают исследовать скрытые области и находить секретных боссов.",
+          "Уровень 3: Креативные цели без гриндинга. Пример: достижения в Celeste — «Пройдите уровень без смертей» — сложные, но справедливые цели, мотивирующие на мастерство.",
+          "Уровень 4: Достижения мотивируют к новым прохождениям. Пример: достижения в Hades — уникальные награды за разные стили игры, побуждающие к повторным прохождениям.",
+          "Уровень 5: Сообщество создаёт челленджи. Пример: достижения в Dark Souls — сложные цели («Пройдите игру без улучшения оружия») порождают челленджи в сообществе.",
         ],
         main_characters: [
-          "Персонаж без «деревянности»",
-          "Чёткая мотивация и развитие",
-          "Запоминающийся образ с фразами-цитатами",
-          "Персонаж вызывает сильные эмоции",
-          "Иконический статус в поп-культуре",
+          "Уровень 1: Персонаж без «деревянности». Пример: главные герои в классических играх (Prince of Persia) — базовая мотивация, простая арка развития, но без технических багов анимации.",
+          "Уровень 2: Чёткая мотивация и развитие. Пример: персонажи в God of War (2018) — Кратос и Атрей с ясной мотивацией и эмоциональной аркой.",
+          "Уровень 3: Запоминающийся образ с цитатами. Пример: персонажи в Red Dead Redemption 2 — Артур Морган с уникальной личностью, фразами, которые цитируют фанаты.",
+          "Уровень 4: Персонаж вызывает сильные эмоции. Пример: персонажи в The Last of Us — Джоэл и Элли вызывают эмоциональную привязанность, игрок переживает за их судьбу.",
+          "Уровень 5: Иконический статус в поп-культуре. Пример: Геральт из Ривии (Ведьмак 3) — узнаваемый персонаж за пределами игровой индустрии, символ жанра.",
         ],
         npcs: [
-          "НПС без повторяющихся фраз",
-          "Уникальные диалоги для ключевых второстепенных",
-          "Персонажи с собственными квестами",
-          "Второстепенные влияют на основной сюжет",
-          "Даже мелкие НПС запоминаются игроками",
+          "Уровень 1: НПС без повторяющихся фраз. Пример: торговцы в Diablo II — уникальные реплики при первом разговоре, без технических ошибок диалоговой системы.",
+          "Уровень 2: Уникальные диалоги для ключевых НПС. Пример: второстепенные персонажи в Mass Effect — у каждого своя история и мотивация, диалоги раскрывают характер.",
+          "Уровень 3: Персонажи с собственными квестами. Пример: НПС в The Witcher 3 — каждый важный персонаж имеет личную историю и квестовую линию.",
+          "Уровень 4: Второстепенные влияют на основной сюжет. Пример: персонажи в Red Dead Redemption 2 — решения в квестах НПС влияют на основной сюжет и финал.",
+          "Уровень 5: Даже мелкие НПС запоминаются игроками. Пример: мир в Red Dead Redemption 2 — случайные встречи с НПС имеют уникальные диалоги и истории, которые игроки обсуждают в сообществе.",
         ],
         perks: [
-          "3–5 веток без бесполезных навыков",
-          "Ветки создают разные стили игры",
-          "Синергия между ветками",
-          "Каждая сборка жизнеспособна",
-          "Тысячи уникальных сборок без дублирования",
+          "Уровень 1: 3–5 веток без бесполезных навыков. Пример: дерево навыков в Skyrim — несколько веток развития, все навыки полезны, без технических багов прокачки.",
+          "Уровень 2: Ветки создают разные стили игры. Пример: система перков в Fallout: New Vegas — выбор между силовиком, хакером или дипломатом создаёт разные стили прохождения.",
+          "Уровень 3: Синергия между ветками. Пример: дерево навыков в Path of Exile — комбинации навыков из разных веток создают уникальные билды.",
+          "Уровень 4: Каждая сборка жизнеспособна. Пример: система талантов в Diablo 2 — любая комбинация навыков позволяет пройти игру, баланс без «мусорных» веток.",
+          "Уровень 5: Тысячи уникальных сборок без дублирования. Пример: дерево навыков в Path of Exile — тысячи возможных комбинаций, каждая создаёт уникальный геймплейный опыт.",
         ],
         unique_items: [
-          "Базовые модели без багов, 1–2 вариации текстур, простые иконки, без уникальных эффектов",
-          "Уникальные текстуры и иконки, базовые звуки при использовании, предметы визуально отличаются друг от друга",
-          "Хорошие анимации использования, уникальные звуки, предметы влияют на геймплей осмысленно (урон, защита, эффекты)",
-          "Качественные модели с детализацией, уникальные звуковые эффекты, предметы имеют лор и историю, глубокий баланс",
-          "Кинематографическое качество: уникальные анимации для каждого предмета, голосовые озвучки при получении, предметы меняют мир или открывают новые пути, идеальный баланс",
+          "Уровень 1: Базовые модели без багов. Пример: оружие в Diablo I — простые модели, базовые иконки, без уникальных эффектов, но без критических ошибок.",
+          "Уровень 2: Уникальные текстуры и иконки. Пример: предметы в Stardew Valley — каждое оружие и инструмент имеет уникальную иконку и звук при использовании.",
+          "Уровень 3: Хорошие анимации и звуки. Пример: оружие в Dark Souls — уникальные анимации атак, звуки ударов, предметы влияют на тактику боя.",
+          "Уровень 4: Качественные модели с детализацией. Пример: предметы в The Witcher 3 — уникальные модели мечей, зелий с лором, предметы имеют историю и влияют на баланс.",
+          "Уровень 5: Кинематографическое качество. Пример: уникальные предметы в God of War (2018) — каждое оружие имеет уникальные анимации, звуки, голосовые озвучки при получении, предметы меняют тактику боя.",
         ],
-
         crafting: [
-          "5–10 рецептов без ошибок",
-          "Рецепты логичны (огонь + трава = зелье)",
-          "Глубина без зубрёжки",
-          "Крафт влияет на тактику боя",
-          "Тысячи комбинаций с логичными результатами",
+          "Уровень 1: 5–10 рецептов без ошибок. Пример: базовый крафт в Minecraft — простые рецепты (стол для крафта), без технических ошибок при создании предметов.",
+          "Уровень 2: Рецепты логичны. Пример: крафт в No Man's Sky — комбинации ресурсов интуитивно понятны (металл + углерод = сплав).",
+          "Уровень 3: Глубина без зубрёжки. Пример: система крафта в Valheim — рецепты открываются через исследование, логичные комбинации без необходимости запоминать таблицы.",
+          "Уровень 4: Крафт влияет на тактику боя. Пример: крафт в Monster Hunter — создание оружия из частей монстров влияет на тактику охоты, баланс между защитой и атакой.",
+          "Уровень 5: Тысячи комбинаций с логичными результатами. Пример: крафт в Factorio — сложные цепочки производства с тысячами возможных комбинаций, каждая логична и полезна.",
         ],
         open_world: [
-          "Мир без «пустых» зон",
-          "Уникальные биомы с атмосферой",
-          "Каждая локация — отдельная история",
-          "Мир чувствуется «живым» без НПС",
-          "Идеальный баланс плотности контента",
+          "Уровень 1: Мир без «пустых» зон. Пример: локации в Hollow Knight — компактные зоны без пустот, каждая область наполнена контентом.",
+          "Уровень 2: Уникальные биомы с атмосферой. Пример: мир в The Witcher 3 — разные регионы (Новиград, Скилиге, Велен) с уникальной атмосферой и визуальным стилем.",
+          "Уровень 3: Каждая локация — отдельная история. Пример: локации в Elden Ring — каждая область имеет свою историю, боссов, визуальный стиль, исследование вознаграждается.",
+          "Уровень 4: Мир чувствуется «живым» без НПС. Пример: мир в Shadow of the Colossus — пустые пространства наполнены атмосферой, ощущение масштаба и таинственности.",
+          "Уровень 5: Идеальный баланс плотности контента. Пример: мир в Elden Ring — идеальное соотношение открытых пространств и наполненных локаций, исследование всегда вознаграждается.",
         ],
         living_world: [
-          "День/ночь + базовая погода (солнце/дождь) без багов. НПС стоят на месте или ходят по простому паттерну. Сезоны отсутствуют.",
-          "Расписание НПС (дом → работа → таверна), 3–4 типа погоды (туман, гроза). Сезоны отсутствуют или статичны (всегда осень). Мир не меняется со временем.",
-          "События без участия игрока (разговоры НПС, драки, праздники). Базовая реакция мира на действия (воровство → охрана). Сезоны отсутствуют, но есть динамические события (чума в городе).",
-          "Полноценная смена времён года (весна/лето/осень/зима) с визуальными изменениями (листва, снег, цветение). Сезоны влияют на геймплей: зимой замерзают реки (новые пути), летом — засуха (ограниченная вода), осенью — туман (стелс проще). Миграция животных, изменение ассортимента торговцев.",
-          "Идеальная симуляция экосистемы: каждый НПС имеет семью, работу, хобби; животные размножаются и мигрируют по сезонам; погода влияет на урожай и цены; зимой замерзают реки и появляются новые маршруты, весной — наводнения блокируют пути, летом — лесные пожары, осенью — туман скрывает врагов. Мир существует и развивается независимо от игрока — при возвращении через 2 часа игрового времени город может быть захвачен бунтовщиками или очищен чумой.",
+          "Уровень 1: День/ночь + базовая погода без багов. Пример: цикл в старых играх серии GTA — смена времени суток и базовые погодные условия (солнце/дождь), НПС стоят на месте или ходят по простому паттерну. Сезоны отсутствуют.",
+          "Уровень 2: Расписание НПС (дом → работа → таверна), 3–4 типа погоды (туман, гроза). Сезоны отсутствуют или статичны (всегда осень). Мир не меняется со временем. Пример: система в Skyrim — НПС имеют расписание, погода меняется, но сезонов нет.",
+          "Уровень 3: События без участия игрока (разговоры НПС, драки, праздники). Базовая реакция мира на действия (воровство → охрана). Сезоны отсутствуют, но есть динамические события (чума в городе). Пример: система в Dishonored — чума меняет город, НПС реагируют на действия игрока.",
+          "Уровень 4: Полноценная смена времён года (весна/лето/осень/зима) с визуальными изменениями (листва, снег, цветение). Сезоны влияют на геймплей: зимой замерзают реки (новые пути), летом — засуха (ограниченная вода), осенью — туман (стелс проще). Миграция животных, изменение ассортимента торговцев. Пример: система в Red Dead Redemption 2 — смена сезонов в сюжетных актах, влияет на одежду НПС и доступность локаций.",
+          "Уровень 5: Идеальная симуляция экосистемы: каждый НПС имеет семью, работу, хобби; животные размножаются и мигрируют по сезонам; погода влияет на урожай и цены; зимой замерзают реки и появляются новые маршруты, весной — наводнения блокируют пути, летом — лесные пожары, осенью — туман скрывает врагов. Мир существует и развивается независимо от игрока — при возвращении через 2 часа игрового времени город может быть захвачен бунтовщиками или очищен чумой. Пример: идеал для симуляторов вроде Kingdom Come: Deliverance с полной сменой сезонов.",
         ],
-
         enemy_ai: [
-          "НПС не застревают в текстурах",
-          "Базовая тактика (укрытия, фланги)",
-          "НПС координируются",
-          "Тактика меняется от вооружения игрока",
-          "Непредсказуемое, но логичное поведение",
+          "Уровень 1: НПС не застревают в текстурах. Пример: базовый ИИ в классических шутерах (Half-Life) — враги двигаются к игроку, стреляют, но без сложной тактики. Минимум багов навигации.",
+          "Уровень 2: Базовая тактика (укрытия, фланги). Пример: ИИ в F.E.A.R. — враги используют укрытия, пытаются обойти игрока с фланга.",
+          "Уровень 3: НПС координируются. Пример: ИИ в Rainbow Six Siege — враги работают в команде, прикрывают друг друга, используют гранаты тактически.",
+          "Уровень 4: Тактика меняется от вооружения игрока. Пример: ИИ в F.E.A.R. — враги адаптируются под стиль игры игрока, становятся осторожнее при потере товарищей.",
+          "Уровень 5: Непредсказуемое, но логичное поведение. Пример: ИИ в F.E.A.R. на высшем уровне сложности — враги используют сложные тактики, нешаблонные действия, но всегда логично.",
         ],
         difficulty_levels: [
-          "3 режима сложности без багов",
-          "Сложность влияет на ИИ и урон",
-          "Динамическая подстройка под навыки игрока",
-          "Сложность сохраняет авторский замысел",
-          "Идеальный баланс для всех категорий игроков",
+          "Уровень 1: 3 режима сложности без багов. Пример: классические режимы (Легкий/Средний/Сложный) в DOOM 2016 — отличаются здоровьем врагов и уроном, но без технических проблем.",
+          "Уровень 2: Сложность влияет на ИИ и урон. Пример: уровни сложности в Dark Souls — враги наносят больше урона и имеют больше здоровья, ИИ становится агрессивнее.",
+          "Уровень 3: Динамическая подстройка под навыки игрока. Пример: AI Director в Left 4 Dead — сложность адаптируется под мастерство команды, добавляя или убирая врагов.",
+          "Уровень 4: Сложность сохраняет авторский замысел. Пример: уровни сложности в Dark Souls — даже на лёгком режиме сохраняется вызов и атмосфера, не упрощая философию игры.",
+          "Уровень 5: Идеальный баланс для всех категорий игроков. Пример: система сложности в Celeste с Assist Mode — позволяет настроить сложность под любого игрока, сохраняя удовольствие от игры.",
         ],
         companion_ai: [
-          "Напарник не мешает",
-          "Напарник полезен в бою",
-          "Тактика напарника адаптируется",
-          "Напарник принимает решения за игрока",
-          "Идеальный напарник без микроуправления",
+          "Уровень 1: Напарник не мешает. Пример: напарники в первых частях Left 4 Dead — следуют за игроком, не застревают постоянно, базовая поддержка в бою без критических багов.",
+          "Уровень 2: Напарник полезен в бою. Пример: напарники в Left 4 Dead 2 — лечат игрока, помогают в бою, используют предметы.",
+          "Уровень 3: Тактика напарника адаптируется. Пример: напарники в F.E.A.R. — используют укрытия, прикрывают игрока, адаптируются под ситуацию.",
+          "Уровень 4: Напарник принимает решения за игрока. Пример: напарники в It Takes Two — активно участвуют в решении головоломок, принимают самостоятельные решения.",
+          "Уровень 5: Идеальный напарник без микроуправления. Пример: напарники в Left 4 Dead 2 на высоком уровне — ведут себя как живые игроки, принимают тактические решения, не требуют постоянного контроля.",
         ],
         physics: [
-          "Физика без критических багов",
-          "Физика влияет на геймплей",
-          "Разрушаемость + физика объектов",
-          "Физика как инструмент решения головоломок",
-          "Стабильная физика при 100+ объектах",
+          "Уровень 1: Физика без критических багов. Пример: базовая физика в Half-Life 2 — объекты падают, сталкиваются, но без сложных симуляций. Минимум случаев, когда объекты застревают или ведут себя нелогично.",
+          "Уровень 2: Физика влияет на геймплей. Пример: физика в Half-Life 2 — гравипушка позволяет решать головоломки и использовать окружение в бою.",
+          "Уровень 3: Разрушаемость + физика объектов. Пример: физика в Red Faction: Guerrilla — разрушаемость зданий с реалистичным поведением обломков.",
+          "Уровень 4: Физика как инструмент решения головоломок. Пример: физика в Portal — геймплей построен на физических законах, решение головоломок через взаимодействие объектов.",
+          "Уровень 5: Стабильная физика при 100+ объектах. Пример: физика в Teardown — разрушаемость всего окружения с сотнями объектов, стабильная работа без просадок производительности.",
         ],
         animations: [
-          "Без рывков и клиппинга",
-          "Плавные переходы между анимациями",
-          "Уникальные анимации для ключевых действий",
-          "Анимации передают эмоции",
-          "Кинематографическое качество",
+          "Уровень 1: Без рывков и клиппинга. Пример: базовые анимации в старых играх (Prince of Persia) — плавные переходы между основными действиями (ходьба, прыжок), без технических артефактов.",
+          "Уровень 2: Плавные переходы между анимациями. Пример: анимации в God of War (2018) — плавные переходы между атаками, уклонениями, без рывков.",
+          "Уровень 3: Уникальные анимации для ключевых действий. Пример: анимации в Sekiro — уникальные анимации парирования, добивания, специальных приёмов.",
+          "Уровень 4: Анимации передают эмоции. Пример: анимации в The Last of Us Part II — движения персонажей передают эмоции, усталость, боль.",
+          "Уровень 5: Кинематографическое качество. Пример: анимации в The Last of Us Part II — уровень анимации как в голливудских фильмах, каждое движение выразительно и реалистично.",
         ],
         optimization: [
-          "30 FPS на минимальных настройках без крашей",
-          "60 FPS на средних настройках",
-          "Стабильный FPS в 95% сценариев",
-          "Оптимизация под слабые ПК без потери качества",
-          "Идеальная оптимизация на всех платформах",
+          "Уровень 1: 30 FPS на минимальных настройках без крашей. Пример: базовая оптимизация в инди-играх (Stardew Valley) — стабильная частота кадров на слабых ПК, без вылетов в стандартных сценариях.",
+          "Уровень 2: 60 FPS на средних настройках. Пример: оптимизация в DOOM 2016 — стабильные 60 FPS на средних настройках даже на консолях прошлого поколения.",
+          "Уровень 3: Стабильный FPS в 95% сценариев. Пример: оптимизация в The Witcher 3 после патчей — минимальные просадки даже в сложных сценах с множеством объектов.",
+          "Уровень 4: Оптимизация под слабые ПК без потери качества. Пример: оптимизация в Valheim — игра работает на слабых ПК с хорошим визуальным качеством.",
+          "Уровень 5: Идеальная оптимизация на всех платформах. Пример: оптимизация в Elden Ring после патчей — стабильные 60 FPS на всех платформах, включая базовую версию PS4.",
         ],
         load_optimization: [
-          "Загрузка <30 секунд на HDD",
-          "Загрузка <10 секунд на HDD",
-          "Загрузка <5 секунд на SSD",
-          "Потоковая загрузка без экранов загрузки",
-          "Мгновенная загрузка между локациями",
+          "Уровень 1: Загрузка <30 секунд на HDD. Пример: загрузки в классических играх (Skyrim) — экран загрузки с советами, время загрузки в пределах 20-30 секунд на HDD без зависаний.",
+          "Уровень 2: Загрузка <10 секунд на HDD. Пример: оптимизация в DOOM 2016 — быстрые загрузки между уровнями даже на HDD.",
+          "Уровень 3: Загрузка <5 секунд на SSD. Пример: загрузки в Ratchet & Clank: Rift Apart — мгновенные переходы между мирами на SSD.",
+          "Уровень 4: Потоковая загрузка без экранов загрузки. Пример: открытый мир в Elden Ring — загрузка происходит во время движения игрока, без прерываний.",
+          "Уровень 5: Мгновенная загрузка между локациями. Пример: загрузки в Ratchet & Clank: Rift Apart — переходы между мирами за доли секунды благодаря SSD.",
         ],
         build_size: [
-          "Игра <20 ГБ без критической потери качества",
-          "Игра <10 ГБ с умным сжатием",
-          "Потоковая загрузка текстур",
-          "Размер <5 ГБ при АА-качестве",
-          "Минимальный размер без потери качества",
+          "Уровень 1: Игра <20 ГБ без критической потери качества. Пример: оптимизация в инди-играх (Hollow Knight) — компактный размер (~8 ГБ) с хорошим качеством ассетов, без артефактов сжатия.",
+          "Уровень 2: Игра <10 ГБ с умным сжатием. Пример: оптимизация в Celeste — игра занимает менее 1 ГБ при высоком качестве ассетов благодаря эффективному сжатию.",
+          "Уровень 3: Потоковая загрузка текстур. Пример: оптимизация в Red Dead Redemption 2 — текстуры загружаются по мере необходимости, уменьшая требования к оперативной памяти.",
+          "Уровень 4: Размер <5 ГБ при АА-качестве. Пример: оптимизация в Hades — игра занимает около 15 ГБ при высоком качестве графики и анимаций.",
+          "Уровень 5: Минимальный размер без потери качества. Пример: оптимизация в DOOM 2016 — игра занимает около 50 ГБ при релизе, но после оптимизации сжимается до 30 ГБ без потери качества.",
         ],
         save_system: [
-          "Ручное сохранение без потери данных",
-          "Автосейвы в безопасных зонах",
-          "Квиксейвы без ограничений",
-          "Баланс между удобством и напряжением",
-          "Невозможно потерять прогресс из-за бага",
+          "Уровень 1: Ручное сохранение без потери данных. Пример: базовая система сохранений в классических RPG (Diablo II) — сохранение в меню, без потери прогресса при нормальном выходе из игры.",
+          "Уровень 2: Автосейвы в безопасных зонах. Пример: система сохранений в The Witcher 3 — автоматическое сохранение при входе в безопасные зоны, без потери прогресса.",
+          "Уровень 3: Квиксейвы без ограничений. Пример: система сохранений в Skyrim — возможность быстро сохранить игру в любой момент без ограничений.",
+          "Уровень 4: Баланс между удобством и напряжением. Пример: система сохранений в Dark Souls — ограниченные точки сохранения создают напряжение, но не раздражают.",
+          "Уровень 5: Невозможно потерять прогресс из-за бага. Пример: система сохранений в Celeste — автоматическое сохранение после каждого экрана, невозможность потерять прогресс даже при крахе игры.",
         ],
         ui_ux: [
-          "Без критических багов навигации",
-          "Интуитивная навигация без туториала",
-          "HUD не закрывает игровой процесс",
-          "Адаптивный интерфейс под ситуацию",
-          "Идеальная интуитивность для 95% игроков",
+          "Уровень 1: Без критических багов навигации. Пример: базовый интерфейс в старых играх (Half-Life) — понятное меню, интуитивная навигация, без зависаний и невозможности выбрать опции.",
+          "Уровень 2: Интуитивная навигация без туториала. Пример: интерфейс в Celeste — понятное управление без необходимости читать инструкции.",
+          "Уровень 3: HUD не закрывает игровой процесс. Пример: интерфейс в Dark Souls — минималистичный HUD, не мешающий обзору, но предоставляющий необходимую информацию.",
+          "Уровень 4: Адаптивный интерфейс под ситуацию. Пример: интерфейс в Dead Space — HUD интегрирован в игровой мир (здоровье на спине персонажа), меняется в зависимости от ситуации.",
+          "Уровень 5: Идеальная интуитивность для 95% игроков. Пример: интерфейс в The Legend of Zelda: Breath of the Wild — интуитивное управление, понятные иконки, минимум текста, идеальный баланс информации и чистоты экрана.",
         ],
         music: [
-          "3+ трека без повторов в короткий промежуток",
-          "Музыка усиливает атмосферу",
-          "Динамические переходы под события",
-          "Саундтрек становится частью бренда",
-          "Музыкальные награды (пример: Celeste, Hollow Knight)",
+          "Уровень 1: 3+ трека без повторов в короткий промежуток. Пример: музыка в классических играх (Tetris) — несколько запоминающихся треков, которые не повторяются слишком часто, создают атмосферу без раздражения.",
+          "Уровень 2: Музыка усиливает атмосферу. Пример: саундтрек в Journey — музыка меняется в зависимости от действий игрока, усиливает эмоциональное воздействие.",
+          "Уровень 3: Динамические переходы под события. Пример: музыка в DOOM 2016 — переходы между спокойной и боевой музыкой в зависимости от ситуации, без резких скачков.",
+          "Уровень 4: Саундтрек становится частью бренда. Пример: музыка в Hollow Knight — запоминающиеся мелодии, которые ассоциируются с игрой, фанаты слушают саундтрек отдельно.",
+          "Уровень 5: Музыкальные награды. Пример: саундтрек в Celeste — получил музыкальные награды, треки используются в концертах, фанаты создают каверы.",
         ],
         sound_effects: [
-          "Без повторяющихся клипов в короткий промежуток",
-          "Пространственное звучание (3D-звук)",
-          "Звуки отражают состояние объектов",
-          "Звук как геймплейный элемент (пример: Hellblade)",
-          "Кинематографическое качество звука",
+          "Уровень 1: Без повторяющихся клипов в короткий промежуток. Пример: звуки в классических шутерах (Doom) — разные звуки выстрелов, крики врагов не повторяются слишком часто, базовое позиционирование звука.",
+          "Уровень 2: Пространственное звучание (3D-звук). Пример: звуки в Hellblade: Senua's Sacrifice — 3D-аудио создаёт эффект присутствия, можно определить направление источника звука.",
+          "Уровень 3: Звуки отражают состояние объектов. Пример: звуки в Red Dead Redemption 2 — оружие издаёт разные звуки в зависимости от состояния (чистое/грязное), шаги различаются по поверхностям.",
+          "Уровень 4: Звук как геймплейный элемент. Пример: звуки в Hellblade — голоса в голове персонажа направляют игрока, звук является частью геймплея.",
+          "Уровень 5: Кинематографическое качество звука. Пример: звук в The Last of Us Part II — профессиональная запись, детализация каждого звука, звуковая картина как в блокбастере.",
         ],
         graphics: [
-          "Базовая графика без артефактов на целевых настройках",
-          "Хорошее освещение и детализация текстур",
-          "Продвинутые шейдеры, пост-обработка, тени",
-          "Фотореалистичные материалы, глобальное освещение",
-          "Кинематографическое качество с рейтрейсингом",
+          "Уровень 1: Базовая графика без артефактов на целевых настройках. Пример: графика в инди-играх (Stardew Valley) — простая, но чистая визуальная стилизация, без артефактов и багов отображения на заявленных конфигурациях.",
+          "Уровень 2: Хорошее освещение и детализация текстур. Пример: графика в Hollow Knight — ручная прорисовка, хорошее освещение, детализированные текстуры в пределах стиля игры.",
+          "Уровень 3: Продвинутые шейдеры, пост-обработка, тени. Пример: графика в Ori and the Will of the Wisps — красивые визуальные эффекты, динамическое освещение, качественные тени.",
+          "Уровень 4: Фотореалистичные материалы, глобальное освещение. Пример: графика в The Witcher 3 — фотореалистичные текстуры, глобальное освещение, реалистичные материалы.",
+          "Уровень 5: Кинематографическое качество с рейтрейсингом. Пример: графика в Cyberpunk 2077 после патчей — рейтрейсинг, кинематографическое освещение, фотореалистичные персонажи.",
         ],
         mod_support: [
-          "Поддержка простых модов (замена текстур)",
-          "Официальный инструмент для моддинга",
-          "Моды не ломают обновления",
-          "Моды как часть бизнес-модели",
-          "Моды расширяют игру до уровня отдельного тайтла",
+          "Уровень 1: Поддержка простых модов (замена текстур). Пример: базовая поддержка модов в Skyrim — возможность заменять текстуры и модели через папку Data, без официальных инструментов, но с документацией от сообщества.",
+          "Уровень 2: Официальный инструмент для моддинга. Пример: Creation Kit для Skyrim — официальный редактор уровней и квестов, доступный для сообщества.",
+          "Уровень 3: Моды не ломают обновления. Пример: поддержка модов в Stardew Valley — обновления игры не ломают существующие моды благодаря хорошей архитектуре.",
+          "Уровень 4: Моды как часть бизнес-модели. Пример: поддержка модов в Garry's Mod — игра существует благодаря модам, официальная поддержка и интеграция.",
+          "Уровень 5: Моды расширяют игру до уровня отдельного тайтла. Пример: моды для Warcraft 3 — Dota 2 и другие проекты, которые стали отдельными играми благодаря моддингу.",
         ],
         cutscenes: [
-          "Текст + статичные изображения",
-          "Базовая анимация (слайды, простые переходы)",
-          "Ин-движковые кат-сцены с хорошей анимацией",
-          "Кинематографическое качество (камеры, освещение, монтаж)",
-          "Пререндер + запись актёров (фотореализм)",
+          "Уровень 1: Текст + статичные изображения. Пример: кат-сцены в старых играх (ретро RPG) — текстовые описания событий с неподвижными иллюстрациями, без анимации, но с хорошей читаемостью.",
+          "Уровень 2: Базовая анимация (слайды, простые переходы). Пример: кат-сцены в Hades — статичные изображения персонажей с базовой анимацией (моргание, движение губ), простые переходы между сценами.",
+          "Уровень 3: Ин-движковые кат-сцены с хорошей анимацией. Пример: кат-сцены в God of War (2018) — полностью ин-движковые сцены с качественной анимацией и кинематографичной камерой.",
+          "Уровень 4: Кинематографическое качество (камеры, освещение, монтаж). Пример: кат-сцены в The Last of Us Part II — ин-движковые сцены с кинематографичным качеством, сложные ракурсы камеры, профессиональный монтаж.",
+          "Уровень 5: Пререндер + запись актёров (фотореализм). Пример: кат-сцены в Final Fantasy VII Remake — пререндеренные сцены с записью актёров, фотореалистичная графика, качество как в аниме-блокбастерах.",
         ],
       };
-
       // Ключ для localStorage
-      const STORAGE_KEY = "gameDevPlanner_v3";
-
+      const STORAGE_KEY = "gameDevPlanner_v4";
       // Флаг для предотвращения рекурсивных вызовов при загрузке
       let isLoading = false;
-
       // Инициализация
       document.addEventListener("DOMContentLoaded", function () {
         // Загрузка сохранённых данных
         loadFromStorage();
-
         // Настройка обработчиков событий
         setupEventListeners();
-
         // Обновление всех отображений
         updateAllDisplays();
-
         // Показать индикатор автосохранения
         showSaveIndicator();
-
         // Первый расчёт
         calculateTotal();
+        // Инициализация прогресса
+        updateProgress();
       });
-
       function setupEventListeners() {
         // Изменение названия и описания
         document
@@ -2626,7 +2667,6 @@
               this.value || "Без названия";
             saveToStorage();
           });
-
         document
           .getElementById("gameDesc")
           .addEventListener("input", function () {
@@ -2634,15 +2674,12 @@
               this.value || "Описание отсутствует";
             saveToStorage();
           });
-
         // Переключение перков
         document.querySelectorAll(".perk-toggle input").forEach((toggle) => {
           toggle.addEventListener("change", function () {
             const card = this.closest(".perk-card");
             const isActive = this.checked;
-
             card.classList.toggle("active", isActive);
-
             // Включение/выключение инпутов
             const inputs = card.querySelectorAll(
               "input:not(.perk-toggle input)",
@@ -2650,69 +2687,70 @@
             inputs.forEach((input) => {
               input.disabled = !isActive;
             });
-
             // Если выключили перк - сбрасываем стоимость на 0
             if (!isActive) {
               card.querySelector(".cost-display strong").textContent =
                 "0 чел-лет";
             }
-
             updateCostDisplay(card);
             calculateTotal();
+            updateProgress();
             saveToStorage();
           });
         });
-
         // Изменение качества
         document.querySelectorAll(".quality-slider").forEach((slider) => {
           slider.addEventListener("input", function () {
             const value = parseInt(this.value);
             const card = this.closest(".perk-card");
             const perkId = card.dataset.id;
-
             // Обновление отображения значения
             card.querySelector(".quality-value").textContent = value;
-
             // Обновление индикаторов уровня
             const levels = card.querySelectorAll(".quality-level");
             levels.forEach((level, index) => {
               level.classList.toggle("active", index < value);
             });
-
             // Обновление описания качества
             if (qualityDescriptions[perkId]) {
               card.querySelector(".quality-description").textContent =
                 qualityDescriptions[perkId][value - 1];
             }
-
             updateCostDisplay(card);
             calculateTotal();
+            updateProgress();
             saveToStorage();
           });
         });
-
         // Изменение количества
         document.querySelectorAll(".quantity-number").forEach((input) => {
           input.addEventListener("input", function () {
             // Ограничение минимального значения
             if (this.value < 0) this.value = 0;
-
             const card = this.closest(".perk-card");
             card.querySelector(".quantity-display").textContent = this.value;
-
             updateCostDisplay(card);
             calculateTotal();
+            updateProgress();
             saveToStorage();
           });
         });
-
+        // Изменение вложенных человеко-лет
+        document
+          .getElementById("investedInput")
+          .addEventListener("input", function () {
+            if (this.value < 0) this.value = 0;
+            document.getElementById("investedDisplay").textContent = this.value;
+            updateProgress();
+            saveToStorage();
+          });
         // Кнопка пересчёта
         document
           .getElementById("calculateBtn")
           .addEventListener("click", function () {
             calculateTotal();
+            updateProgress();
           });
-
         // Кнопка сброса
         document
           .getElementById("resetBtn")
@@ -2722,7 +2760,6 @@
               saveToStorage();
             }
           });
-
         // Кнопка очистки сохранения
         document
           .getElementById("clearStorageBtn")
@@ -2737,7 +2774,6 @@
               location.reload();
             }
           });
-
         // Кнопка экспорта
         document
           .getElementById("exportBtn")
@@ -2745,13 +2781,12 @@
             const data = {
               gameName: document.getElementById("gameName").value,
               gameDesc: document.getElementById("gameDesc").value,
+              investedYears: document.getElementById("investedInput").value,
               perks: {},
             };
-
             document.querySelectorAll(".perk-card").forEach((card) => {
               const id = card.dataset.id;
               if (!id) return;
-
               data.perks[id] = {
                 active: card.querySelector(".perk-toggle input").checked,
                 quality: parseInt(card.querySelector(".quality-slider").value),
@@ -2760,27 +2795,22 @@
                   : null,
               };
             });
-
             const jsonString = JSON.stringify(data, null, 2);
             document.getElementById("exportData").value = jsonString;
-
             // Автоматическое копирование в буфер обмена
             document.getElementById("exportData").select();
             document.execCommand("copy");
             alert("Настройки скопированы в буфер обмена!");
           });
-
         // Кнопка импорта
         document
           .getElementById("importBtn")
           .addEventListener("click", function () {
             const userInput = prompt("Вставьте JSON-данные для импорта:");
             if (!userInput) return;
-
             try {
               const data = JSON.parse(userInput);
               isLoading = true;
-
               // Загрузка основной информации
               if (data.gameName) {
                 document.getElementById("gameName").value = data.gameName;
@@ -2792,7 +2822,13 @@
                 document.getElementById("summaryDesc").textContent =
                   data.gameDesc;
               }
-
+              // Загрузка вложенных человеко-лет
+              if (data.investedYears) {
+                document.getElementById("investedInput").value =
+                  data.investedYears;
+                document.getElementById("investedDisplay").textContent =
+                  data.investedYears;
+              }
               // Загрузка перков
               if (data.perks) {
                 Object.entries(data.perks).forEach(([id, perkData]) => {
@@ -2800,21 +2836,17 @@
                     `.perk-card[data-id="${id}"]`,
                   );
                   if (!card) return;
-
                   const toggle = card.querySelector(".perk-toggle input");
                   const slider = card.querySelector(".quality-slider");
                   const numberInput = card.querySelector(".quantity-number");
-
                   // Активность
                   toggle.checked = perkData.active;
                   card.classList.toggle("active", perkData.active);
-
                   // Качество
                   if (perkData.quality && slider) {
                     slider.value = perkData.quality;
                     card.querySelector(".quality-value").textContent =
                       perkData.quality;
-
                     // Обновление индикаторов уровня
                     const levels = card.querySelectorAll(".quality-level");
                     levels.forEach((level, index) => {
@@ -2823,21 +2855,18 @@
                         index < perkData.quality,
                       );
                     });
-
                     // Обновление описания
                     if (qualityDescriptions[id]) {
                       card.querySelector(".quality-description").textContent =
                         qualityDescriptions[id][perkData.quality - 1];
                     }
                   }
-
                   // Количество
                   if (perkData.quantity !== null && numberInput) {
                     numberInput.value = perkData.quantity;
                     card.querySelector(".quantity-display").textContent =
                       perkData.quantity;
                   }
-
                   // Включение/выключение инпутов
                   const inputs = card.querySelectorAll(
                     "input:not(.perk-toggle input)",
@@ -2845,13 +2874,12 @@
                   inputs.forEach((input) => {
                     input.disabled = !perkData.active;
                   });
-
                   updateCostDisplay(card);
                 });
               }
-
               isLoading = false;
               calculateTotal();
+              updateProgress();
               saveToStorage();
               alert("Настройки успешно импортированы!");
             } catch (e) {
@@ -2859,21 +2887,17 @@
             }
           });
       }
-
       function updateCostDisplay(card) {
         if (!card.querySelector(".perk-toggle input").checked) {
           card.querySelector(".cost-display strong").textContent = "0 чел-лет";
           return;
         }
-
         const type = card.dataset.type;
         const baseCosts = card.dataset.baseCost.split(",").map(Number);
         const multiplier = parseFloat(card.dataset.multiplier || 1);
         const quality = parseInt(card.querySelector(".quality-slider").value);
         const costPerUnit = baseCosts[quality - 1] * multiplier;
-
         let totalCost = 0;
-
         if (type === "fixed") {
           // Фиксированная стоимость
           totalCost = costPerUnit;
@@ -2883,20 +2907,16 @@
             parseInt(card.querySelector(".quantity-number").value) || 0;
           totalCost = quantity * costPerUnit;
         }
-
         card.querySelector(".cost-display strong").textContent =
           totalCost.toFixed(1) + " чел-лет";
       }
-
       function updateAllDisplays() {
         document.querySelectorAll(".perk-card").forEach((card) => {
           updateCostDisplay(card);
         });
       }
-
       function calculateTotal() {
         if (isLoading) return;
-
         let total = 0;
         let activeCount = 0;
         let totalHours = 0;
@@ -2904,17 +2924,14 @@
         let totalCharacters = 0;
         let worldSize = 0;
         let closedLocs = 0;
-
         document.querySelectorAll(".perk-card").forEach((card) => {
           if (!card.querySelector(".perk-toggle input").checked) return;
-
           activeCount++;
           const costText = card.querySelector(
             ".cost-display strong",
           ).textContent;
           const cost = parseFloat(costText) || 0;
           total += cost;
-
           // Сбор статистики
           const title = card.querySelector(".perk-title").textContent;
           if (title.includes("Основной сюжет")) {
@@ -2934,7 +2951,6 @@
               parseInt(card.querySelector(".quantity-number").value) || 0;
           }
         });
-
         // Обновление итогов
         document.getElementById("totalCost").textContent = Math.round(total);
         document.getElementById("activePerks").textContent = activeCount;
@@ -2943,22 +2959,20 @@
         document.getElementById("totalCharacters").textContent =
           totalCharacters;
         document.getElementById("worldSize").textContent = worldSize + " км²";
-        document.getElementById("closedLocations").textContent = closedLocs;
-
+        document.getElementById("closedLocations").textContent =
+          closedLocs + " м²";
         // Определение ближайшего аналога
         findClosestGame(total);
+        return total;
       }
-
       function findClosestGame(cost) {
         if (cost === 0) {
           document.getElementById("comparisonGame").textContent = "—";
           document.getElementById("comparisonDesc").textContent = "—";
           return;
         }
-
         let closest = gameComparisons[0];
         let minDiff = Math.abs(gameComparisons[0].cost - cost);
-
         gameComparisons.forEach((game) => {
           const diff = Math.abs(game.cost - cost);
           if (diff < minDiff) {
@@ -2966,82 +2980,73 @@
             closest = game;
           }
         });
-
         document.getElementById("comparisonGame").textContent = closest.name;
         document.getElementById("comparisonDesc").textContent = closest.desc;
       }
-
       function resetAll() {
         isLoading = true;
-
         // Сброс формы
         document.getElementById("gameName").value = "";
         document.getElementById("gameDesc").value = "";
         document.getElementById("summaryName").textContent = "Без названия";
         document.getElementById("summaryDesc").textContent =
           "Описание отсутствует";
-
+        // Сброс вложенных человеко-лет
+        document.getElementById("investedInput").value = "0";
+        document.getElementById("investedDisplay").textContent = "0";
+        document.getElementById("progressBar").style.width = "0%";
+        document.getElementById("progressPercent").textContent = "0%";
+        document.getElementById("remainingYears").textContent = "0";
         // Сброс всех перков
         document.querySelectorAll(".perk-card").forEach((card) => {
           const toggle = card.querySelector(".perk-toggle input");
           const slider = card.querySelector(".quality-slider");
           const numberInput = card.querySelector(".quantity-number");
-
           toggle.checked = false;
           card.classList.remove("active");
-
           // Сброс слайдеров и инпутов
           slider.value = "1";
           if (numberInput) numberInput.value = "0";
-
           // Обновление отображения
           card.querySelector(".quality-value").textContent = "1";
           if (numberInput) {
             card.querySelector(".quantity-display").textContent = "0";
           }
-
           // Обновление индикаторов уровня
           const levels = card.querySelectorAll(".quality-level");
           levels.forEach((level, index) => {
             level.classList.toggle("active", index < 1);
           });
-
           // Обновление описания качества
           const perkId = card.dataset.id;
           if (qualityDescriptions[perkId]) {
             card.querySelector(".quality-description").textContent =
               qualityDescriptions[perkId][0];
           }
-
           // Выключение инпутов
           const inputs = card.querySelectorAll("input:not(.perk-toggle input)");
           inputs.forEach((input) => {
             input.disabled = true;
           });
-
           // Сброс стоимости
           card.querySelector(".cost-display strong").textContent = "0 чел-лет";
         });
-
         calculateTotal();
+        updateProgress();
         isLoading = false;
       }
-
       // === ФУНКЦИИ СОХРАНЕНИЯ ===
-
       function saveToStorage() {
         if (isLoading) return;
-
         const data = {
           gameName: document.getElementById("gameName").value,
           gameDesc: document.getElementById("gameDesc").value,
+          investedYears: document.getElementById("investedInput").value,
           perks: {},
         };
-
         document.querySelectorAll(".perk-card").forEach((card) => {
           const id = card.dataset.id;
           if (!id) return;
-
           data.perks[id] = {
             active: card.querySelector(".perk-toggle input").checked,
             quality: parseInt(card.querySelector(".quality-slider").value),
@@ -3050,22 +3055,18 @@
               : null,
           };
         });
-
         try {
           localStorage.setItem(STORAGE_KEY, JSON.stringify(data));
         } catch (e) {
           console.error("Ошибка сохранения:", e);
         }
       }
-
       function loadFromStorage() {
         try {
           const saved = localStorage.getItem(STORAGE_KEY);
           if (!saved) return;
-
           isLoading = true;
           const data = JSON.parse(saved);
-
           // Загрузка основной информации
           if (data.gameName) {
             document.getElementById("gameName").value = data.gameName;
@@ -3075,7 +3076,12 @@
             document.getElementById("gameDesc").value = data.gameDesc;
             document.getElementById("summaryDesc").textContent = data.gameDesc;
           }
-
+          // Загрузка вложенных человеко-лет
+          if (data.investedYears) {
+            document.getElementById("investedInput").value = data.investedYears;
+            document.getElementById("investedDisplay").textContent =
+              data.investedYears;
+          }
           // Загрузка перков
           if (data.perks) {
             Object.entries(data.perks).forEach(([id, perkData]) => {
@@ -3083,41 +3089,34 @@
                 `.perk-card[data-id="${id}"]`,
               );
               if (!card) return;
-
               const toggle = card.querySelector(".perk-toggle input");
               const slider = card.querySelector(".quality-slider");
               const numberInput = card.querySelector(".quantity-number");
-
               // Активность
               toggle.checked = perkData.active;
               card.classList.toggle("active", perkData.active);
-
               // Качество
               if (perkData.quality && slider) {
                 slider.value = perkData.quality;
                 card.querySelector(".quality-value").textContent =
                   perkData.quality;
-
                 // Обновление индикаторов уровня
                 const levels = card.querySelectorAll(".quality-level");
                 levels.forEach((level, index) => {
                   level.classList.toggle("active", index < perkData.quality);
                 });
-
                 // Обновление описания
                 if (qualityDescriptions[id]) {
                   card.querySelector(".quality-description").textContent =
                     qualityDescriptions[id][perkData.quality - 1];
                 }
               }
-
               // Количество
               if (perkData.quantity !== null && numberInput) {
                 numberInput.value = perkData.quantity;
                 card.querySelector(".quantity-display").textContent =
                   perkData.quantity;
               }
-
               // Включение/выключение инпутов
               const inputs = card.querySelectorAll(
                 "input:not(.perk-toggle input)",
@@ -3127,7 +3126,6 @@
               });
             });
           }
-
           isLoading = false;
         } catch (e) {
           console.error("Ошибка загрузки:", e);
@@ -3135,14 +3133,39 @@
           localStorage.removeItem(STORAGE_KEY);
         }
       }
-
       function showSaveIndicator() {
         const indicator = document.getElementById("saveIndicator");
         indicator.classList.add("show");
-
         setTimeout(() => {
           indicator.classList.remove("show");
         }, 2000);
+      }
+      // === ФУНКЦИИ ПРОГРЕССА ===
+      function updateProgress() {
+        const totalCost = calculateTotal();
+        const invested =
+          parseInt(document.getElementById("investedInput").value) || 0;
+        const progress =
+          totalCost > 0
+            ? Math.min(100, Math.round((invested / totalCost) * 100))
+            : 0;
+        const remaining = Math.max(0, totalCost - invested);
+        // Обновление отображения
+        document.getElementById("progressBar").style.width = progress + "%";
+        document.getElementById("progressPercent").textContent = progress + "%";
+        document.getElementById("remainingYears").textContent = remaining;
+        // Обновление цвета прогресса
+        const progressBar = document.getElementById("progressBar");
+        if (progress < 30) {
+          progressBar.style.background =
+            "linear-gradient(90deg, #ff6b6b, #ffa502)";
+        } else if (progress < 70) {
+          progressBar.style.background =
+            "linear-gradient(90deg, #ffa502, #4caf50)";
+        } else {
+          progressBar.style.background =
+            "linear-gradient(90deg, #4caf50, #2196f3)";
+        }
       }
     </script>
   </body>
