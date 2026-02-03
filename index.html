@@ -1,0 +1,3149 @@
+<!doctype html>
+<html lang="ru">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>GameDev Planner — Планируй свою игру</title>
+    <style>
+      :root {
+        --bg-primary: #0f0f1b;
+        --bg-secondary: #1a1a2e;
+        --bg-card: #252540;
+        --bg-input: #323255;
+        --accent: #6c5ce7;
+        --accent-hover: #5649c4;
+        --accent-secondary: #00cec9;
+        --text-primary: #f8f9fa;
+        --text-secondary: #adb5bd;
+        --text-muted: #6c757d;
+        --success: #00b894;
+        --warning: #fdcb6e;
+        --danger: #ff7675;
+        --border-radius: 12px;
+        --shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+        --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      }
+
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+        background: linear-gradient(135deg, var(--bg-primary) 0%, #161625 100%);
+        color: var(--text-primary);
+        line-height: 1.6;
+        padding: 20px;
+        min-height: 100vh;
+      }
+
+      .container {
+        max-width: 1400px;
+        margin: 0 auto;
+      }
+
+      header {
+        text-align: center;
+        margin-bottom: 30px;
+        padding: 25px 0;
+        position: relative;
+      }
+
+      header::after {
+        content: "";
+        position: absolute;
+        bottom: 0;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 200px;
+        height: 4px;
+        background: linear-gradient(
+          90deg,
+          var(--accent),
+          var(--accent-secondary)
+        );
+        border-radius: 2px;
+      }
+
+      h1 {
+        font-size: 3.2rem;
+        margin-bottom: 10px;
+        background: linear-gradient(
+          90deg,
+          var(--accent),
+          var(--accent-secondary)
+        );
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+        font-weight: 800;
+        letter-spacing: -1px;
+      }
+
+      .subtitle {
+        font-size: 1.15rem;
+        color: var(--text-secondary);
+        margin-top: 12px;
+      }
+
+      .save-indicator {
+        display: inline-block;
+        margin-top: 8px;
+        font-size: 0.85rem;
+        color: var(--success);
+        opacity: 0;
+        transition: opacity 0.3s;
+      }
+
+      .save-indicator.show {
+        opacity: 1;
+      }
+
+      .dashboard {
+        display: grid;
+        grid-template-columns: 1fr 380px;
+        gap: 30px;
+        margin-bottom: 40px;
+      }
+
+      @media (max-width: 1100px) {
+        .dashboard {
+          grid-template-columns: 1fr;
+        }
+      }
+
+      .form-section {
+        background: var(--bg-card);
+        border-radius: var(--border-radius);
+        padding: 25px;
+        box-shadow: var(--shadow);
+        margin-bottom: 25px;
+      }
+
+      .form-section h2 {
+        font-size: 1.7rem;
+        margin-bottom: 20px;
+        color: var(--accent-secondary);
+        display: flex;
+        align-items: center;
+        gap: 10px;
+      }
+
+      .form-group {
+        margin-bottom: 20px;
+      }
+
+      .form-group label {
+        display: block;
+        margin-bottom: 8px;
+        font-weight: 600;
+        color: var(--text-secondary);
+        font-size: 0.95rem;
+      }
+
+      .form-control {
+        width: 100%;
+        padding: 14px 16px;
+        background: var(--bg-input);
+        border: 2px solid transparent;
+        border-radius: 8px;
+        color: var(--text-primary);
+        font-size: 1rem;
+        transition: var(--transition);
+      }
+
+      .form-control:focus {
+        outline: none;
+        border-color: var(--accent);
+        box-shadow: 0 0 0 3px rgba(108, 92, 231, 0.2);
+      }
+
+      .form-control::placeholder {
+        color: var(--text-muted);
+      }
+
+      textarea.form-control {
+        min-height: 100px;
+        resize: vertical;
+      }
+
+      .perks-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(400px, 1fr));
+        gap: 25px;
+        margin-top: 20px;
+      }
+
+      @media (max-width: 900px) {
+        .perks-grid {
+          grid-template-columns: 1fr;
+        }
+      }
+
+      .perk-card {
+        background: var(--bg-card);
+        border-radius: var(--border-radius);
+        padding: 25px;
+        box-shadow: var(--shadow);
+        transition: var(--transition);
+        border: 2px solid transparent;
+        opacity: 0.6;
+      }
+
+      .perk-card.active {
+        opacity: 1;
+        border-color: rgba(108, 92, 231, 0.3);
+      }
+
+      .perk-card:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 10px 35px rgba(0, 0, 0, 0.4);
+      }
+
+      .perk-card.active:hover {
+        border-color: var(--accent);
+        background: rgba(108, 92, 231, 0.05);
+      }
+
+      .perk-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 15px;
+        padding-bottom: 12px;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+      }
+
+      .perk-title {
+        font-size: 1.3rem;
+        font-weight: 700;
+        color: var(--accent-secondary);
+      }
+
+      .perk-toggle {
+        position: relative;
+        display: inline-block;
+        width: 60px;
+        height: 34px;
+      }
+
+      .perk-toggle input {
+        opacity: 0;
+        width: 0;
+        height: 0;
+      }
+
+      .perk-toggle-slider {
+        position: absolute;
+        cursor: pointer;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background-color: var(--bg-input);
+        transition: var(--transition);
+        border-radius: 34px;
+      }
+
+      .perk-toggle-slider:before {
+        position: absolute;
+        content: "";
+        height: 26px;
+        width: 26px;
+        left: 4px;
+        bottom: 4px;
+        background-color: var(--text-muted);
+        transition: var(--transition);
+        border-radius: 50%;
+      }
+
+      .perk-toggle input:checked + .perk-toggle-slider {
+        background-color: var(--accent);
+      }
+
+      .perk-toggle input:checked + .perk-toggle-slider:before {
+        transform: translateX(26px);
+        background-color: white;
+      }
+
+      .perk-description {
+        font-size: 0.9rem;
+        color: var(--text-muted);
+        margin-bottom: 20px;
+        line-height: 1.5;
+      }
+
+      .quality-control {
+        margin-bottom: 15px;
+      }
+
+      .quality-label {
+        display: flex;
+        justify-content: space-between;
+        margin-bottom: 8px;
+        font-size: 0.9rem;
+      }
+
+      .quality-slider {
+        width: 100%;
+        height: 8px;
+        background: var(--bg-input);
+        border-radius: 4px;
+        outline: none;
+        transition: var(--transition);
+        cursor: pointer;
+      }
+
+      .quality-slider::-webkit-slider-thumb {
+        -webkit-appearance: none;
+        appearance: none;
+        width: 24px;
+        height: 24px;
+        border-radius: 50%;
+        background: var(--accent);
+        cursor: pointer;
+        transition: var(--transition);
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+      }
+
+      .quality-slider::-webkit-slider-thumb:hover {
+        transform: scale(1.2);
+        background: var(--accent-hover);
+      }
+
+      .quality-slider::-moz-range-thumb {
+        width: 24px;
+        height: 24px;
+        border-radius: 50%;
+        background: var(--accent);
+        cursor: pointer;
+        border: none;
+        transition: var(--transition);
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+      }
+
+      .quality-value {
+        display: inline-block;
+        width: 32px;
+        height: 32px;
+        background: var(--accent);
+        color: white;
+        border-radius: 50%;
+        text-align: center;
+        line-height: 32px;
+        font-weight: 700;
+        margin-left: 10px;
+        transition: var(--transition);
+      }
+
+      .quality-description {
+        font-size: 0.85rem;
+        color: var(--text-secondary);
+        margin-top: 8px;
+        padding: 10px 12px;
+        background: rgba(255, 255, 255, 0.05);
+        border-radius: 6px;
+        min-height: 36px;
+        line-height: 1.4;
+      }
+
+      .quantity-control {
+        margin-bottom: 15px;
+      }
+
+      .quantity-input {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+      }
+
+      .quantity-input input {
+        width: 100px;
+        padding: 10px 12px;
+        background: var(--bg-input);
+        border: 2px solid transparent;
+        border-radius: 6px;
+        color: var(--text-primary);
+        font-size: 1rem;
+        text-align: center;
+      }
+
+      .quantity-input input:focus {
+        outline: none;
+        border-color: var(--accent);
+      }
+
+      .cost-display {
+        background: var(--bg-secondary);
+        border-left: 4px solid var(--accent);
+        padding: 15px 20px;
+        border-radius: 0 8px 8px 0;
+        margin-top: 15px;
+        font-size: 0.95rem;
+      }
+
+      .cost-display strong {
+        color: var(--accent-secondary);
+      }
+
+      .summary-card {
+        background: var(--bg-card);
+        border-radius: var(--border-radius);
+        padding: 30px;
+        box-shadow: var(--shadow);
+        position: sticky;
+        top: 30px;
+        height: fit-content;
+      }
+
+      .summary-header {
+        text-align: center;
+        margin-bottom: 25px;
+        padding-bottom: 20px;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+      }
+
+      .game-name-display {
+        font-size: 2rem;
+        font-weight: 700;
+        margin-bottom: 10px;
+        color: var(--accent-secondary);
+        min-height: 2.5rem;
+      }
+
+      .game-desc-display {
+        font-size: 0.95rem;
+        color: var(--text-secondary);
+        min-height: 3rem;
+        line-height: 1.6;
+      }
+
+      .summary-stats {
+        display: grid;
+        gap: 18px;
+        margin-bottom: 25px;
+      }
+
+      .stat-item {
+        display: flex;
+        justify-content: space-between;
+        padding: 14px;
+        background: rgba(255, 255, 255, 0.05);
+        border-radius: 8px;
+        transition: var(--transition);
+      }
+
+      .stat-item:hover {
+        background: rgba(255, 255, 255, 0.08);
+      }
+
+      .stat-label {
+        font-weight: 600;
+        color: var(--text-secondary);
+      }
+
+      .stat-value {
+        font-weight: 700;
+        color: var(--accent-secondary);
+      }
+
+      .total-cost {
+        background: linear-gradient(135deg, var(--accent), var(--accent-hover));
+        padding: 25px;
+        border-radius: var(--border-radius);
+        text-align: center;
+        margin-bottom: 25px;
+        box-shadow: 0 8px 25px rgba(108, 92, 231, 0.4);
+      }
+
+      .total-cost-label {
+        font-size: 1.1rem;
+        color: rgba(255, 255, 255, 0.9);
+        margin-bottom: 8px;
+      }
+
+      .total-cost-value {
+        font-size: 3rem;
+        font-weight: 800;
+        color: white;
+        text-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+      }
+
+      .comparison-card {
+        background: var(--bg-secondary);
+        border-radius: var(--border-radius);
+        padding: 20px;
+        text-align: center;
+        margin-bottom: 20px;
+      }
+
+      .comparison-title {
+        font-size: 1.1rem;
+        color: var(--text-secondary);
+        margin-bottom: 12px;
+      }
+
+      .comparison-game {
+        font-size: 1.7rem;
+        font-weight: 700;
+        color: var(--accent-secondary);
+        margin-bottom: 8px;
+      }
+
+      .comparison-desc {
+        font-size: 0.9rem;
+        color: var(--text-muted);
+      }
+
+      .btn {
+        display: inline-block;
+        padding: 14px 32px;
+        background: linear-gradient(135deg, var(--accent), var(--accent-hover));
+        color: white;
+        border: none;
+        border-radius: 8px;
+        font-size: 1.1rem;
+        font-weight: 700;
+        cursor: pointer;
+        transition: var(--transition);
+        width: 100%;
+        text-align: center;
+        box-shadow: 0 4px 15px rgba(108, 92, 231, 0.4);
+      }
+
+      .btn:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 6px 20px rgba(108, 92, 231, 0.6);
+        background: linear-gradient(135deg, var(--accent-hover), #4a3cb8);
+      }
+
+      .btn:active {
+        transform: translateY(0);
+      }
+
+      .btn-reset {
+        background: linear-gradient(135deg, #ff7675, #e84341);
+        margin-top: 15px;
+        box-shadow: 0 4px 15px rgba(255, 118, 117, 0.4);
+      }
+
+      .btn-reset:hover {
+        box-shadow: 0 6px 20px rgba(255, 118, 117, 0.6);
+        background: linear-gradient(135deg, #e84341, #d62d20);
+      }
+
+      .btn-clear {
+        background: linear-gradient(135deg, #636e72, #2d3436);
+        margin-top: 10px;
+        box-shadow: 0 4px 15px rgba(99, 110, 114, 0.4);
+      }
+
+      .btn-clear:hover {
+        box-shadow: 0 6px 20px rgba(99, 110, 114, 0.6);
+        background: linear-gradient(135deg, #2d3436, #1a1a1a);
+      }
+
+      .btn-import-export {
+        background: linear-gradient(135deg, #00cec9, #0083b0);
+        margin-top: 10px;
+        box-shadow: 0 4px 15px rgba(0, 206, 201, 0.4);
+      }
+
+      .btn-import-export:hover {
+        box-shadow: 0 6px 20px rgba(0, 206, 201, 0.6);
+        background: linear-gradient(135deg, #0083b0, #006380);
+      }
+
+      .category-divider {
+        margin: 40px 0 25px;
+        padding-bottom: 15px;
+        border-bottom: 2px solid rgba(255, 255, 255, 0.1);
+        display: flex;
+        align-items: center;
+        gap: 15px;
+      }
+
+      .category-title {
+        font-size: 1.6rem;
+        font-weight: 700;
+        color: var(--accent);
+      }
+
+      .category-badge {
+        background: var(--accent);
+        color: white;
+        padding: 4px 12px;
+        border-radius: 20px;
+        font-size: 0.85rem;
+        font-weight: 700;
+      }
+
+      .quality-levels {
+        display: flex;
+        gap: 4px;
+        margin-top: 8px;
+      }
+
+      .quality-level {
+        width: 20px;
+        height: 20px;
+        border-radius: 4px;
+        background: var(--bg-input);
+        transition: var(--transition);
+      }
+
+      .quality-level.active {
+        background: var(--accent);
+        transform: scale(1.2);
+      }
+
+      .import-export-section {
+        background: var(--bg-secondary);
+        padding: 20px;
+        border-radius: var(--border-radius);
+        margin-top: 20px;
+      }
+
+      .import-export-section h3 {
+        margin-bottom: 15px;
+        color: var(--accent-secondary);
+        font-size: 1.3rem;
+      }
+
+      textarea.export-textarea {
+        width: 100%;
+        min-height: 100px;
+        padding: 12px;
+        background: var(--bg-input);
+        border: 2px solid transparent;
+        border-radius: 8px;
+        color: var(--text-primary);
+        font-family: "Courier New", monospace;
+        font-size: 0.85rem;
+        resize: vertical;
+        margin-bottom: 15px;
+      }
+
+      .import-export-buttons {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 10px;
+      }
+
+      @media (max-width: 768px) {
+        body {
+          padding: 15px;
+        }
+
+        h1 {
+          font-size: 2.3rem;
+        }
+
+        .dashboard {
+          grid-template-columns: 1fr;
+        }
+
+        .perks-grid {
+          grid-template-columns: 1fr;
+        }
+
+        .summary-card {
+          position: relative;
+          top: 0;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <header>
+        <h1>🎮 GameDev Planner</h1>
+        <p class="subtitle">
+          Спланируй свою игру: выбери параметры, рассчитай бюджет и сравни с
+          реальными проектами
+        </p>
+        <div class="save-indicator" id="saveIndicator">
+          💾 Автосохранение включено
+        </div>
+      </header>
+
+      <div class="dashboard">
+        <div class="left-column">
+          <!-- Основная информация об игре -->
+          <div class="form-section">
+            <h2>📝 Основная информация</h2>
+            <div class="form-group">
+              <label for="gameName">Название игры</label>
+              <input
+                type="text"
+                id="gameName"
+                class="form-control"
+                placeholder="Введите название игры"
+              />
+            </div>
+            <div class="form-group">
+              <label for="gameDesc">Описание игры</label>
+              <textarea
+                id="gameDesc"
+                class="form-control"
+                placeholder="Краткое описание вашего проекта..."
+              ></textarea>
+            </div>
+          </div>
+
+          <!-- Сюжет и контент -->
+          <div class="category-divider">
+            <h2 class="category-title">📖 Сюжет и контент</h2>
+            <span class="category-badge">4 перка</span>
+          </div>
+
+          <div class="perks-grid">
+            <div
+              class="perk-card"
+              data-type="fixed"
+              data-base-cost="5,12,25,45,80"
+              data-id="lore"
+            >
+              <div class="perk-header">
+                <span class="perk-title">Лор</span>
+                <label class="perk-toggle">
+                  <input type="checkbox" />
+                  <span class="perk-toggle-slider"></span>
+                </label>
+              </div>
+              <p class="perk-description">
+                Глубина и связность игровой вселенной: история мира, фракций,
+                мифология, правила магии/технологий, культурные особенности
+                народов.
+              </p>
+              <div class="quality-control">
+                <div class="quality-label">
+                  <span>Качество</span>
+                  <span class="quality-value">1</span>
+                </div>
+                <input
+                  type="range"
+                  min="1"
+                  max="5"
+                  value="1"
+                  class="quality-slider"
+                />
+                <div class="quality-levels">
+                  <div class="quality-level active"></div>
+                  <div class="quality-level"></div>
+                  <div class="quality-level"></div>
+                  <div class="quality-level"></div>
+                  <div class="quality-level"></div>
+                </div>
+                <div class="quality-description">
+                  Базовый фон без противоречий: краткая предыстория мира, 1–2
+                  ключевых события
+                </div>
+              </div>
+              <div class="cost-display">
+                Стоимость: <strong>5 чел-лет</strong>
+              </div>
+            </div>
+
+            <div
+              class="perk-card"
+              data-type="hours"
+              data-base-cost="0.3,0.6,1.2,1.8,2.5"
+              data-id="main_story"
+            >
+              <div class="perk-header">
+                <span class="perk-title">Основной сюжет</span>
+                <label class="perk-toggle">
+                  <input type="checkbox" />
+                  <span class="perk-toggle-slider"></span>
+                </label>
+              </div>
+              <p class="perk-description">
+                Главный сюжет игры. Часы игрового времени основной линии.
+              </p>
+              <div class="quality-control">
+                <div class="quality-label">
+                  <span>Качество</span>
+                  <span class="quality-value">1</span>
+                </div>
+                <input
+                  type="range"
+                  min="1"
+                  max="5"
+                  value="1"
+                  class="quality-slider"
+                />
+                <div class="quality-levels">
+                  <div class="quality-level active"></div>
+                  <div class="quality-level"></div>
+                  <div class="quality-level"></div>
+                  <div class="quality-level"></div>
+                  <div class="quality-level"></div>
+                </div>
+                <div class="quality-description">
+                  Линейная история без изъянов
+                </div>
+              </div>
+              <div class="quantity-control">
+                <div class="quality-label">
+                  <span>Часы контента</span>
+                  <span class="quantity-display">0</span>
+                </div>
+                <div class="quantity-input">
+                  <input
+                    type="number"
+                    min="0"
+                    value="0"
+                    class="quantity-number"
+                  />
+                </div>
+              </div>
+              <div class="cost-display">
+                Стоимость: <strong>0 чел-лет</strong>
+              </div>
+            </div>
+
+            <div
+              class="perk-card"
+              data-type="count"
+              data-base-cost="0.2,0.5,1.0,1.8,3.0"
+              data-id="side_quests"
+            >
+              <div class="perk-header">
+                <span class="perk-title">Побочные квесты</span>
+                <label class="perk-toggle">
+                  <input type="checkbox" />
+                  <span class="perk-toggle-slider"></span>
+                </label>
+              </div>
+              <p class="perk-description">
+                Второстепенные задания. Каждый квест ~1 час игрового времени.
+              </p>
+              <div class="quality-control">
+                <div class="quality-label">
+                  <span>Качество</span>
+                  <span class="quality-value">1</span>
+                </div>
+                <input
+                  type="range"
+                  min="1"
+                  max="5"
+                  value="1"
+                  class="quality-slider"
+                />
+                <div class="quality-levels">
+                  <div class="quality-level active"></div>
+                  <div class="quality-level"></div>
+                  <div class="quality-level"></div>
+                  <div class="quality-level"></div>
+                  <div class="quality-level"></div>
+                </div>
+                <div class="quality-description">
+                  «Убей 10 крыс» без повторяющихся фраз
+                </div>
+              </div>
+              <div class="quantity-control">
+                <div class="quality-label">
+                  <span>Количество квестов</span>
+                  <span class="quantity-display">0</span>
+                </div>
+                <div class="quantity-input">
+                  <input
+                    type="number"
+                    min="0"
+                    value="0"
+                    class="quantity-number"
+                  />
+                </div>
+              </div>
+              <div class="cost-display">
+                Стоимость: <strong>0 чел-лет</strong>
+              </div>
+            </div>
+
+            <div
+              class="perk-card"
+              data-type="count"
+              data-base-cost="0.4,0.9,1.8,3.2,5.0"
+              data-id="closed_locations"
+            >
+              <div class="perk-header">
+                <span class="perk-title">Закрытые локации</span>
+                <label class="perk-toggle">
+                  <input type="checkbox" />
+                  <span class="perk-toggle-slider"></span>
+                </label>
+              </div>
+              <p class="perk-description">
+                Локации, в которые игрок попадает из открытого мира (подземелья,
+                дома, квестовые зоны).
+              </p>
+              <div class="quality-control">
+                <div class="quality-label">
+                  <span>Качество</span>
+                  <span class="quality-value">1</span>
+                </div>
+                <input
+                  type="range"
+                  min="1"
+                  max="5"
+                  value="1"
+                  class="quality-slider"
+                />
+                <div class="quality-levels">
+                  <div class="quality-level active"></div>
+                  <div class="quality-level"></div>
+                  <div class="quality-level"></div>
+                  <div class="quality-level"></div>
+                  <div class="quality-level"></div>
+                </div>
+                <div class="quality-description">
+                  Базовые локации без повторяющихся текстур
+                </div>
+              </div>
+              <div class="quantity-control">
+                <div class="quality-label">
+                  <span>Площадь локаций (100 м²)</span>
+                  <span class="quantity-display">0</span>
+                </div>
+                <div class="quantity-input">
+                  <input
+                    type="number"
+                    min="0"
+                    value="0"
+                    class="quantity-number"
+                  />
+                </div>
+              </div>
+              <div class="cost-display">
+                Стоимость: <strong>0 чел-лет</strong>
+              </div>
+            </div>
+
+            <div
+              class="perk-card"
+              data-type="fixed"
+              data-base-cost="5,12,25,45,75"
+              data-id="character_editor"
+            >
+              <div class="perk-header">
+                <span class="perk-title">Редактор персонажа</span>
+                <label class="perk-toggle">
+                  <input type="checkbox" />
+                  <span class="perk-toggle-slider"></span>
+                </label>
+              </div>
+              <p class="perk-description">
+                Система создания и кастомизации персонажа (внешность, одежда,
+                характеристики).
+              </p>
+              <div class="quality-control">
+                <div class="quality-label">
+                  <span>Качество</span>
+                  <span class="quality-value">1</span>
+                </div>
+                <input
+                  type="range"
+                  min="1"
+                  max="5"
+                  value="1"
+                  class="quality-slider"
+                />
+                <div class="quality-levels">
+                  <div class="quality-level active"></div>
+                  <div class="quality-level"></div>
+                  <div class="quality-level"></div>
+                  <div class="quality-level"></div>
+                  <div class="quality-level"></div>
+                </div>
+                <div class="quality-description">
+                  Базовый выбор пола и цвета волос
+                </div>
+              </div>
+              <div class="cost-display">
+                Стоимость: <strong>5 чел-лет</strong>
+              </div>
+            </div>
+          </div>
+
+          <!-- Системы выживания и достижений -->
+          <div class="category-divider">
+            <h2 class="category-title">⚡ Системы геймплея</h2>
+            <span class="category-badge">3 перка</span>
+          </div>
+
+          <div class="perks-grid">
+            <div
+              class="perk-card"
+              data-type="fixed"
+              data-base-cost="15,35,70,120,200"
+              data-id="player_abilities"
+            >
+              <div class="perk-header">
+                <span class="perk-title">Возможности игрока</span>
+                <label class="perk-toggle">
+                  <input type="checkbox" />
+                  <span class="perk-toggle-slider"></span>
+                </label>
+              </div>
+              <p class="perk-description">
+                Глубина игровых механик: стрельба (отдача, баллистика, укрытия),
+                стелс (тени, звук, линия обзора), взаимодействие с миром (физика
+                объектов, диалоги, окружение), паркур, специальные способности.
+              </p>
+              <div class="quality-control">
+                <div class="quality-label">
+                  <span>Качество</span>
+                  <span class="quality-value">1</span>
+                </div>
+                <input
+                  type="range"
+                  min="1"
+                  max="5"
+                  value="1"
+                  class="quality-slider"
+                />
+                <div class="quality-levels">
+                  <div class="quality-level active"></div>
+                  <div class="quality-level"></div>
+                  <div class="quality-level"></div>
+                  <div class="quality-level"></div>
+                  <div class="quality-level"></div>
+                </div>
+                <div class="quality-description">
+                  Базовые механики без критических багов: стрельба попадает в
+                  цель, стелс работает в тени, можно поднимать предметы
+                </div>
+              </div>
+              <div class="cost-display">
+                Стоимость: <strong>15 чел-лет</strong>
+              </div>
+            </div>
+            <div
+              class="perk-card"
+              data-type="count"
+              data-base-cost="0.1,0.3,0.7,1.5,3.0"
+              data-id="unique_items"
+            >
+              <div class="perk-header">
+                <span class="perk-title">Уникальные предметы</span>
+                <label class="perk-toggle">
+                  <input type="checkbox" />
+                  <span class="perk-toggle-slider"></span>
+                </label>
+              </div>
+              <p class="perk-description">
+                Оружие, броня, боеприпасы, еда, зелья, артефакты, ключевые
+                предметы — всё что можно найти, купить или создать.
+              </p>
+              <div class="quality-control">
+                <div class="quality-label">
+                  <span>Качество</span>
+                  <span class="quality-value">1</span>
+                </div>
+                <input
+                  type="range"
+                  min="1"
+                  max="5"
+                  value="1"
+                  class="quality-slider"
+                />
+                <div class="quality-levels">
+                  <div class="quality-level active"></div>
+                  <div class="quality-level"></div>
+                  <div class="quality-level"></div>
+                  <div class="quality-level"></div>
+                  <div class="quality-level"></div>
+                </div>
+                <div class="quality-description">
+                  Базовые модели без багов, 1–2 вариации текстур
+                </div>
+              </div>
+              <div class="quantity-control">
+                <div class="quality-label">
+                  <span>Количество предметов</span>
+                  <span class="quantity-display">0</span>
+                </div>
+                <div class="quantity-input">
+                  <input
+                    type="number"
+                    min="0"
+                    value="0"
+                    class="quantity-number"
+                  />
+                </div>
+              </div>
+              <div class="cost-display">
+                Стоимость: <strong>0 чел-лет</strong>
+              </div>
+            </div>
+            <div
+              class="perk-card"
+              data-type="fixed"
+              data-base-cost="10,25,50,85,140"
+              data-id="survival_system"
+            >
+              <div class="perk-header">
+                <span class="perk-title">Система выживания</span>
+                <label class="perk-toggle">
+                  <input type="checkbox" />
+                  <span class="perk-toggle-slider"></span>
+                </label>
+              </div>
+              <p class="perk-description">
+                Параметры выживания: голод, жажда, температура, усталость,
+                болезни.
+              </p>
+              <div class="quality-control">
+                <div class="quality-label">
+                  <span>Качество</span>
+                  <span class="quality-value">1</span>
+                </div>
+                <input
+                  type="range"
+                  min="1"
+                  max="5"
+                  value="1"
+                  class="quality-slider"
+                />
+                <div class="quality-levels">
+                  <div class="quality-level active"></div>
+                  <div class="quality-level"></div>
+                  <div class="quality-level"></div>
+                  <div class="quality-level"></div>
+                  <div class="quality-level"></div>
+                </div>
+                <div class="quality-description">
+                  1–2 параметра без раздражения (голод + жажда)
+                </div>
+              </div>
+              <div class="cost-display">
+                Стоимость: <strong>10 чел-лет</strong>
+              </div>
+            </div>
+
+            <div
+              class="perk-card"
+              data-type="count"
+              data-base-cost="0.5,1.2,2.5,4.5,7.5"
+              data-id="difficulty_levels"
+            >
+              <div class="perk-header">
+                <span class="perk-title">Уровни сложности</span>
+                <label class="perk-toggle">
+                  <input type="checkbox" />
+                  <span class="perk-toggle-slider"></span>
+                </label>
+              </div>
+              <p class="perk-description">
+                Система сложности: баланс ИИ, урона, ресурсов под разные
+                категории игроков.
+              </p>
+              <div class="quality-control">
+                <div class="quality-label">
+                  <span>Качество</span>
+                  <span class="quality-value">1</span>
+                </div>
+                <input
+                  type="range"
+                  min="1"
+                  max="5"
+                  value="1"
+                  class="quality-slider"
+                />
+                <div class="quality-levels">
+                  <div class="quality-level active"></div>
+                  <div class="quality-level"></div>
+                  <div class="quality-level"></div>
+                  <div class="quality-level"></div>
+                  <div class="quality-level"></div>
+                </div>
+                <div class="quality-description">
+                  3 режима сложности без багов
+                </div>
+              </div>
+              <div class="quantity-control">
+                <div class="quality-label">
+                  <span>Количество уровней</span>
+                  <span class="quantity-display">0</span>
+                </div>
+                <div class="quantity-input">
+                  <input
+                    type="number"
+                    min="0"
+                    value="0"
+                    class="quantity-number"
+                  />
+                </div>
+              </div>
+              <div class="cost-display">
+                Стоимость: <strong>0 чел-лет</strong>
+              </div>
+            </div>
+
+            <div
+              class="perk-card"
+              data-type="count"
+              data-base-cost="0.1,0.3,0.6,1.2,2.0"
+              data-id="achievements"
+            >
+              <div class="perk-header">
+                <span class="perk-title">Система достижений</span>
+                <label class="perk-toggle">
+                  <input type="checkbox" />
+                  <span class="perk-toggle-slider"></span>
+                </label>
+              </div>
+              <p class="perk-description">
+                Трофеи и достижения для мотивации игроков.
+              </p>
+              <div class="quality-control">
+                <div class="quality-label">
+                  <span>Качество</span>
+                  <span class="quality-value">1</span>
+                </div>
+                <input
+                  type="range"
+                  min="1"
+                  max="5"
+                  value="1"
+                  class="quality-slider"
+                />
+                <div class="quality-levels">
+                  <div class="quality-level active"></div>
+                  <div class="quality-level"></div>
+                  <div class="quality-level"></div>
+                  <div class="quality-level"></div>
+                  <div class="quality-level"></div>
+                </div>
+                <div class="quality-description">Простые достижения</div>
+              </div>
+              <div class="quantity-control">
+                <div class="quality-label">
+                  <span>Количество достижений</span>
+                  <span class="quantity-display">0</span>
+                </div>
+                <div class="quantity-input">
+                  <input
+                    type="number"
+                    min="0"
+                    value="0"
+                    class="quantity-number"
+                  />
+                </div>
+              </div>
+              <div class="cost-display">
+                Стоимость: <strong>0 чел-лет</strong>
+              </div>
+            </div>
+          </div>
+
+          <!-- Персонажи -->
+          <div class="category-divider">
+            <h2 class="category-title">👥 Персонажи</h2>
+            <span class="category-badge">2 перка</span>
+          </div>
+
+          <div class="perks-grid">
+            <div
+              class="perk-card"
+              data-type="count"
+              data-base-cost="1.0,2.0,4.0,7.0,12.0"
+              data-id="main_characters"
+            >
+              <div class="perk-header">
+                <span class="perk-title">Главные персонажи</span>
+                <label class="perk-toggle">
+                  <input type="checkbox" />
+                  <span class="perk-toggle-slider"></span>
+                </label>
+              </div>
+              <p class="perk-description">
+                Протагонисты и ключевые антагонисты с полной проработкой.
+              </p>
+              <div class="quality-control">
+                <div class="quality-label">
+                  <span>Качество</span>
+                  <span class="quality-value">1</span>
+                </div>
+                <input
+                  type="range"
+                  min="1"
+                  max="5"
+                  value="1"
+                  class="quality-slider"
+                />
+                <div class="quality-levels">
+                  <div class="quality-level active"></div>
+                  <div class="quality-level"></div>
+                  <div class="quality-level"></div>
+                  <div class="quality-level"></div>
+                  <div class="quality-level"></div>
+                </div>
+                <div class="quality-description">
+                  Персонаж без «деревянности»
+                </div>
+              </div>
+              <div class="quantity-control">
+                <div class="quality-label">
+                  <span>Количество персонажей</span>
+                  <span class="quantity-display">0</span>
+                </div>
+                <div class="quantity-input">
+                  <input
+                    type="number"
+                    min="0"
+                    value="0"
+                    class="quantity-number"
+                  />
+                </div>
+              </div>
+              <div class="cost-display">
+                Стоимость: <strong>0 чел-лет</strong>
+              </div>
+            </div>
+
+            <div
+              class="perk-card"
+              data-type="count"
+              data-base-cost="0.1,0.3,0.7,1.5,3.0"
+              data-id="npcs"
+            >
+              <div class="perk-header">
+                <span class="perk-title">Второстепенные персонажи</span>
+                <label class="perk-toggle">
+                  <input type="checkbox" />
+                  <span class="perk-toggle-slider"></span>
+                </label>
+              </div>
+              <p class="perk-description">
+                Побочные герои и НПС с уникальными диалогами.
+              </p>
+              <div class="quality-control">
+                <div class="quality-label">
+                  <span>Качество</span>
+                  <span class="quality-value">1</span>
+                </div>
+                <input
+                  type="range"
+                  min="1"
+                  max="5"
+                  value="1"
+                  class="quality-slider"
+                />
+                <div class="quality-levels">
+                  <div class="quality-level active"></div>
+                  <div class="quality-level"></div>
+                  <div class="quality-level"></div>
+                  <div class="quality-level"></div>
+                  <div class="quality-level"></div>
+                </div>
+                <div class="quality-description">
+                  НПС без повторяющихся фраз
+                </div>
+              </div>
+              <div class="quantity-control">
+                <div class="quality-label">
+                  <span>Количество НПС</span>
+                  <span class="quantity-display">0</span>
+                </div>
+                <div class="quantity-input">
+                  <input
+                    type="number"
+                    min="0"
+                    value="0"
+                    class="quantity-number"
+                  />
+                </div>
+              </div>
+              <div class="cost-display">
+                Стоимость: <strong>0 чел-лет</strong>
+              </div>
+            </div>
+          </div>
+
+          <!-- Системы прокачки -->
+          <div class="category-divider">
+            <h2 class="category-title">⚡ Системы прокачки</h2>
+            <span class="category-badge">2 перка</span>
+          </div>
+
+          <div class="perks-grid">
+            <div
+              class="perk-card"
+              data-type="count"
+              data-base-cost="0.3,0.6,1.0,1.6,2.0"
+              data-multiplier="0.65"
+              data-id="perks"
+            >
+              <div class="perk-header">
+                <span class="perk-title">Система перков</span>
+                <label class="perk-toggle">
+                  <input type="checkbox" />
+                  <span class="perk-toggle-slider"></span>
+                </label>
+              </div>
+              <p class="perk-description">
+                Древо навыков / талантов для прокачки персонажа.
+              </p>
+              <div class="quality-control">
+                <div class="quality-label">
+                  <span>Качество</span>
+                  <span class="quality-value">1</span>
+                </div>
+                <input
+                  type="range"
+                  min="1"
+                  max="5"
+                  value="1"
+                  class="quality-slider"
+                />
+                <div class="quality-levels">
+                  <div class="quality-level active"></div>
+                  <div class="quality-level"></div>
+                  <div class="quality-level"></div>
+                  <div class="quality-level"></div>
+                  <div class="quality-level"></div>
+                </div>
+                <div class="quality-description">
+                  3–5 веток без бесполезных навыков
+                </div>
+              </div>
+              <div class="quantity-control">
+                <div class="quality-label">
+                  <span>Количество перков</span>
+                  <span class="quantity-display">0</span>
+                </div>
+                <div class="quantity-input">
+                  <input
+                    type="number"
+                    min="0"
+                    value="0"
+                    class="quantity-number"
+                  />
+                </div>
+              </div>
+              <div class="cost-display">
+                Стоимость: <strong>0 чел-лет</strong>
+              </div>
+            </div>
+
+            <div
+              class="perk-card"
+              data-type="count"
+              data-base-cost="0.2,0.4,0.8,1.4,2.0"
+              data-multiplier="0.5"
+              data-id="crafting"
+            >
+              <div class="perk-header">
+                <span class="perk-title">Система крафта</span>
+                <label class="perk-toggle">
+                  <input type="checkbox" />
+                  <span class="perk-toggle-slider"></span>
+                </label>
+              </div>
+              <p class="perk-description">Создание предметов, зелий, оружия.</p>
+              <div class="quality-control">
+                <div class="quality-label">
+                  <span>Качество</span>
+                  <span class="quality-value">1</span>
+                </div>
+                <input
+                  type="range"
+                  min="1"
+                  max="5"
+                  value="1"
+                  class="quality-slider"
+                />
+                <div class="quality-levels">
+                  <div class="quality-level active"></div>
+                  <div class="quality-level"></div>
+                  <div class="quality-level"></div>
+                  <div class="quality-level"></div>
+                  <div class="quality-level"></div>
+                </div>
+                <div class="quality-description">5–10 рецептов без ошибок</div>
+              </div>
+              <div class="quantity-control">
+                <div class="quality-label">
+                  <span>Количество рецептов</span>
+                  <span class="quantity-display">0</span>
+                </div>
+                <div class="quantity-input">
+                  <input
+                    type="number"
+                    min="0"
+                    value="0"
+                    class="quantity-number"
+                  />
+                </div>
+              </div>
+              <div class="cost-display">
+                Стоимость: <strong>0 чел-лет</strong>
+              </div>
+            </div>
+          </div>
+
+          <!-- Мир и окружение -->
+          <div class="category-divider">
+            <h2 class="category-title">🌍 Мир и окружение</h2>
+            <span class="category-badge">2 перка</span>
+          </div>
+
+          <div class="perks-grid">
+            <div
+              class="perk-card"
+              data-type="km2"
+              data-base-cost="0.5,1.2,2.5,4.5,7.0"
+              data-id="open_world"
+            >
+              <div class="perk-header">
+                <span class="perk-title">Открытый мир</span>
+                <label class="perk-toggle">
+                  <input type="checkbox" />
+                  <span class="perk-toggle-slider"></span>
+                </label>
+              </div>
+              <p class="perk-description">
+                Площадь игрового мира в квадратных километрах.
+              </p>
+              <div class="quality-control">
+                <div class="quality-label">
+                  <span>Качество</span>
+                  <span class="quality-value">1</span>
+                </div>
+                <input
+                  type="range"
+                  min="1"
+                  max="5"
+                  value="1"
+                  class="quality-slider"
+                />
+                <div class="quality-levels">
+                  <div class="quality-level active"></div>
+                  <div class="quality-level"></div>
+                  <div class="quality-level"></div>
+                  <div class="quality-level"></div>
+                  <div class="quality-level"></div>
+                </div>
+                <div class="quality-description">Мир без «пустых» зон</div>
+              </div>
+              <div class="quantity-control">
+                <div class="quality-label">
+                  <span>Площадь (км²)</span>
+                  <span class="quantity-display">0</span>
+                </div>
+                <div class="quantity-input">
+                  <input
+                    type="number"
+                    min="0"
+                    value="0"
+                    class="quantity-number"
+                  />
+                </div>
+              </div>
+              <div class="cost-display">
+                Стоимость: <strong>0 чел-лет</strong>
+              </div>
+            </div>
+
+            <div
+              class="perk-card"
+              data-type="fixed"
+              data-base-cost="8,22,46,86,140"
+              data-id="living_world"
+            >
+              <div class="perk-header">
+                <span class="perk-title">Живой мир</span>
+                <label class="perk-toggle">
+                  <input type="checkbox" />
+                  <span class="perk-toggle-slider"></span>
+                </label>
+              </div>
+              <p class="perk-description">
+                Динамика окружения: цикл день/ночь, погода, расписание НПС,
+                смена сезонов и времён года, миграция животных, события вне
+                сюжета.
+              </p>
+              <div class="quality-control">
+                <div class="quality-label">
+                  <span>Качество</span>
+                  <span class="quality-value">1</span>
+                </div>
+                <input
+                  type="range"
+                  min="1"
+                  max="5"
+                  value="1"
+                  class="quality-slider"
+                />
+                <div class="quality-levels">
+                  <div class="quality-level active"></div>
+                  <div class="quality-level"></div>
+                  <div class="quality-level"></div>
+                  <div class="quality-level"></div>
+                  <div class="quality-level"></div>
+                </div>
+                <div class="quality-description">
+                  День/ночь + базовая погода (солнце/дождь) без багов
+                </div>
+              </div>
+              <div class="cost-display">
+                Стоимость: <strong>8 чел-лет</strong>
+              </div>
+            </div>
+          </div>
+
+          <!-- Интеллект -->
+          <div class="category-divider">
+            <h2 class="category-title">🤖 Интеллект</h2>
+            <span class="category-badge">2 перка</span>
+          </div>
+
+          <div class="perks-grid">
+            <div
+              class="perk-card"
+              data-type="fixed"
+              data-base-cost="10,25,52,98,160"
+              data-id="enemy_ai"
+            >
+              <div class="perk-header">
+                <span class="perk-title">ИИ противников</span>
+                <label class="perk-toggle">
+                  <input type="checkbox" />
+                  <span class="perk-toggle-slider"></span>
+                </label>
+              </div>
+              <p class="perk-description">
+                Тактика боя, координация, адаптация под игрока.
+              </p>
+              <div class="quality-control">
+                <div class="quality-label">
+                  <span>Качество</span>
+                  <span class="quality-value">1</span>
+                </div>
+                <input
+                  type="range"
+                  min="1"
+                  max="5"
+                  value="1"
+                  class="quality-slider"
+                />
+                <div class="quality-levels">
+                  <div class="quality-level active"></div>
+                  <div class="quality-level"></div>
+                  <div class="quality-level"></div>
+                  <div class="quality-level"></div>
+                  <div class="quality-level"></div>
+                </div>
+                <div class="quality-description">
+                  НПС не застревают в текстурах
+                </div>
+              </div>
+              <div class="cost-display">
+                Стоимость: <strong>10 чел-лет</strong>
+              </div>
+            </div>
+
+            <div
+              class="perk-card"
+              data-type="fixed"
+              data-base-cost="14,35,74,140,240"
+              data-id="companion_ai"
+            >
+              <div class="perk-header">
+                <span class="perk-title">ИИ напарников</span>
+                <label class="perk-toggle">
+                  <input type="checkbox" />
+                  <span class="perk-toggle-slider"></span>
+                </label>
+              </div>
+              <p class="perk-description">
+                Союзники в сольной игре: навигация, поддержка, тактика.
+              </p>
+              <div class="quality-control">
+                <div class="quality-label">
+                  <span>Качество</span>
+                  <span class="quality-value">1</span>
+                </div>
+                <input
+                  type="range"
+                  min="1"
+                  max="5"
+                  value="1"
+                  class="quality-slider"
+                />
+                <div class="quality-levels">
+                  <div class="quality-level active"></div>
+                  <div class="quality-level"></div>
+                  <div class="quality-level"></div>
+                  <div class="quality-level"></div>
+                  <div class="quality-level"></div>
+                </div>
+                <div class="quality-description">Напарник не мешает</div>
+              </div>
+              <div class="cost-display">
+                Стоимость: <strong>14 чел-лет</strong>
+              </div>
+            </div>
+          </div>
+
+          <!-- Технические параметры -->
+          <div class="category-divider">
+            <h2 class="category-title">⚙️ Технические параметры</h2>
+            <span class="category-badge">7 перков</span>
+          </div>
+
+          <div class="perks-grid">
+            <div
+              class="perk-card"
+              data-type="fixed"
+              data-base-cost="10,25,52,98,160"
+              data-id="physics"
+            >
+              <div class="perk-header">
+                <span class="perk-title">Физика</span>
+                <label class="perk-toggle">
+                  <input type="checkbox" />
+                  <span class="perk-toggle-slider"></span>
+                </label>
+              </div>
+              <p class="perk-description">
+                Реализм взаимодействия объектов, разрушаемость, гравитация.
+              </p>
+              <div class="quality-control">
+                <div class="quality-label">
+                  <span>Качество</span>
+                  <span class="quality-value">1</span>
+                </div>
+                <input
+                  type="range"
+                  min="1"
+                  max="5"
+                  value="1"
+                  class="quality-slider"
+                />
+                <div class="quality-levels">
+                  <div class="quality-level active"></div>
+                  <div class="quality-level"></div>
+                  <div class="quality-level"></div>
+                  <div class="quality-level"></div>
+                  <div class="quality-level"></div>
+                </div>
+                <div class="quality-description">
+                  Физика без критических багов
+                </div>
+              </div>
+              <div class="cost-display">
+                Стоимость: <strong>10 чел-лет</strong>
+              </div>
+            </div>
+
+            <div
+              class="perk-card"
+              data-type="fixed"
+              data-base-cost="8,21,45,85,140"
+              data-id="animations"
+            >
+              <div class="perk-header">
+                <span class="perk-title">Анимации</span>
+                <label class="perk-toggle">
+                  <input type="checkbox" />
+                  <span class="perk-toggle-slider"></span>
+                </label>
+              </div>
+              <p class="perk-description">
+                Плавность движений, переходы, уникальность анимаций.
+              </p>
+              <div class="quality-control">
+                <div class="quality-label">
+                  <span>Качество</span>
+                  <span class="quality-value">1</span>
+                </div>
+                <input
+                  type="range"
+                  min="1"
+                  max="5"
+                  value="1"
+                  class="quality-slider"
+                />
+                <div class="quality-levels">
+                  <div class="quality-level active"></div>
+                  <div class="quality-level"></div>
+                  <div class="quality-level"></div>
+                  <div class="quality-level"></div>
+                  <div class="quality-level"></div>
+                </div>
+                <div class="quality-description">Без рывков и клиппинга</div>
+              </div>
+              <div class="cost-display">
+                Стоимость: <strong>8 чел-лет</strong>
+              </div>
+            </div>
+
+            <div
+              class="perk-card"
+              data-type="fixed"
+              data-base-cost="12,28,58,105,175"
+              data-id="optimization"
+            >
+              <div class="perk-header">
+                <span class="perk-title">Оптимизация FPS</span>
+                <label class="perk-toggle">
+                  <input type="checkbox" />
+                  <span class="perk-toggle-slider"></span>
+                </label>
+              </div>
+              <p class="perk-description">
+                Стабильность кадров на целевых конфигурациях.
+              </p>
+              <div class="quality-control">
+                <div class="quality-label">
+                  <span>Качество</span>
+                  <span class="quality-value">1</span>
+                </div>
+                <input
+                  type="range"
+                  min="1"
+                  max="5"
+                  value="1"
+                  class="quality-slider"
+                />
+                <div class="quality-levels">
+                  <div class="quality-level active"></div>
+                  <div class="quality-level"></div>
+                  <div class="quality-level"></div>
+                  <div class="quality-level"></div>
+                  <div class="quality-level"></div>
+                </div>
+                <div class="quality-description">
+                  30 FPS на минимальных настройках без крашей
+                </div>
+              </div>
+              <div class="cost-display">
+                Стоимость: <strong>12 чел-лет</strong>
+              </div>
+            </div>
+
+            <div
+              class="perk-card"
+              data-type="fixed"
+              data-base-cost="8,20,42,75,125"
+              data-id="load_optimization"
+            >
+              <div class="perk-header">
+                <span class="perk-title">Оптимизация загрузок</span>
+                <label class="perk-toggle">
+                  <input type="checkbox" />
+                  <span class="perk-toggle-slider"></span>
+                </label>
+              </div>
+              <p class="perk-description">Скорость загрузки уровней и мира.</p>
+              <div class="quality-control">
+                <div class="quality-label">
+                  <span>Качество</span>
+                  <span class="quality-value">1</span>
+                </div>
+                <input
+                  type="range"
+                  min="1"
+                  max="5"
+                  value="1"
+                  class="quality-slider"
+                />
+                <div class="quality-levels">
+                  <div class="quality-level active"></div>
+                  <div class="quality-level"></div>
+                  <div class="quality-level"></div>
+                  <div class="quality-level"></div>
+                  <div class="quality-level"></div>
+                </div>
+                <div class="quality-description">
+                  Загрузка <30 секунд на HDD
+                </div>
+              </div>
+              <div class="cost-display">
+                Стоимость: <strong>8 чел-лет</strong>
+              </div>
+            </div>
+
+            <div
+              class="perk-card"
+              data-type="fixed"
+              data-base-cost="10,24,50,90,150"
+              data-id="build_size"
+            >
+              <div class="perk-header">
+                <span class="perk-title">Оптимизация размера билда</span>
+                <label class="perk-toggle">
+                  <input type="checkbox" />
+                  <span class="perk-toggle-slider"></span>
+                </label>
+              </div>
+              <p class="perk-description">
+                Сжатие текстур, звуков, потоковая загрузка.
+              </p>
+              <div class="quality-control">
+                <div class="quality-label">
+                  <span>Качество</span>
+                  <span class="quality-value">1</span>
+                </div>
+                <input
+                  type="range"
+                  min="1"
+                  max="5"
+                  value="1"
+                  class="quality-slider"
+                />
+                <div class="quality-levels">
+                  <div class="quality-level active"></div>
+                  <div class="quality-level"></div>
+                  <div class="quality-level"></div>
+                  <div class="quality-level"></div>
+                  <div class="quality-level"></div>
+                </div>
+                <div class="quality-description">
+                  Игра <20 ГБ без критической потери качества
+                </div>
+              </div>
+              <div class="cost-display">
+                Стоимость: <strong>10 чел-лет</strong>
+              </div>
+            </div>
+
+            <div
+              class="perk-card"
+              data-type="fixed"
+              data-base-cost="6,15,32,58,95"
+              data-id="save_system"
+            >
+              <div class="perk-header">
+                <span class="perk-title">Система сохранений</span>
+                <label class="perk-toggle">
+                  <input type="checkbox" />
+                  <span class="perk-toggle-slider"></span>
+                </label>
+              </div>
+              <p class="perk-description">
+                Автосейвы, квиксейвы, защита от потери прогресса.
+              </p>
+              <div class="quality-control">
+                <div class="quality-label">
+                  <span>Качество</span>
+                  <span class="quality-value">1</span>
+                </div>
+                <input
+                  type="range"
+                  min="1"
+                  max="5"
+                  value="1"
+                  class="quality-slider"
+                />
+                <div class="quality-levels">
+                  <div class="quality-level active"></div>
+                  <div class="quality-level"></div>
+                  <div class="quality-level"></div>
+                  <div class="quality-level"></div>
+                  <div class="quality-level"></div>
+                </div>
+                <div class="quality-description">
+                  Ручное сохранение без потери данных
+                </div>
+              </div>
+              <div class="cost-display">
+                Стоимость: <strong>6 чел-лет</strong>
+              </div>
+            </div>
+
+            <div
+              class="perk-card"
+              data-type="fixed"
+              data-base-cost="8,18,38,68,115"
+              data-id="ui_ux"
+            >
+              <div class="perk-header">
+                <span class="perk-title">Удобство интерфейса (UI/UX)</span>
+                <label class="perk-toggle">
+                  <input type="checkbox" />
+                  <span class="perk-toggle-slider"></span>
+                </label>
+              </div>
+              <p class="perk-description">
+                Интуитивность меню, HUD, навигация, карта, доступность.
+              </p>
+              <div class="quality-control">
+                <div class="quality-label">
+                  <span>Качество</span>
+                  <span class="quality-value">1</span>
+                </div>
+                <input
+                  type="range"
+                  min="1"
+                  max="5"
+                  value="1"
+                  class="quality-slider"
+                />
+                <div class="quality-levels">
+                  <div class="quality-level active"></div>
+                  <div class="quality-level"></div>
+                  <div class="quality-level"></div>
+                  <div class="quality-level"></div>
+                  <div class="quality-level"></div>
+                </div>
+                <div class="quality-description">
+                  Без критических багов навигации
+                </div>
+              </div>
+              <div class="cost-display">
+                Стоимость: <strong>8 чел-лет</strong>
+              </div>
+            </div>
+
+            <div
+              class="perk-card"
+              data-type="fixed"
+              data-base-cost="6,15,35,65,110"
+              data-id="music"
+            >
+              <div class="perk-header">
+                <span class="perk-title">Музыка</span>
+                <label class="perk-toggle">
+                  <input type="checkbox" />
+                  <span class="perk-toggle-slider"></span>
+                </label>
+              </div>
+              <p class="perk-description">
+                Саундтрек: атмосфера, динамические переходы, запоминаемость тем.
+              </p>
+              <div class="quality-control">
+                <div class="quality-label">
+                  <span>Качество</span>
+                  <span class="quality-value">1</span>
+                </div>
+                <input
+                  type="range"
+                  min="1"
+                  max="5"
+                  value="1"
+                  class="quality-slider"
+                />
+                <div class="quality-levels">
+                  <div class="quality-level active"></div>
+                  <div class="quality-level"></div>
+                  <div class="quality-level"></div>
+                  <div class="quality-level"></div>
+                  <div class="quality-level"></div>
+                </div>
+                <div class="quality-description">
+                  3+ трека без повторов в короткий промежуток
+                </div>
+              </div>
+              <div class="cost-display">
+                Стоимость: <strong>6 чел-лет</strong>
+              </div>
+            </div>
+
+            <div
+              class="perk-card"
+              data-type="fixed"
+              data-base-cost="8,18,40,75,125"
+              data-id="sound_effects"
+            >
+              <div class="perk-header">
+                <span class="perk-title">Звуки</span>
+                <label class="perk-toggle">
+                  <input type="checkbox" />
+                  <span class="perk-toggle-slider"></span>
+                </label>
+              </div>
+              <p class="perk-description">
+                Звуковые эффекты: пространственное позиционирование,
+                вариативность, качество записи.
+              </p>
+              <div class="quality-control">
+                <div class="quality-label">
+                  <span>Качество</span>
+                  <span class="quality-value">1</span>
+                </div>
+                <input
+                  type="range"
+                  min="1"
+                  max="5"
+                  value="1"
+                  class="quality-slider"
+                />
+                <div class="quality-levels">
+                  <div class="quality-level active"></div>
+                  <div class="quality-level"></div>
+                  <div class="quality-level"></div>
+                  <div class="quality-level"></div>
+                  <div class="quality-level"></div>
+                </div>
+                <div class="quality-description">
+                  Без повторяющихся клипов в короткий промежуток
+                </div>
+              </div>
+              <div class="cost-display">
+                Стоимость: <strong>8 чел-лет</strong>
+              </div>
+            </div>
+
+            <div
+              class="perk-card"
+              data-type="fixed"
+              data-base-cost="10,25,55,100,170"
+              data-id="graphics"
+            >
+              <div class="perk-header">
+                <span class="perk-title">Графика</span>
+                <label class="perk-toggle">
+                  <input type="checkbox" />
+                  <span class="perk-toggle-slider"></span>
+                </label>
+              </div>
+              <p class="perk-description">
+                Визуальное качество: освещение, тени, шейдеры, текстуры,
+                пост-обработка.
+              </p>
+              <div class="quality-control">
+                <div class="quality-label">
+                  <span>Качество</span>
+                  <span class="quality-value">1</span>
+                </div>
+                <input
+                  type="range"
+                  min="1"
+                  max="5"
+                  value="1"
+                  class="quality-slider"
+                />
+                <div class="quality-levels">
+                  <div class="quality-level active"></div>
+                  <div class="quality-level"></div>
+                  <div class="quality-level"></div>
+                  <div class="quality-level"></div>
+                  <div class="quality-level"></div>
+                </div>
+                <div class="quality-description">
+                  Базовая графика без артефактов на целевых настройках
+                </div>
+              </div>
+              <div class="cost-display">
+                Стоимость: <strong>10 чел-лет</strong>
+              </div>
+            </div>
+
+            <div
+              class="perk-card"
+              data-type="fixed"
+              data-base-cost="5,12,25,45,80"
+              data-id="mod_support"
+            >
+              <div class="perk-header">
+                <span class="perk-title">Поддержка модов</span>
+                <label class="perk-toggle">
+                  <input type="checkbox" />
+                  <span class="perk-toggle-slider"></span>
+                </label>
+              </div>
+              <p class="perk-description">
+                Гибкость инструментов для сообщества: документация API,
+                поддержка пользовательских ассетов, система распространения.
+              </p>
+              <div class="quality-control">
+                <div class="quality-label">
+                  <span>Качество</span>
+                  <span class="quality-value">1</span>
+                </div>
+                <input
+                  type="range"
+                  min="1"
+                  max="5"
+                  value="1"
+                  class="quality-slider"
+                />
+                <div class="quality-levels">
+                  <div class="quality-level active"></div>
+                  <div class="quality-level"></div>
+                  <div class="quality-level"></div>
+                  <div class="quality-level"></div>
+                  <div class="quality-level"></div>
+                </div>
+                <div class="quality-description">
+                  Поддержка простых модов (замена текстур)
+                </div>
+              </div>
+              <div class="cost-display">
+                Стоимость: <strong>5 чел-лет</strong>
+              </div>
+            </div>
+
+            <div
+              class="perk-card"
+              data-type="count"
+              data-base-cost="0.2,0.5,1.2,2.5,4.5"
+              data-id="cutscenes"
+            >
+              <div class="perk-header">
+                <span class="perk-title">Кат-сцены</span>
+                <label class="perk-toggle">
+                  <input type="checkbox" />
+                  <span class="perk-toggle-slider"></span>
+                </label>
+              </div>
+              <p class="perk-description">
+                Кинематографические сцены: пререндеренные видео или ин-движковые
+                анимации для повествования.
+              </p>
+              <div class="quality-control">
+                <div class="quality-label">
+                  <span>Качество</span>
+                  <span class="quality-value">1</span>
+                </div>
+                <input
+                  type="range"
+                  min="1"
+                  max="5"
+                  value="1"
+                  class="quality-slider"
+                />
+                <div class="quality-levels">
+                  <div class="quality-level active"></div>
+                  <div class="quality-level"></div>
+                  <div class="quality-level"></div>
+                  <div class="quality-level"></div>
+                  <div class="quality-level"></div>
+                </div>
+                <div class="quality-description">
+                  Текст + статичные изображения
+                </div>
+              </div>
+              <div class="quantity-control">
+                <div class="quality-label">
+                  <span>Количество кат-сцен</span>
+                  <span class="quantity-display">0</span>
+                </div>
+                <div class="quantity-input">
+                  <input
+                    type="number"
+                    min="0"
+                    value="0"
+                    class="quantity-number"
+                  />
+                </div>
+              </div>
+              <div class="cost-display">
+                Стоимость: <strong>0 чел-лет</strong>
+              </div>
+            </div>
+          </div>
+
+          <!-- Импорт/Экспорт -->
+          <div class="import-export-section">
+            <h3>📤 Импорт / Экспорт параметров</h3>
+            <div class="form-group">
+              <label for="exportData">Экспортировать настройки:</label>
+              <textarea
+                id="exportData"
+                class="export-textarea"
+                readonly
+                placeholder="Нажмите 'Экспортировать' чтобы получить данные"
+              ></textarea>
+            </div>
+            <div class="import-export-buttons">
+              <button class="btn btn-import-export" id="exportBtn">
+                📤 Экспортировать
+              </button>
+              <button class="btn btn-import-export" id="importBtn">
+                📥 Импортировать
+              </button>
+            </div>
+            <p
+              style="
+                font-size: 0.85rem;
+                color: var(--text-muted);
+                margin-top: 10px;
+              "
+            >
+              Используйте эту функцию для резервного копирования или переноса
+              настроек между устройствами.
+            </p>
+          </div>
+        </div>
+
+        <!-- Правая колонка: итоги -->
+        <div class="right-column">
+          <div class="summary-card">
+            <div class="summary-header">
+              <div class="game-name-display" id="summaryName">Без названия</div>
+              <div class="game-desc-display" id="summaryDesc">
+                Описание отсутствует
+              </div>
+            </div>
+
+            <div class="summary-stats">
+              <div class="stat-item">
+                <span class="stat-label">Активных перков:</span>
+                <span class="stat-value" id="activePerks">0</span>
+              </div>
+              <div class="stat-item">
+                <span class="stat-label">Часов сюжета:</span>
+                <span class="stat-value" id="totalHours">0</span>
+              </div>
+              <div class="stat-item">
+                <span class="stat-label">Квестов:</span>
+                <span class="stat-value" id="totalQuests">0</span>
+              </div>
+              <div class="stat-item">
+                <span class="stat-label">Главных героев:</span>
+                <span class="stat-value" id="totalCharacters">0</span>
+              </div>
+              <div class="stat-item">
+                <span class="stat-label">Размер мира:</span>
+                <span class="stat-value" id="worldSize">0 км²</span>
+              </div>
+              <div class="stat-item">
+                <span class="stat-label">Закрытых локаций:</span>
+                <span class="stat-value" id="closedLocations">0</span>
+              </div>
+            </div>
+
+            <div class="total-cost">
+              <div class="total-cost-label">Общая стоимость разработки</div>
+              <div class="total-cost-value" id="totalCost">0</div>
+              <div
+                style="
+                  margin-top: 8px;
+                  font-size: 1.1rem;
+                  color: rgba(255, 255, 255, 0.85);
+                "
+              >
+                человеко-лет
+              </div>
+            </div>
+
+            <div class="comparison-card">
+              <div class="comparison-title">Ближайший аналог:</div>
+              <div class="comparison-game" id="comparisonGame">—</div>
+              <div class="comparison-desc" id="comparisonDesc">—</div>
+            </div>
+
+            <button class="btn" id="calculateBtn">🔄 Пересчитать</button>
+            <button class="btn btn-reset" id="resetBtn">↺ Сбросить всё</button>
+            <button class="btn btn-clear" id="clearStorageBtn">
+              🗑️ Очистить сохранение
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script>
+      // Данные для сравнения с реальными играми
+      const gameComparisons = [
+        {
+          name: "Stardew Valley",
+          cost: 175,
+          desc: "Инди-хит с минимальной командой",
+        },
+        {
+          name: "Hollow Knight",
+          cost: 385,
+          desc: "Крупный инди с качественным контентом",
+        },
+        {
+          name: "Hades",
+          cost: 870,
+          desc: "Успешный инди с командой 20+ человек",
+        },
+        { name: "Prey (2017)", cost: 1740, desc: "АА-проект с открытым миром" },
+        {
+          name: "The Witcher 3",
+          cost: 3150,
+          desc: "Полноценный ААА с огромным миром",
+        },
+        { name: "Cyberpunk 2077", cost: 5400, desc: "Крупный ААА до патчей" },
+        {
+          name: "Red Dead Redemption 2",
+          cost: 9100,
+          desc: "Мега-ААА с живым миром",
+        },
+        {
+          name: "GTA V + DLC",
+          cost: 14700,
+          desc: "Гипер-ААА с поддержкой 5+ лет",
+        },
+      ];
+
+      // Описания уровней качества для каждого перка
+      const qualityDescriptions = {
+        lore: [
+          "Базовый фон без противоречий: краткая предыстория мира, 1–2 ключевых события, минимальная мотивация персонажей",
+          "Связная история с 2–3 фракциями: у каждой фракции — мотивация, история конфликта, базовые культурные особенности",
+          "Документированная вселенная: книги в игре раскрывают историю, правила магии/технологий логичны, фракции имеют внутреннюю иерархию и конфликты",
+          "Богатая мифология с артефактами и легендами: древние цивилизации, пророчества, артефакты с историей, игрок сам собирает пазл лора через исследование",
+          "Энциклопедическая глубина: фанаты пишут вики, лор раскрыт в книгах/комиксах/других играх, каждая деталь мира имеет объяснение, противоречий нет даже при внимательном изучении",
+        ],
+        main_story: [
+          "Линейная история без изъянов",
+          "Чёткая арка с кульминацией",
+          "Ветвления с осмысленным выбором",
+          "Несколько концовок с весомыми последствиями",
+          "Динамический сюжет, перестраивающийся под игрока",
+        ],
+        side_quests: [
+          "«Убей 10 крыс» без повторяющихся фраз",
+          "Уникальный сценарий для каждого квеста",
+          "Квесты влияют на мир после завершения",
+          "Побочные квесты не уступают основным",
+          "Игрок сам ищет квесты без маркеров",
+        ],
+        closed_locations: [
+          "Базовые локации без повторяющихся текстур",
+          "Уникальный дизайн каждой локации",
+          "Локации влияют на геймплей",
+          "Секретные комнаты и скрытые пути",
+          "Полностью интерактивные локации с множеством решений",
+        ],
+        character_editor: [
+          "Базовый выбор пола и цвета волос",
+          "Кастомизация внешности (лицо, телосложение)",
+          "Выбор класса и начальных характеристик",
+          "Глубокая кастомизация с пресетами",
+          "Процедурная генерация уникальных персонажей",
+        ],
+        player_abilities: [
+          "Базовые механики без критических багов: стрельба попадает в цель, стелс работает в тени, можно поднимать предметы",
+          "Механики дополняют друг друга: укрытия влияют на точность стрельбы, шум привлекает врагов, можно толкать предметы для отвлечения",
+          "Глубина без сложности: комбо из прыжка+выстрела, использование окружения (масло+огонь), тактические укрытия, реакция мира на действия игрока",
+          "Мастерство вознаграждается: синергия механик (стелс+магия=невидимость+удушение), альтернативные пути решения (оглушить/убить/обойти), тактическое использование окружения (подвесные грузы, пар)",
+          "Идеальная отзывчивость + глубина: каждая механика работает как инструмент, бесшовная интеграция всех систем, игрок чувствует себя «в теле персонажа», мир реагирует на все действия предсказуемо и логично",
+        ],
+        survival_system: [
+          "1–2 параметра без раздражения (голод + жажда)",
+          "Параметры влияют на тактику",
+          "Выживание — часть атмосферы, не помеха",
+          "Параметры взаимодействуют между собой",
+          "Реалистично, но не утомительно",
+        ],
+        achievements: [
+          "Простые достижения",
+          "Достижения раскрывают секреты мира",
+          "Креативные цели без гриндинга",
+          "Достижения мотивируют к новым прохождениям",
+          "Сообщество создаёт челленджи на основе достижений",
+        ],
+        main_characters: [
+          "Персонаж без «деревянности»",
+          "Чёткая мотивация и развитие",
+          "Запоминающийся образ с фразами-цитатами",
+          "Персонаж вызывает сильные эмоции",
+          "Иконический статус в поп-культуре",
+        ],
+        npcs: [
+          "НПС без повторяющихся фраз",
+          "Уникальные диалоги для ключевых второстепенных",
+          "Персонажи с собственными квестами",
+          "Второстепенные влияют на основной сюжет",
+          "Даже мелкие НПС запоминаются игроками",
+        ],
+        perks: [
+          "3–5 веток без бесполезных навыков",
+          "Ветки создают разные стили игры",
+          "Синергия между ветками",
+          "Каждая сборка жизнеспособна",
+          "Тысячи уникальных сборок без дублирования",
+        ],
+        unique_items: [
+          "Базовые модели без багов, 1–2 вариации текстур, простые иконки, без уникальных эффектов",
+          "Уникальные текстуры и иконки, базовые звуки при использовании, предметы визуально отличаются друг от друга",
+          "Хорошие анимации использования, уникальные звуки, предметы влияют на геймплей осмысленно (урон, защита, эффекты)",
+          "Качественные модели с детализацией, уникальные звуковые эффекты, предметы имеют лор и историю, глубокий баланс",
+          "Кинематографическое качество: уникальные анимации для каждого предмета, голосовые озвучки при получении, предметы меняют мир или открывают новые пути, идеальный баланс",
+        ],
+
+        crafting: [
+          "5–10 рецептов без ошибок",
+          "Рецепты логичны (огонь + трава = зелье)",
+          "Глубина без зубрёжки",
+          "Крафт влияет на тактику боя",
+          "Тысячи комбинаций с логичными результатами",
+        ],
+        open_world: [
+          "Мир без «пустых» зон",
+          "Уникальные биомы с атмосферой",
+          "Каждая локация — отдельная история",
+          "Мир чувствуется «живым» без НПС",
+          "Идеальный баланс плотности контента",
+        ],
+        living_world: [
+          "День/ночь + базовая погода (солнце/дождь) без багов. НПС стоят на месте или ходят по простому паттерну. Сезоны отсутствуют.",
+          "Расписание НПС (дом → работа → таверна), 3–4 типа погоды (туман, гроза). Сезоны отсутствуют или статичны (всегда осень). Мир не меняется со временем.",
+          "События без участия игрока (разговоры НПС, драки, праздники). Базовая реакция мира на действия (воровство → охрана). Сезоны отсутствуют, но есть динамические события (чума в городе).",
+          "Полноценная смена времён года (весна/лето/осень/зима) с визуальными изменениями (листва, снег, цветение). Сезоны влияют на геймплей: зимой замерзают реки (новые пути), летом — засуха (ограниченная вода), осенью — туман (стелс проще). Миграция животных, изменение ассортимента торговцев.",
+          "Идеальная симуляция экосистемы: каждый НПС имеет семью, работу, хобби; животные размножаются и мигрируют по сезонам; погода влияет на урожай и цены; зимой замерзают реки и появляются новые маршруты, весной — наводнения блокируют пути, летом — лесные пожары, осенью — туман скрывает врагов. Мир существует и развивается независимо от игрока — при возвращении через 2 часа игрового времени город может быть захвачен бунтовщиками или очищен чумой.",
+        ],
+
+        enemy_ai: [
+          "НПС не застревают в текстурах",
+          "Базовая тактика (укрытия, фланги)",
+          "НПС координируются",
+          "Тактика меняется от вооружения игрока",
+          "Непредсказуемое, но логичное поведение",
+        ],
+        difficulty_levels: [
+          "3 режима сложности без багов",
+          "Сложность влияет на ИИ и урон",
+          "Динамическая подстройка под навыки игрока",
+          "Сложность сохраняет авторский замысел",
+          "Идеальный баланс для всех категорий игроков",
+        ],
+        companion_ai: [
+          "Напарник не мешает",
+          "Напарник полезен в бою",
+          "Тактика напарника адаптируется",
+          "Напарник принимает решения за игрока",
+          "Идеальный напарник без микроуправления",
+        ],
+        physics: [
+          "Физика без критических багов",
+          "Физика влияет на геймплей",
+          "Разрушаемость + физика объектов",
+          "Физика как инструмент решения головоломок",
+          "Стабильная физика при 100+ объектах",
+        ],
+        animations: [
+          "Без рывков и клиппинга",
+          "Плавные переходы между анимациями",
+          "Уникальные анимации для ключевых действий",
+          "Анимации передают эмоции",
+          "Кинематографическое качество",
+        ],
+        optimization: [
+          "30 FPS на минимальных настройках без крашей",
+          "60 FPS на средних настройках",
+          "Стабильный FPS в 95% сценариев",
+          "Оптимизация под слабые ПК без потери качества",
+          "Идеальная оптимизация на всех платформах",
+        ],
+        load_optimization: [
+          "Загрузка <30 секунд на HDD",
+          "Загрузка <10 секунд на HDD",
+          "Загрузка <5 секунд на SSD",
+          "Потоковая загрузка без экранов загрузки",
+          "Мгновенная загрузка между локациями",
+        ],
+        build_size: [
+          "Игра <20 ГБ без критической потери качества",
+          "Игра <10 ГБ с умным сжатием",
+          "Потоковая загрузка текстур",
+          "Размер <5 ГБ при АА-качестве",
+          "Минимальный размер без потери качества",
+        ],
+        save_system: [
+          "Ручное сохранение без потери данных",
+          "Автосейвы в безопасных зонах",
+          "Квиксейвы без ограничений",
+          "Баланс между удобством и напряжением",
+          "Невозможно потерять прогресс из-за бага",
+        ],
+        ui_ux: [
+          "Без критических багов навигации",
+          "Интуитивная навигация без туториала",
+          "HUD не закрывает игровой процесс",
+          "Адаптивный интерфейс под ситуацию",
+          "Идеальная интуитивность для 95% игроков",
+        ],
+        music: [
+          "3+ трека без повторов в короткий промежуток",
+          "Музыка усиливает атмосферу",
+          "Динамические переходы под события",
+          "Саундтрек становится частью бренда",
+          "Музыкальные награды (пример: Celeste, Hollow Knight)",
+        ],
+        sound_effects: [
+          "Без повторяющихся клипов в короткий промежуток",
+          "Пространственное звучание (3D-звук)",
+          "Звуки отражают состояние объектов",
+          "Звук как геймплейный элемент (пример: Hellblade)",
+          "Кинематографическое качество звука",
+        ],
+        graphics: [
+          "Базовая графика без артефактов на целевых настройках",
+          "Хорошее освещение и детализация текстур",
+          "Продвинутые шейдеры, пост-обработка, тени",
+          "Фотореалистичные материалы, глобальное освещение",
+          "Кинематографическое качество с рейтрейсингом",
+        ],
+        mod_support: [
+          "Поддержка простых модов (замена текстур)",
+          "Официальный инструмент для моддинга",
+          "Моды не ломают обновления",
+          "Моды как часть бизнес-модели",
+          "Моды расширяют игру до уровня отдельного тайтла",
+        ],
+        cutscenes: [
+          "Текст + статичные изображения",
+          "Базовая анимация (слайды, простые переходы)",
+          "Ин-движковые кат-сцены с хорошей анимацией",
+          "Кинематографическое качество (камеры, освещение, монтаж)",
+          "Пререндер + запись актёров (фотореализм)",
+        ],
+      };
+
+      // Ключ для localStorage
+      const STORAGE_KEY = "gameDevPlanner_v3";
+
+      // Флаг для предотвращения рекурсивных вызовов при загрузке
+      let isLoading = false;
+
+      // Инициализация
+      document.addEventListener("DOMContentLoaded", function () {
+        // Загрузка сохранённых данных
+        loadFromStorage();
+
+        // Настройка обработчиков событий
+        setupEventListeners();
+
+        // Обновление всех отображений
+        updateAllDisplays();
+
+        // Показать индикатор автосохранения
+        showSaveIndicator();
+
+        // Первый расчёт
+        calculateTotal();
+      });
+
+      function setupEventListeners() {
+        // Изменение названия и описания
+        document
+          .getElementById("gameName")
+          .addEventListener("input", function () {
+            document.getElementById("summaryName").textContent =
+              this.value || "Без названия";
+            saveToStorage();
+          });
+
+        document
+          .getElementById("gameDesc")
+          .addEventListener("input", function () {
+            document.getElementById("summaryDesc").textContent =
+              this.value || "Описание отсутствует";
+            saveToStorage();
+          });
+
+        // Переключение перков
+        document.querySelectorAll(".perk-toggle input").forEach((toggle) => {
+          toggle.addEventListener("change", function () {
+            const card = this.closest(".perk-card");
+            const isActive = this.checked;
+
+            card.classList.toggle("active", isActive);
+
+            // Включение/выключение инпутов
+            const inputs = card.querySelectorAll(
+              "input:not(.perk-toggle input)",
+            );
+            inputs.forEach((input) => {
+              input.disabled = !isActive;
+            });
+
+            // Если выключили перк - сбрасываем стоимость на 0
+            if (!isActive) {
+              card.querySelector(".cost-display strong").textContent =
+                "0 чел-лет";
+            }
+
+            updateCostDisplay(card);
+            calculateTotal();
+            saveToStorage();
+          });
+        });
+
+        // Изменение качества
+        document.querySelectorAll(".quality-slider").forEach((slider) => {
+          slider.addEventListener("input", function () {
+            const value = parseInt(this.value);
+            const card = this.closest(".perk-card");
+            const perkId = card.dataset.id;
+
+            // Обновление отображения значения
+            card.querySelector(".quality-value").textContent = value;
+
+            // Обновление индикаторов уровня
+            const levels = card.querySelectorAll(".quality-level");
+            levels.forEach((level, index) => {
+              level.classList.toggle("active", index < value);
+            });
+
+            // Обновление описания качества
+            if (qualityDescriptions[perkId]) {
+              card.querySelector(".quality-description").textContent =
+                qualityDescriptions[perkId][value - 1];
+            }
+
+            updateCostDisplay(card);
+            calculateTotal();
+            saveToStorage();
+          });
+        });
+
+        // Изменение количества
+        document.querySelectorAll(".quantity-number").forEach((input) => {
+          input.addEventListener("input", function () {
+            // Ограничение минимального значения
+            if (this.value < 0) this.value = 0;
+
+            const card = this.closest(".perk-card");
+            card.querySelector(".quantity-display").textContent = this.value;
+
+            updateCostDisplay(card);
+            calculateTotal();
+            saveToStorage();
+          });
+        });
+
+        // Кнопка пересчёта
+        document
+          .getElementById("calculateBtn")
+          .addEventListener("click", function () {
+            calculateTotal();
+          });
+
+        // Кнопка сброса
+        document
+          .getElementById("resetBtn")
+          .addEventListener("click", function () {
+            if (confirm("Сбросить все настройки к нулевым значениям?")) {
+              resetAll();
+              saveToStorage();
+            }
+          });
+
+        // Кнопка очистки сохранения
+        document
+          .getElementById("clearStorageBtn")
+          .addEventListener("click", function () {
+            if (
+              confirm(
+                "Очистить сохранённые данные? После этого все настройки будут сброшены и страница перезагрузится.",
+              )
+            ) {
+              localStorage.removeItem(STORAGE_KEY);
+              alert("Сохранение очищено. Страница перезагрузится.");
+              location.reload();
+            }
+          });
+
+        // Кнопка экспорта
+        document
+          .getElementById("exportBtn")
+          .addEventListener("click", function () {
+            const data = {
+              gameName: document.getElementById("gameName").value,
+              gameDesc: document.getElementById("gameDesc").value,
+              perks: {},
+            };
+
+            document.querySelectorAll(".perk-card").forEach((card) => {
+              const id = card.dataset.id;
+              if (!id) return;
+
+              data.perks[id] = {
+                active: card.querySelector(".perk-toggle input").checked,
+                quality: parseInt(card.querySelector(".quality-slider").value),
+                quantity: card.querySelector(".quantity-number")
+                  ? parseInt(card.querySelector(".quantity-number").value)
+                  : null,
+              };
+            });
+
+            const jsonString = JSON.stringify(data, null, 2);
+            document.getElementById("exportData").value = jsonString;
+
+            // Автоматическое копирование в буфер обмена
+            document.getElementById("exportData").select();
+            document.execCommand("copy");
+            alert("Настройки скопированы в буфер обмена!");
+          });
+
+        // Кнопка импорта
+        document
+          .getElementById("importBtn")
+          .addEventListener("click", function () {
+            const userInput = prompt("Вставьте JSON-данные для импорта:");
+            if (!userInput) return;
+
+            try {
+              const data = JSON.parse(userInput);
+              isLoading = true;
+
+              // Загрузка основной информации
+              if (data.gameName) {
+                document.getElementById("gameName").value = data.gameName;
+                document.getElementById("summaryName").textContent =
+                  data.gameName;
+              }
+              if (data.gameDesc) {
+                document.getElementById("gameDesc").value = data.gameDesc;
+                document.getElementById("summaryDesc").textContent =
+                  data.gameDesc;
+              }
+
+              // Загрузка перков
+              if (data.perks) {
+                Object.entries(data.perks).forEach(([id, perkData]) => {
+                  const card = document.querySelector(
+                    `.perk-card[data-id="${id}"]`,
+                  );
+                  if (!card) return;
+
+                  const toggle = card.querySelector(".perk-toggle input");
+                  const slider = card.querySelector(".quality-slider");
+                  const numberInput = card.querySelector(".quantity-number");
+
+                  // Активность
+                  toggle.checked = perkData.active;
+                  card.classList.toggle("active", perkData.active);
+
+                  // Качество
+                  if (perkData.quality && slider) {
+                    slider.value = perkData.quality;
+                    card.querySelector(".quality-value").textContent =
+                      perkData.quality;
+
+                    // Обновление индикаторов уровня
+                    const levels = card.querySelectorAll(".quality-level");
+                    levels.forEach((level, index) => {
+                      level.classList.toggle(
+                        "active",
+                        index < perkData.quality,
+                      );
+                    });
+
+                    // Обновление описания
+                    if (qualityDescriptions[id]) {
+                      card.querySelector(".quality-description").textContent =
+                        qualityDescriptions[id][perkData.quality - 1];
+                    }
+                  }
+
+                  // Количество
+                  if (perkData.quantity !== null && numberInput) {
+                    numberInput.value = perkData.quantity;
+                    card.querySelector(".quantity-display").textContent =
+                      perkData.quantity;
+                  }
+
+                  // Включение/выключение инпутов
+                  const inputs = card.querySelectorAll(
+                    "input:not(.perk-toggle input)",
+                  );
+                  inputs.forEach((input) => {
+                    input.disabled = !perkData.active;
+                  });
+
+                  updateCostDisplay(card);
+                });
+              }
+
+              isLoading = false;
+              calculateTotal();
+              saveToStorage();
+              alert("Настройки успешно импортированы!");
+            } catch (e) {
+              alert("Ошибка при импорте данных: " + e.message);
+            }
+          });
+      }
+
+      function updateCostDisplay(card) {
+        if (!card.querySelector(".perk-toggle input").checked) {
+          card.querySelector(".cost-display strong").textContent = "0 чел-лет";
+          return;
+        }
+
+        const type = card.dataset.type;
+        const baseCosts = card.dataset.baseCost.split(",").map(Number);
+        const multiplier = parseFloat(card.dataset.multiplier || 1);
+        const quality = parseInt(card.querySelector(".quality-slider").value);
+        const costPerUnit = baseCosts[quality - 1] * multiplier;
+
+        let totalCost = 0;
+
+        if (type === "fixed") {
+          // Фиксированная стоимость
+          totalCost = costPerUnit;
+        } else if (type === "hours" || type === "count" || type === "km2") {
+          // Стоимость = количество × цена за единицу
+          const quantity =
+            parseInt(card.querySelector(".quantity-number").value) || 0;
+          totalCost = quantity * costPerUnit;
+        }
+
+        card.querySelector(".cost-display strong").textContent =
+          totalCost.toFixed(1) + " чел-лет";
+      }
+
+      function updateAllDisplays() {
+        document.querySelectorAll(".perk-card").forEach((card) => {
+          updateCostDisplay(card);
+        });
+      }
+
+      function calculateTotal() {
+        if (isLoading) return;
+
+        let total = 0;
+        let activeCount = 0;
+        let totalHours = 0;
+        let totalQuests = 0;
+        let totalCharacters = 0;
+        let worldSize = 0;
+        let closedLocs = 0;
+
+        document.querySelectorAll(".perk-card").forEach((card) => {
+          if (!card.querySelector(".perk-toggle input").checked) return;
+
+          activeCount++;
+          const costText = card.querySelector(
+            ".cost-display strong",
+          ).textContent;
+          const cost = parseFloat(costText) || 0;
+          total += cost;
+
+          // Сбор статистики
+          const title = card.querySelector(".perk-title").textContent;
+          if (title.includes("Основной сюжет")) {
+            totalHours =
+              parseInt(card.querySelector(".quantity-number").value) || 0;
+          } else if (title.includes("Побочные квесты")) {
+            totalQuests =
+              parseInt(card.querySelector(".quantity-number").value) || 0;
+          } else if (title.includes("Главные персонажи")) {
+            totalCharacters =
+              parseInt(card.querySelector(".quantity-number").value) || 0;
+          } else if (title.includes("Открытый мир")) {
+            worldSize =
+              parseInt(card.querySelector(".quantity-number").value) || 0;
+          } else if (title.includes("Закрытые локации")) {
+            closedLocs =
+              parseInt(card.querySelector(".quantity-number").value) || 0;
+          }
+        });
+
+        // Обновление итогов
+        document.getElementById("totalCost").textContent = Math.round(total);
+        document.getElementById("activePerks").textContent = activeCount;
+        document.getElementById("totalHours").textContent = totalHours;
+        document.getElementById("totalQuests").textContent = totalQuests;
+        document.getElementById("totalCharacters").textContent =
+          totalCharacters;
+        document.getElementById("worldSize").textContent = worldSize + " км²";
+        document.getElementById("closedLocations").textContent = closedLocs;
+
+        // Определение ближайшего аналога
+        findClosestGame(total);
+      }
+
+      function findClosestGame(cost) {
+        if (cost === 0) {
+          document.getElementById("comparisonGame").textContent = "—";
+          document.getElementById("comparisonDesc").textContent = "—";
+          return;
+        }
+
+        let closest = gameComparisons[0];
+        let minDiff = Math.abs(gameComparisons[0].cost - cost);
+
+        gameComparisons.forEach((game) => {
+          const diff = Math.abs(game.cost - cost);
+          if (diff < minDiff) {
+            minDiff = diff;
+            closest = game;
+          }
+        });
+
+        document.getElementById("comparisonGame").textContent = closest.name;
+        document.getElementById("comparisonDesc").textContent = closest.desc;
+      }
+
+      function resetAll() {
+        isLoading = true;
+
+        // Сброс формы
+        document.getElementById("gameName").value = "";
+        document.getElementById("gameDesc").value = "";
+        document.getElementById("summaryName").textContent = "Без названия";
+        document.getElementById("summaryDesc").textContent =
+          "Описание отсутствует";
+
+        // Сброс всех перков
+        document.querySelectorAll(".perk-card").forEach((card) => {
+          const toggle = card.querySelector(".perk-toggle input");
+          const slider = card.querySelector(".quality-slider");
+          const numberInput = card.querySelector(".quantity-number");
+
+          toggle.checked = false;
+          card.classList.remove("active");
+
+          // Сброс слайдеров и инпутов
+          slider.value = "1";
+          if (numberInput) numberInput.value = "0";
+
+          // Обновление отображения
+          card.querySelector(".quality-value").textContent = "1";
+          if (numberInput) {
+            card.querySelector(".quantity-display").textContent = "0";
+          }
+
+          // Обновление индикаторов уровня
+          const levels = card.querySelectorAll(".quality-level");
+          levels.forEach((level, index) => {
+            level.classList.toggle("active", index < 1);
+          });
+
+          // Обновление описания качества
+          const perkId = card.dataset.id;
+          if (qualityDescriptions[perkId]) {
+            card.querySelector(".quality-description").textContent =
+              qualityDescriptions[perkId][0];
+          }
+
+          // Выключение инпутов
+          const inputs = card.querySelectorAll("input:not(.perk-toggle input)");
+          inputs.forEach((input) => {
+            input.disabled = true;
+          });
+
+          // Сброс стоимости
+          card.querySelector(".cost-display strong").textContent = "0 чел-лет";
+        });
+
+        calculateTotal();
+        isLoading = false;
+      }
+
+      // === ФУНКЦИИ СОХРАНЕНИЯ ===
+
+      function saveToStorage() {
+        if (isLoading) return;
+
+        const data = {
+          gameName: document.getElementById("gameName").value,
+          gameDesc: document.getElementById("gameDesc").value,
+          perks: {},
+        };
+
+        document.querySelectorAll(".perk-card").forEach((card) => {
+          const id = card.dataset.id;
+          if (!id) return;
+
+          data.perks[id] = {
+            active: card.querySelector(".perk-toggle input").checked,
+            quality: parseInt(card.querySelector(".quality-slider").value),
+            quantity: card.querySelector(".quantity-number")
+              ? parseInt(card.querySelector(".quantity-number").value)
+              : null,
+          };
+        });
+
+        try {
+          localStorage.setItem(STORAGE_KEY, JSON.stringify(data));
+        } catch (e) {
+          console.error("Ошибка сохранения:", e);
+        }
+      }
+
+      function loadFromStorage() {
+        try {
+          const saved = localStorage.getItem(STORAGE_KEY);
+          if (!saved) return;
+
+          isLoading = true;
+          const data = JSON.parse(saved);
+
+          // Загрузка основной информации
+          if (data.gameName) {
+            document.getElementById("gameName").value = data.gameName;
+            document.getElementById("summaryName").textContent = data.gameName;
+          }
+          if (data.gameDesc) {
+            document.getElementById("gameDesc").value = data.gameDesc;
+            document.getElementById("summaryDesc").textContent = data.gameDesc;
+          }
+
+          // Загрузка перков
+          if (data.perks) {
+            Object.entries(data.perks).forEach(([id, perkData]) => {
+              const card = document.querySelector(
+                `.perk-card[data-id="${id}"]`,
+              );
+              if (!card) return;
+
+              const toggle = card.querySelector(".perk-toggle input");
+              const slider = card.querySelector(".quality-slider");
+              const numberInput = card.querySelector(".quantity-number");
+
+              // Активность
+              toggle.checked = perkData.active;
+              card.classList.toggle("active", perkData.active);
+
+              // Качество
+              if (perkData.quality && slider) {
+                slider.value = perkData.quality;
+                card.querySelector(".quality-value").textContent =
+                  perkData.quality;
+
+                // Обновление индикаторов уровня
+                const levels = card.querySelectorAll(".quality-level");
+                levels.forEach((level, index) => {
+                  level.classList.toggle("active", index < perkData.quality);
+                });
+
+                // Обновление описания
+                if (qualityDescriptions[id]) {
+                  card.querySelector(".quality-description").textContent =
+                    qualityDescriptions[id][perkData.quality - 1];
+                }
+              }
+
+              // Количество
+              if (perkData.quantity !== null && numberInput) {
+                numberInput.value = perkData.quantity;
+                card.querySelector(".quantity-display").textContent =
+                  perkData.quantity;
+              }
+
+              // Включение/выключение инпутов
+              const inputs = card.querySelectorAll(
+                "input:not(.perk-toggle input)",
+              );
+              inputs.forEach((input) => {
+                input.disabled = !perkData.active;
+              });
+            });
+          }
+
+          isLoading = false;
+        } catch (e) {
+          console.error("Ошибка загрузки:", e);
+          // Если ошибка - сбрасываем сохранение
+          localStorage.removeItem(STORAGE_KEY);
+        }
+      }
+
+      function showSaveIndicator() {
+        const indicator = document.getElementById("saveIndicator");
+        indicator.classList.add("show");
+
+        setTimeout(() => {
+          indicator.classList.remove("show");
+        }, 2000);
+      }
+    </script>
+  </body>
+</html>
