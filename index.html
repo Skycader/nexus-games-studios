@@ -627,6 +627,9 @@
       .btn:active {
         transform: translateY(0);
       }
+      .btn + .btn {
+        margin-top: 10px;
+      }
       .btn-reset {
         background: linear-gradient(135deg, #ff7675, #e84341);
         margin-top: 15px;
@@ -3063,6 +3066,7 @@
               </div>
             </div>
             <button class="btn" id="calculateBtn">🔄 Пересчитать</button>
+            <button class="btn" id="copySummaryBtn">📋 Скопировать</button>
             <button class="btn btn-reset" id="resetBtn">↺ Сбросить всё</button>
             <button class="btn btn-clear" id="clearStorageBtn">
               🗑️ Очистить сохранение
@@ -3510,6 +3514,69 @@
           .addEventListener("click", function () {
             calculateTotal();
             updateProgress();
+          });
+        // Кнопка «Скопировать» — название, описание и перечень перков с качеством и количеством
+        document
+          .getElementById("copySummaryBtn")
+          .addEventListener("click", function () {
+            const name =
+              document.getElementById("gameName").value?.trim() ||
+              document.getElementById("summaryName").textContent ||
+              "Без названия";
+            const desc =
+              document.getElementById("gameDesc").value?.trim() ||
+              document.getElementById("summaryDesc").textContent ||
+              "Описание отсутствует";
+            const lines = [name, "", desc, "", "Контент:"];
+            document.querySelectorAll(".perk-card").forEach((card) => {
+              if (!card.querySelector(".perk-toggle input").checked) return;
+              const perkId = card.dataset.id;
+              const title = card.querySelector(".perk-title")?.textContent?.trim() || "";
+              const quality = parseInt(
+                card.querySelector(".quality-slider")?.value,
+                10
+              ) || 1;
+              const qualityText =
+                perkId && qualityDescriptions[perkId] && qualityDescriptions[perkId][quality - 1]
+                  ? qualityDescriptions[perkId][quality - 1]
+                  : `Качество ${quality}`;
+              let part = `• ${title} — ${qualityText}`;
+              const qCtrl = card.querySelector(".quantity-control");
+              const qInput = card.querySelector(".quantity-number");
+              if (qCtrl && qInput) {
+                const qLabel = qCtrl.querySelector(".quality-label span");
+                const label = qLabel?.textContent?.trim() || "Количество";
+                const value = qInput.value !== "" ? qInput.value : "0";
+                part += `; ${label}: ${value}`;
+              }
+              lines.push(part);
+            });
+            const text = lines.join("\n");
+            if (navigator.clipboard && navigator.clipboard.writeText) {
+              navigator.clipboard.writeText(text).then(
+                () => alert("Скопировано в буфер обмена."),
+                () => {
+                  fallbackCopy(text);
+                }
+              );
+            } else {
+              fallbackCopy(text);
+            }
+            function fallbackCopy(str) {
+              const ta = document.createElement("textarea");
+              ta.value = str;
+              ta.style.position = "fixed";
+              ta.style.opacity = "0";
+              document.body.appendChild(ta);
+              ta.select();
+              try {
+                document.execCommand("copy");
+                alert("Скопировано в буфер обмена.");
+              } catch (e) {
+                alert("Не удалось скопировать. Скопируйте вручную.");
+              }
+              document.body.removeChild(ta);
+            }
           });
         // Кнопка сброса
         document
