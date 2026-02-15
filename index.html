@@ -490,6 +490,31 @@
         font-size: 0.9rem;
         color: var(--text-muted);
       }
+      .comparison-list {
+        text-align: left;
+      }
+      .comparison-empty {
+        font-size: 0.95rem;
+        color: var(--text-muted);
+        font-style: italic;
+      }
+      .comparison-item {
+        padding: 10px 0;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+      }
+      .comparison-item:last-child {
+        border-bottom: none;
+      }
+      .comparison-item-name {
+        font-size: 1.1rem;
+        font-weight: 700;
+        color: var(--accent-secondary);
+        margin-bottom: 4px;
+      }
+      .comparison-item-desc {
+        font-size: 0.85rem;
+        color: var(--text-muted);
+      }
       .params-tables-section {
         background: var(--bg-secondary);
         border-radius: var(--border-radius);
@@ -3032,9 +3057,10 @@
               </div>
             </div>
             <div class="comparison-card">
-              <div class="comparison-title">Ближайший аналог:</div>
-              <div class="comparison-game" id="comparisonGame">—</div>
-              <div class="comparison-desc" id="comparisonDesc">—</div>
+              <div class="comparison-title">Похожие игры:</div>
+              <div class="comparison-list" id="comparisonList">
+                <div class="comparison-empty" id="comparisonEmpty">— Укажите перки для подбора аналогов</div>
+              </div>
             </div>
             <button class="btn" id="calculateBtn">🔄 Пересчитать</button>
             <button class="btn btn-reset" id="resetBtn">↺ Сбросить всё</button>
@@ -3046,108 +3072,45 @@
       </div>
     </div>
     <script>
-      // Данные для сравнения с реальными играми
+      // Профиль игры: все значения 0–1 (нормализованы)
+      // openWorld, worldSize, mainStory, sideQuests, stealth, missionVariety, storyDepth, choices, survival, crafting, characterDepth
       const gameComparisons = [
-        {
-          name: "Minecraft (Alpha)",
-          cost: 2,
-          desc: "Процедурный базис, минимум ручного контента",
-        },
-        {
-          name: "Portal 1",
-          cost: 15,
-          desc: "Короткая камерная игра, одна ключевая механика",
-        },
-        {
-          name: "Half-Life 1",
-          cost: 60,
-          desc: "Линейный коридорный шутер, база для жанра",
-        },
-        {
-          name: "BioShock 2",
-          cost: 110,
-          desc: "Повторное использование ассетов и механик первой части",
-        },
-        {
-          name: "Dead Space",
-          cost: 130,
-          desc: "Узкоспециализированный хоррор, упор на звук и расчлененку",
-        },
-        {
-          name: "Crysis 1",
-          cost: 150,
-          desc: "Технологичная песочница, но сюжетно довольно короткая",
-        },
-        {
-          name: "Metro 2033",
-          cost: 160,
-          desc: "Линейные туннели, высокая детализация окружения",
-        },
-        {
-          name: "Dead Space 2",
-          cost: 180,
-          desc: "Рост масштаба, больше уникальных ситуаций и врагов",
-        },
-        {
-          name: "Crysis 2",
-          cost: 190,
-          desc: "Вертикальный геймплей в городе, больше скриптов",
-        },
-        {
-          name: "Crysis 3",
-          cost: 210,
-          desc: "Пиковая графика, новые механики охоты, но малая длина",
-        },
-        {
-          name: "Half-Life 2",
-          cost: 220,
-          desc: "Разнообразие глав: гравипушка, транспорт, хоррор, война",
-        },
-        {
-          name: "Far Cry 1",
-          cost: 240,
-          desc: "Огромные открытые уровни и сложный для того времени ИИ",
-        },
-        {
-          name: "S.T.A.L.K.E.R.: Тень Чернобыля",
-          cost: 300,
-          desc: "Система симуляции жизни A-Life и сложная структура мира",
-        },
-        {
-          name: "BioShock Infinite",
-          cost: 350,
-          desc: "Экстремальная проработка арта и ИИ-напарника",
-        },
-        {
-          name: "Far Cry 2",
-          cost: 380,
-          desc: "Системный мир: распространение огня, износ оружия, малярия",
-        },
-        {
-          name: "Far Cry 3",
-          cost: 420,
-          desc: "Масса контента: охота, аванпосты, крафт, побочные квесты",
-        },
-        {
-          name: "Skyrim",
-          cost: 450,
-          desc: "Гигантское количество квестов, подземелий и систем",
-        },
-        {
-          name: "Far Cry 4",
-          cost: 500,
-          desc: "Расширение идей FC3, еще больше активностей и коопа",
-        },
-        {
-          name: "The Witcher 3",
-          cost: 900,
-          desc: "Эталон ручной работы: каждый квест — уникальная история",
-        },
-        {
-          name: "GTA V",
-          cost: 2500,
-          desc: "Три героя, детальный мегаполис и сотни вложенных механик",
-        },
+        { name: "Minecraft (Alpha)", desc: "Процедурный базис, минимум ручного контента", profile: { openWorld: 1, worldSize: 0.2, mainStory: 0, sideQuests: 0, stealth: 0, missionVariety: 0, storyDepth: 0.1, choices: 0, survival: 0.8, crafting: 1, characterDepth: 0 } },
+        { name: "Portal 1", desc: "Короткая камерная игра, одна ключевая механика", profile: { openWorld: 0, worldSize: 0, mainStory: 0.15, sideQuests: 0, stealth: 0, missionVariety: 0.3, storyDepth: 0.3, choices: 0, survival: 0, crafting: 0, characterDepth: 0.2 } },
+        { name: "Half-Life 1", desc: "Линейный коридорный шутер, база для жанра", profile: { openWorld: 0, worldSize: 0, mainStory: 0.4, sideQuests: 0, stealth: 0.2, missionVariety: 0.2, storyDepth: 0.4, choices: 0, survival: 0, crafting: 0, characterDepth: 0.3 } },
+        { name: "BioShock 2", desc: "Повторное использование ассетов и механик первой части", profile: { openWorld: 0, worldSize: 0, mainStory: 0.5, sideQuests: 0.1, stealth: 0, missionVariety: 0.3, storyDepth: 0.6, choices: 0.3, survival: 0, crafting: 0, characterDepth: 0.5 } },
+        { name: "Dead Space", desc: "Узкоспециализированный хоррор, упор на звук и расчлененку", profile: { openWorld: 0, worldSize: 0, mainStory: 0.5, sideQuests: 0, stealth: 0, missionVariety: 0.2, storyDepth: 0.5, choices: 0, survival: 0, crafting: 0, characterDepth: 0.5 } },
+        { name: "Crysis 1", desc: "Технологичная песочница, но сюжетно довольно короткая", profile: { openWorld: 0, worldSize: 0.3, mainStory: 0.3, sideQuests: 0, stealth: 0.2, missionVariety: 0.4, storyDepth: 0.3, choices: 0, survival: 0, crafting: 0, characterDepth: 0.3 } },
+        { name: "Metro 2033", desc: "Линейные туннели, высокая детализация окружения", profile: { openWorld: 0, worldSize: 0, mainStory: 0.5, sideQuests: 0, stealth: 0.4, missionVariety: 0.3, storyDepth: 0.6, choices: 0.2, survival: 0, crafting: 0, characterDepth: 0.4 } },
+        { name: "Dead Space 2", desc: "Рост масштаба, больше уникальных ситуаций и врагов", profile: { openWorld: 0, worldSize: 0, mainStory: 0.6, sideQuests: 0, stealth: 0, missionVariety: 0.3, storyDepth: 0.5, choices: 0, survival: 0, crafting: 0, characterDepth: 0.5 } },
+        { name: "Crysis 2", desc: "Вертикальный геймплей в городе, больше скриптов", profile: { openWorld: 0, worldSize: 0, mainStory: 0.4, sideQuests: 0, stealth: 0.2, missionVariety: 0.4, storyDepth: 0.4, choices: 0, survival: 0, crafting: 0, characterDepth: 0.4 } },
+        { name: "Crysis 3", desc: "Пиковая графика, новые механики охоты, но малая длина", profile: { openWorld: 0, worldSize: 0, mainStory: 0.35, sideQuests: 0, stealth: 0.3, missionVariety: 0.5, storyDepth: 0.4, choices: 0, survival: 0, crafting: 0, characterDepth: 0.4 } },
+        { name: "Half-Life 2", desc: "Разнообразие глав: гравипушка, транспорт, хоррор, война", profile: { openWorld: 0, worldSize: 0, mainStory: 0.6, sideQuests: 0, stealth: 0.2, missionVariety: 0.5, storyDepth: 0.6, choices: 0, survival: 0, crafting: 0, characterDepth: 0.5 } },
+        { name: "Far Cry 1", desc: "Огромные открытые уровни и сложный для того времени ИИ", profile: { openWorld: 0, worldSize: 0.4, mainStory: 0.4, sideQuests: 0.1, stealth: 0.4, missionVariety: 0.5, storyDepth: 0.4, choices: 0, survival: 0, crafting: 0, characterDepth: 0.3 } },
+        { name: "S.T.A.L.K.E.R.: Тень Чернобыля", desc: "Система симуляции жизни A-Life и сложная структура мира", profile: { openWorld: 1, worldSize: 0.3, mainStory: 0.5, sideQuests: 0.2, stealth: 0.3, missionVariety: 0.5, storyDepth: 0.5, choices: 0.2, survival: 0, crafting: 0, characterDepth: 0.4 } },
+        { name: "BioShock Infinite", desc: "Экстремальная проработка арта и ИИ-напарника", profile: { openWorld: 0, worldSize: 0, mainStory: 0.5, sideQuests: 0, stealth: 0, missionVariety: 0.3, storyDepth: 0.6, choices: 0.3, survival: 0, crafting: 0, characterDepth: 0.6 } },
+        { name: "Far Cry 2", desc: "Системный мир: распространение огня, износ оружия, малярия", profile: { openWorld: 1, worldSize: 0.4, mainStory: 0.4, sideQuests: 0.2, stealth: 0.4, missionVariety: 0.6, storyDepth: 0.4, choices: 0.2, survival: 0.2, crafting: 0, characterDepth: 0.4 } },
+        { name: "Far Cry 3", desc: "Масса контента: охота, аванпосты, крафт, побочные квесты", profile: { openWorld: 1, worldSize: 0.5, mainStory: 0.5, sideQuests: 0.6, stealth: 0.5, missionVariety: 0.7, storyDepth: 0.5, choices: 0.3, survival: 0, crafting: 0.4, characterDepth: 0.5 } },
+        { name: "Skyrim", desc: "Гигантское количество квестов, подземелий и систем", profile: { openWorld: 1, worldSize: 0.8, mainStory: 0.7, sideQuests: 1, stealth: 0.2, missionVariety: 0.5, storyDepth: 0.7, choices: 0.4, survival: 0, crafting: 0.6, characterDepth: 0.6 } },
+        { name: "Far Cry 4", desc: "Расширение идей FC3, еще больше активностей и коопа", profile: { openWorld: 1, worldSize: 0.5, mainStory: 0.5, sideQuests: 0.7, stealth: 0.5, missionVariety: 0.7, storyDepth: 0.5, choices: 0.3, survival: 0, crafting: 0.4, characterDepth: 0.5 } },
+        { name: "The Witcher 3", desc: "Эталон ручной работы: каждый квест — уникальная история", profile: { openWorld: 1, worldSize: 0.9, mainStory: 0.9, sideQuests: 1, stealth: 0.2, missionVariety: 0.7, storyDepth: 0.95, choices: 0.8, survival: 0, crafting: 0.4, characterDepth: 0.95 } },
+        { name: "GTA V", desc: "Три героя, детальный мегаполис и сотни вложенных механик", profile: { openWorld: 1, worldSize: 0.6, mainStory: 0.8, sideQuests: 0.9, stealth: 0.2, missionVariety: 0.6, storyDepth: 0.7, choices: 0.4, survival: 0, crafting: 0.2, characterDepth: 0.8 } },
+        { name: "Hitman (2016)", desc: "Стелс-песочница, десятки способов устранения цели", profile: { openWorld: 0, worldSize: 0, mainStory: 0.3, sideQuests: 0, stealth: 1, missionVariety: 1, storyDepth: 0.4, choices: 0.3, survival: 0, crafting: 0, characterDepth: 0.4 } },
+        { name: "Metal Gear Solid V", desc: "Открытый мир, глубокий стелс и вариативность миссий", profile: { openWorld: 1, worldSize: 0.5, mainStory: 0.6, sideQuests: 0.3, stealth: 1, missionVariety: 1, storyDepth: 0.6, choices: 0.5, survival: 0, crafting: 0.3, characterDepth: 0.6 } },
+        { name: "Dishonored", desc: "Стелс-экшен с магией и множеством путей прохождения", profile: { openWorld: 0, worldSize: 0, mainStory: 0.4, sideQuests: 0.2, stealth: 1, missionVariety: 1, storyDepth: 0.5, choices: 0.5, survival: 0, crafting: 0, characterDepth: 0.5 } },
+        { name: "Deus Ex: Human Revolution", desc: "RPG-стелс, выбор подхода и развилки сюжета", profile: { openWorld: 0, worldSize: 0, mainStory: 0.5, sideQuests: 0.2, stealth: 0.8, missionVariety: 1, storyDepth: 0.6, choices: 0.6, survival: 0, crafting: 0, characterDepth: 0.6 } },
+        { name: "Elden Ring", desc: "Открытый мир, высокий сюжетный порог, минимум явных выборов", profile: { openWorld: 1, worldSize: 1, mainStory: 0.7, sideQuests: 0.8, stealth: 0.2, missionVariety: 0.6, storyDepth: 0.8, choices: 0.3, survival: 0, crafting: 0.5, characterDepth: 0.6 } },
+        { name: "Red Dead Redemption 2", desc: "Живой мир, глубокий сюжет и проработка персонажей", profile: { openWorld: 1, worldSize: 0.9, mainStory: 0.9, sideQuests: 0.9, stealth: 0.2, missionVariety: 0.5, storyDepth: 0.9, choices: 0.5, survival: 0.2, crafting: 0.3, characterDepth: 0.95 } },
+        { name: "Disco Elysium", desc: "Диалоговая RPG с максимумом выборов и концовок", profile: { openWorld: 0, worldSize: 0, mainStory: 0.5, sideQuests: 0.2, stealth: 0, missionVariety: 0.3, storyDepth: 0.9, choices: 1, survival: 0, crafting: 0, characterDepth: 0.9 } },
+        { name: "Dark Souls", desc: "Линейные уровни, глубокий лор, минимум явного сюжета", profile: { openWorld: 0, worldSize: 0, mainStory: 0.3, sideQuests: 0.2, stealth: 0, missionVariety: 0.3, storyDepth: 0.7, choices: 0.2, survival: 0, crafting: 0.4, characterDepth: 0.4 } },
+        { name: "Mass Effect 2", desc: "Линейная структура, сильные выборы и концовки", profile: { openWorld: 0, worldSize: 0, mainStory: 0.6, sideQuests: 0.3, stealth: 0, missionVariety: 0.4, storyDepth: 0.7, choices: 0.7, survival: 0, crafting: 0, characterDepth: 0.8 } },
+        { name: "Dragon Age: Origins", desc: "Тактическая RPG с развилками и множеством концовок", profile: { openWorld: 0, worldSize: 0, mainStory: 0.7, sideQuests: 0.5, stealth: 0, missionVariety: 0.5, storyDepth: 0.8, choices: 0.9, survival: 0, crafting: 0, characterDepth: 0.8 } },
+        { name: "Subnautica", desc: "Открытый мир, выживание, крафт, исследование", profile: { openWorld: 1, worldSize: 0.4, mainStory: 0.3, sideQuests: 0.2, stealth: 0, missionVariety: 0.5, storyDepth: 0.3, choices: 0, survival: 0.6, crafting: 0.5, characterDepth: 0.3 } },
+        { name: "Valheim", desc: "Процедурный мир, выживание и крафт в сеттингe викингов", profile: { openWorld: 1, worldSize: 0.3, mainStory: 0, sideQuests: 0.2, stealth: 0, missionVariety: 0.4, storyDepth: 0.1, choices: 0, survival: 0.8, crafting: 0.9, characterDepth: 0.2 } },
+        { name: "Hollow Knight", desc: "Метроидвания с атмосферой и скрытым лором", profile: { openWorld: 0, worldSize: 0.15, mainStory: 0.25, sideQuests: 0.1, stealth: 0, missionVariety: 0.2, storyDepth: 0.5, choices: 0, survival: 0, crafting: 0, characterDepth: 0.4 } },
+        { name: "Celeste", desc: "Линейный платформер с коротким сюжетом", profile: { openWorld: 0, worldSize: 0, mainStory: 0.2, sideQuests: 0, stealth: 0, missionVariety: 0, storyDepth: 0.5, choices: 0, survival: 0, crafting: 0, characterDepth: 0.4 } },
+        { name: "Detroit: Become Human", desc: "Кинематографичные развилки и множество концовок", profile: { openWorld: 0, worldSize: 0, mainStory: 0.5, sideQuests: 0, stealth: 0, missionVariety: 0.4, storyDepth: 0.6, choices: 1, survival: 0, crafting: 0, characterDepth: 0.7 } },
+        { name: "Kingdom Come: Deliverance", desc: "Реалистичный открытый мир, выживание и исторический сюжет", profile: { openWorld: 1, worldSize: 0.4, mainStory: 0.6, sideQuests: 0.5, stealth: 0.3, missionVariety: 0.6, storyDepth: 0.6, choices: 0.5, survival: 0.6, crafting: 0.4, characterDepth: 0.6 } },
       ];
       // Описания уровней качества для каждого перка (полностью переработаны с примерами)
       const qualityDescriptions = {
@@ -3820,7 +3783,7 @@
         document.getElementById("worldSize").textContent = worldSize + " км²";
         document.getElementById("closedLocations").textContent =
           closedLocs * 100 + " м²";
-        findClosestGame(total);
+        findClosestGame();
         updateParamsTables();
         updateDevLog();
         return total;
@@ -3830,6 +3793,37 @@
         if (!card || !card.querySelector(".perk-toggle input").checked)
           return 0;
         return parseInt(card.querySelector(".quality-slider")?.value) || 0;
+      }
+      function getPerkQuantity(perkId) {
+        const card = document.querySelector(`.perk-card[data-id="${perkId}"]`);
+        if (!card || !card.querySelector(".perk-toggle input").checked) return 0;
+        const numInput = card.querySelector(".quantity-number");
+        return numInput ? parseInt(numInput.value) || 0 : 0;
+      }
+      function getCurrentPerkProfile() {
+        const openWorldActive = getPerkLevel("open_world") > 0 || getPerkQuantity("open_world") > 0;
+        const openWorldQ = getPerkQuantity("open_world");
+        const mainStoryQ = getPerkQuantity("main_story");
+        const mainStoryL = getPerkLevel("main_story");
+        const sideQuestsQ = getPerkQuantity("side_quests");
+        const loreL = getPerkLevel("lore");
+        const macroL = getPerkLevel("macro_choices");
+        const microL = getPerkLevel("micro_choices");
+        const mainCharsQ = getPerkQuantity("main_characters");
+        const npcsL = getPerkLevel("npcs");
+        return {
+          openWorld: openWorldActive ? 1 : 0,
+          worldSize: openWorldActive ? Math.min(1, openWorldQ / 50) : 0,
+          mainStory: mainStoryQ > 0 ? Math.min(1, mainStoryQ / 80) : 0,
+          sideQuests: sideQuestsQ > 0 ? Math.min(1, sideQuestsQ / 100) : 0,
+          stealth: getPerkLevel("stealth") / 5,
+          missionVariety: getPerkLevel("mission_variety") / 5,
+          storyDepth: (loreL > 0 || mainStoryL > 0) ? ((loreL + mainStoryL) / 10) : 0,
+          choices: (macroL > 0 || microL > 0) ? ((macroL + microL) / 10) : 0,
+          survival: getPerkLevel("survival_system") / 5,
+          crafting: getPerkLevel("crafting") / 5,
+          characterDepth: Math.min(1, (Math.min(1, mainCharsQ / 15) + npcsL / 5) / 2),
+        };
       }
       function updateParamsTables() {
         const baseSizeGB = getBaseSizeGB();
@@ -3942,23 +3936,39 @@
           .map((t) => `<div class="dev-log-line">${t}</div>`)
           .join("");
       }
-      function findClosestGame(cost) {
-        if (cost === 0) {
-          document.getElementById("comparisonGame").textContent = "—";
-          document.getElementById("comparisonDesc").textContent = "—";
+      function findClosestGame() {
+        const profile = getCurrentPerkProfile();
+        const keys = Object.keys(profile);
+        const hasAny = keys.some((k) => profile[k] > 0);
+        const listEl = document.getElementById("comparisonList");
+        const emptyEl = document.getElementById("comparisonEmpty");
+        if (!hasAny) {
+          if (emptyEl) emptyEl.style.display = "block";
+          listEl.querySelectorAll(".comparison-item").forEach((el) => el.remove());
+          if (!listEl.contains(emptyEl)) listEl.appendChild(emptyEl);
           return;
         }
-        let closest = gameComparisons[0];
-        let minDiff = Math.abs(gameComparisons[0].cost - cost);
-        gameComparisons.forEach((game) => {
-          const diff = Math.abs(game.cost - cost);
-          if (diff < minDiff) {
-            minDiff = diff;
-            closest = game;
-          }
+        if (emptyEl) emptyEl.style.display = "none";
+        const weighted = { openWorld: 1, worldSize: 1.2, mainStory: 1.1, sideQuests: 1, stealth: 1.3, missionVariety: 1.2, storyDepth: 1.1, choices: 1.1, survival: 1, crafting: 0.9, characterDepth: 1 };
+        const scored = gameComparisons.map((game) => {
+          let dist = 0;
+          keys.forEach((k) => {
+            const w = weighted[k] || 1;
+            const d = (profile[k] - game.profile[k]) * (profile[k] - game.profile[k]);
+            dist += w * d;
+          });
+          return { game, dist };
         });
-        document.getElementById("comparisonGame").textContent = closest.name;
-        document.getElementById("comparisonDesc").textContent = closest.desc;
+        scored.sort((a, b) => a.dist - b.dist);
+        const top = scored.slice(0, 5);
+        listEl.querySelectorAll(".comparison-item").forEach((el) => el.remove());
+        if (listEl.contains(emptyEl)) emptyEl.remove();
+        top.forEach(({ game }) => {
+          const item = document.createElement("div");
+          item.className = "comparison-item";
+          item.innerHTML = `<div class="comparison-item-name">${game.name}</div><div class="comparison-item-desc">${game.desc}</div>`;
+          listEl.appendChild(item);
+        });
       }
       function resetAll() {
         isLoading = true;
