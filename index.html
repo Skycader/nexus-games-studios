@@ -490,6 +490,95 @@
         font-size: 0.9rem;
         color: var(--text-muted);
       }
+      .params-tables-section {
+        background: var(--bg-secondary);
+        border-radius: var(--border-radius);
+        padding: 18px;
+        margin-bottom: 20px;
+      }
+      .params-tables-section h3 {
+        font-size: 1.05rem;
+        color: var(--accent-secondary);
+        margin-bottom: 12px;
+        display: flex;
+        align-items: center;
+        gap: 8px;
+      }
+      .params-table {
+        width: 100%;
+        border-collapse: collapse;
+        font-size: 0.9rem;
+        margin-bottom: 16px;
+      }
+      .params-table:last-child {
+        margin-bottom: 0;
+      }
+      .params-table th,
+      .params-table td {
+        padding: 10px 12px;
+        text-align: left;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+      }
+      .params-table th {
+        color: var(--text-secondary);
+        font-weight: 600;
+      }
+      .params-table td {
+        color: var(--text-primary);
+      }
+      .params-table tr:hover td {
+        background: rgba(255, 255, 255, 0.04);
+      }
+      .stat-bugs {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 12px 16px;
+        background: rgba(255, 255, 255, 0.06);
+        border-radius: 8px;
+        margin-bottom: 16px;
+        font-size: 0.95rem;
+      }
+      .stat-bugs.high {
+        border-left: 4px solid var(--danger);
+      }
+      .stat-bugs.medium {
+        border-left: 4px solid var(--warning);
+      }
+      .stat-bugs.low {
+        border-left: 4px solid var(--success);
+      }
+      .dev-log-section {
+        background: var(--bg-secondary);
+        border-radius: var(--border-radius);
+        padding: 18px;
+        margin-bottom: 20px;
+      }
+      .dev-log-section h3 {
+        font-size: 1.05rem;
+        color: var(--accent-secondary);
+        margin-bottom: 12px;
+      }
+      .dev-log {
+        font-family: "Consolas", "Monaco", monospace;
+        font-size: 0.8rem;
+        color: var(--text-secondary);
+        max-height: 220px;
+        overflow-y: auto;
+        padding: 12px;
+        background: rgba(0, 0, 0, 0.3);
+        border-radius: 8px;
+        line-height: 1.7;
+      }
+      .dev-log-line {
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+      }
+      .dev-log-line::before {
+        content: "> ";
+        color: var(--text-muted);
+      }
       .btn {
         display: inline-block;
         padding: 14px 32px;
@@ -2603,6 +2692,85 @@
               </div>
             </div>
 
+            <!-- Параметры игры: размер, FPS, загрузки, баги -->
+            <div class="params-tables-section">
+              <h3>📦 Размер и производительность</h3>
+              <table class="params-table">
+                <thead>
+                  <tr>
+                    <th>Параметр</th>
+                    <th>Значение</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>Сжатая версия (загрузка)</td>
+                    <td><span id="sizeCompressed">—</span> ГБ</td>
+                  </tr>
+                  <tr>
+                    <td>На диске после установки</td>
+                    <td><span id="sizeInstalled">—</span> ГБ</td>
+                  </tr>
+                </tbody>
+              </table>
+              <table class="params-table">
+                <thead>
+                  <tr>
+                    <th>Конфигурация</th>
+                    <th>Ожидаемый FPS</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>Современные ПК и консоли</td>
+                    <td><span id="fpsModern">—</span></td>
+                  </tr>
+                  <tr>
+                    <td>ПК 5 лет / ноутбуки и консоли ~10 лет</td>
+                    <td><span id="fpsMid">—</span></td>
+                  </tr>
+                  <tr>
+                    <td>ПК 10 лет / слабые ноутбуки и консоли</td>
+                    <td><span id="fpsOld">—</span></td>
+                  </tr>
+                </tbody>
+              </table>
+              <table class="params-table">
+                <thead>
+                  <tr>
+                    <th>Конфигурация</th>
+                    <th>Загрузка локаций (среднее)</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>Современные (SSD)</td>
+                    <td><span id="loadModern">—</span></td>
+                  </tr>
+                  <tr>
+                    <td>ПК 5 лет / HDD или слабый SSD</td>
+                    <td><span id="loadMid">—</span></td>
+                  </tr>
+                  <tr>
+                    <td>ПК 10 лет / HDD</td>
+                    <td><span id="loadOld">—</span></td>
+                  </tr>
+                </tbody>
+              </table>
+              <div class="stat-bugs" id="bugsBlock">
+                <span>Ожидаемое кол-во багов (без QA — выше, возможен патч после релиза)</span>
+                <strong id="expectedBugs">—</strong>
+              </div>
+            </div>
+
+            <!-- Лог разработки -->
+            <div class="dev-log-section">
+              <h3>📋 Лог разработки</h3>
+              <div class="dev-log" id="devLog">
+                <div class="dev-log-line">Ожидание начала разработки...</div>
+              </div>
+            </div>
+
             <!-- НОВЫЙ БЛОК: Прогресс разработки -->
             <div class="progress-section">
               <div class="progress-label">
@@ -3105,11 +3273,12 @@
         // Изменение количества
         document.querySelectorAll(".quantity-number").forEach((input) => {
           input.addEventListener("input", function () {
-            // Ограничение минимального значения
             if (this.value < 0) this.value = 0;
             const card = this.closest(".perk-card");
             card.querySelector(".quantity-display").textContent = this.value;
             updateCostDisplay(card);
+            const buildSizeCard = document.querySelector(".perk-card[data-id=\"build_size\"]");
+            if (buildSizeCard) updateCostDisplay(buildSizeCard);
             calculateTotal();
             updateProgress();
             saveToStorage();
@@ -3267,6 +3436,28 @@
             }
           });
       }
+      function getContentStats() {
+        let totalHours = 0, totalQuests = 0, totalCharacters = 0, worldSize = 0, closedLocs = 0;
+        document.querySelectorAll(".perk-card").forEach((card) => {
+          if (!card.querySelector(".perk-toggle input").checked) return;
+          const title = card.querySelector(".perk-title")?.textContent || "";
+          const q = parseInt(card.querySelector(".quantity-number")?.value) || 0;
+          if (title.includes("Основной сюжет")) totalHours = q;
+          else if (title.includes("Побочные квесты")) totalQuests = q;
+          else if (title.includes("Главные персонажи")) totalCharacters = q;
+          else if (title.includes("Открытый мир")) worldSize = q;
+          else if (title.includes("Закрытые локации")) closedLocs = q;
+        });
+        return { totalHours, totalQuests, totalCharacters, worldSize, closedLocs };
+      }
+      function getBaseSizeGB() {
+        const s = getContentStats();
+        const base = 2;
+        const fromHours = s.totalHours * 0.25;
+        const fromLocs = Math.min(s.closedLocs / 3000, 30);
+        const fromWorld = s.worldSize * 0.6;
+        return Math.max(1, base + fromHours + fromLocs + fromWorld);
+      }
       function updateCostDisplay(card) {
         if (!card.querySelector(".perk-toggle input").checked) {
           card.querySelector(".cost-display strong").textContent = "0 чел-лет";
@@ -3274,15 +3465,17 @@
         }
         const type = card.dataset.type;
         const baseCosts = card.dataset.baseCost.split(",").map(Number);
-        const multiplier = parseFloat(card.dataset.multiplier || 1);
+        let multiplier = parseFloat(card.dataset.multiplier || 1);
+        if (card.dataset.id === "build_size") {
+          const baseGB = getBaseSizeGB();
+          multiplier = 0.35 + baseGB / 55;
+        }
         const quality = parseInt(card.querySelector(".quality-slider").value);
         const costPerUnit = baseCosts[quality - 1] * multiplier;
         let totalCost = 0;
         if (type === "fixed") {
-          // Фиксированная стоимость
           totalCost = costPerUnit;
         } else if (type === "hours" || type === "count" || type === "km2") {
-          // Стоимость = количество × цена за единицу
           const quantity =
             parseInt(card.querySelector(".quantity-number").value) || 0;
           totalCost = quantity * costPerUnit;
@@ -3297,6 +3490,8 @@
       }
       function calculateTotal() {
         if (isLoading) return;
+        const buildSizeCard = document.querySelector(".perk-card[data-id=\"build_size\"]");
+        if (buildSizeCard) updateCostDisplay(buildSizeCard);
         let total = 0;
         let activeCount = 0;
         let totalHours = 0;
@@ -3341,9 +3536,90 @@
         document.getElementById("worldSize").textContent = worldSize + " км²";
         document.getElementById("closedLocations").textContent =
           closedLocs + " м²";
-        // Определение ближайшего аналога
         findClosestGame(total);
+        updateParamsTables();
+        updateDevLog();
         return total;
+      }
+      function getPerkLevel(perkId) {
+        const card = document.querySelector(`.perk-card[data-id="${perkId}"]`);
+        if (!card || !card.querySelector(".perk-toggle input").checked) return 0;
+        return parseInt(card.querySelector(".quality-slider")?.value) || 0;
+      }
+      function updateParamsTables() {
+        const baseSizeGB = getBaseSizeGB();
+        const buildLevel = getPerkLevel("build_size");
+        const graphicsLevel = getPerkLevel("graphics");
+        const optLevel = getPerkLevel("optimization");
+        const loadOptLevel = getPerkLevel("load_optimization");
+        const qaLevel = getPerkLevel("testing");
+        const totalCost = parseFloat(document.getElementById("totalCost")?.textContent || 0);
+
+        const sizeMult = buildLevel === 0 ? 1 : 1 - (buildLevel * 0.08);
+        const installedGB = Math.max(0.5, baseSizeGB * sizeMult);
+        const compressedGB = Math.max(0.3, installedGB * 0.65);
+
+        document.getElementById("sizeCompressed").textContent = compressedGB.toFixed(1);
+        document.getElementById("sizeInstalled").textContent = installedGB.toFixed(1);
+
+        const g = graphicsLevel || 1;
+        const opt = optLevel;
+        const fpsModern = 60;
+        const fpsMid = Math.max(15, [55, 48, 38, 28, 22][g - 1] + (opt ? opt * 4 : 0));
+        const fpsOld = Math.max(10, [42, 28, 18, 12, 8][g - 1] + (opt ? opt * 5 : 0));
+        document.getElementById("fpsModern").textContent = fpsModern + "+ FPS";
+        document.getElementById("fpsMid").textContent = fpsMid + " FPS";
+        document.getElementById("fpsOld").textContent = fpsOld + " FPS";
+
+        const loadBase = 2 + installedGB * 0.15;
+        const loadReduce = loadOptLevel * 0.12;
+        const loadMod = Math.max(1, (loadBase * (1 - loadReduce)) * 0.4);
+        const loadMid = Math.max(3, (loadBase * (1 - loadReduce * 0.7)) * 1.2);
+        const loadOld = Math.max(8, (loadBase * (1 - loadReduce * 0.5)) * 2.5);
+        document.getElementById("loadModern").textContent = loadMod.toFixed(1) + " с";
+        document.getElementById("loadMid").textContent = loadMid.toFixed(1) + " с";
+        document.getElementById("loadOld").textContent = loadOld.toFixed(1) + " с";
+
+        const baseBugs = Math.max(0, Math.round(totalCost / 18));
+        const hasQA = qaLevel > 0;
+        const expectedBugs = hasQA
+          ? Math.max(0, Math.round(baseBugs / (1 + qaLevel * 0.45)))
+          : Math.round(baseBugs * 2.2);
+        const bugsEl = document.getElementById("bugsBlock");
+        const bugsVal = document.getElementById("expectedBugs");
+        bugsVal.textContent = expectedBugs;
+        bugsEl.classList.remove("high", "medium", "low");
+        if (expectedBugs > 15) bugsEl.classList.add("high");
+        else if (expectedBugs > 5) bugsEl.classList.add("medium");
+        else bugsEl.classList.add("low");
+      }
+      const devLogPhases = [
+        { p: 0, text: "Разработка начата." },
+        { p: 5, text: "Лор: 30%." },
+        { p: 10, text: "Лор: 50%." },
+        { p: 15, text: "Лор: 90%." },
+        { p: 18, text: "Основной сюжет: в разработке." },
+        { p: 28, text: "Побочные квесты: в работе." },
+        { p: 38, text: "Контент и локации: в разработке." },
+        { p: 50, text: "Геймплей и системы: в работе." },
+        { p: 62, text: "Графика и анимации: в работе." },
+        { p: 75, text: "Техническая полировка: в работе." },
+        { p: 85, text: "Тестирование: в процессе." },
+        { p: 95, text: "Тестирование: финальная стадия." },
+        { p: 100, text: "Тестирование завершено. Готово к релизу." },
+      ];
+      function updateDevLog() {
+        const invested = parseInt(document.getElementById("investedInput")?.value) || 0;
+        const totalCost = parseFloat(document.getElementById("totalCost")?.textContent || 0);
+        const progress = totalCost > 0 ? Math.min(100, Math.round((invested / totalCost) * 100)) : 0;
+        const lines = devLogPhases.filter((x) => progress >= x.p).map((x) => x.text);
+        const container = document.getElementById("devLog");
+        if (!container) return;
+        if (lines.length === 0) {
+          container.innerHTML = '<div class="dev-log-line">Ожидание начала разработки...</div>';
+          return;
+        }
+        container.innerHTML = lines.map((t) => `<div class="dev-log-line">${t}</div>`).join("");
       }
       function findClosestGame(cost) {
         if (cost === 0) {
@@ -3534,7 +3810,8 @@
         document.getElementById("progressBar").style.width = progress + "%";
         document.getElementById("progressPercent").textContent = progress + "%";
         document.getElementById("remainingYears").textContent = remaining;
-        // Обновление цвета прогресса
+        updateParamsTables();
+        updateDevLog();
         const progressBar = document.getElementById("progressBar");
         if (progress < 30) {
           progressBar.style.background =
