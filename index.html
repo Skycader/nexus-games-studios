@@ -3278,7 +3278,9 @@
             card.querySelector(".quantity-display").textContent = this.value;
             updateCostDisplay(card);
             const buildSizeCard = document.querySelector(".perk-card[data-id=\"build_size\"]");
+            const testingCard = document.querySelector(".perk-card[data-id=\"testing\"]");
             if (buildSizeCard) updateCostDisplay(buildSizeCard);
+            if (testingCard) updateCostDisplay(testingCard);
             calculateTotal();
             updateProgress();
             saveToStorage();
@@ -3458,6 +3460,10 @@
         const fromWorld = s.worldSize * 0.6;
         return Math.max(1, base + fromHours + fromLocs + fromWorld);
       }
+      function getGameplayHoursScale() {
+        const s = getContentStats();
+        return s.totalHours + s.totalQuests * 0.15 + s.closedLocs / 4000 + s.worldSize * 0.5;
+      }
       function updateCostDisplay(card) {
         if (!card.querySelector(".perk-toggle input").checked) {
           card.querySelector(".cost-display strong").textContent = "0 чел-лет";
@@ -3469,6 +3475,9 @@
         if (card.dataset.id === "build_size") {
           const baseGB = getBaseSizeGB();
           multiplier = 0.35 + baseGB / 55;
+        } else if (card.dataset.id === "testing") {
+          const scale = Math.max(5, getGameplayHoursScale());
+          multiplier = 0.4 + scale / 45;
         }
         const quality = parseInt(card.querySelector(".quality-slider").value);
         const costPerUnit = baseCosts[quality - 1] * multiplier;
@@ -3491,7 +3500,9 @@
       function calculateTotal() {
         if (isLoading) return;
         const buildSizeCard = document.querySelector(".perk-card[data-id=\"build_size\"]");
+        const testingCard = document.querySelector(".perk-card[data-id=\"testing\"]");
         if (buildSizeCard) updateCostDisplay(buildSizeCard);
+        if (testingCard) updateCostDisplay(testingCard);
         let total = 0;
         let activeCount = 0;
         let totalHours = 0;
@@ -3582,16 +3593,25 @@
 
         const baseBugs = Math.max(0, Math.round(totalCost / 18));
         const hasQA = qaLevel > 0;
-        const expectedBugs = hasQA
-          ? Math.max(0, Math.round(baseBugs / (1 + qaLevel * 0.45)))
-          : Math.round(baseBugs * 2.2);
         const bugsEl = document.getElementById("bugsBlock");
         const bugsVal = document.getElementById("expectedBugs");
-        bugsVal.textContent = expectedBugs;
         bugsEl.classList.remove("high", "medium", "low");
-        if (expectedBugs > 15) bugsEl.classList.add("high");
-        else if (expectedBugs > 5) bugsEl.classList.add("medium");
-        else bugsEl.classList.add("low");
+        if (qaLevel === 5) {
+          bugsVal.textContent = "минимально (критические отловлены до релиза)";
+          bugsEl.classList.add("low");
+        } else if (hasQA) {
+          const expectedBugs = Math.max(0, Math.round(baseBugs / (1 + qaLevel * 0.45)));
+          bugsVal.textContent = expectedBugs;
+          if (expectedBugs > 15) bugsEl.classList.add("high");
+          else if (expectedBugs > 5) bugsEl.classList.add("medium");
+          else bugsEl.classList.add("low");
+        } else {
+          const expectedBugs = Math.round(baseBugs * 2.2);
+          bugsVal.textContent = expectedBugs;
+          if (expectedBugs > 15) bugsEl.classList.add("high");
+          else if (expectedBugs > 5) bugsEl.classList.add("medium");
+          else bugsEl.classList.add("low");
+        }
       }
       const devLogPhases = [
         { p: 0, text: "Разработка начата." },
