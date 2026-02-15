@@ -753,7 +753,7 @@
           <!-- Сюжет и контент -->
           <div class="category-divider">
             <h2 class="category-title">📖 Сюжет и контент</h2>
-            <span class="category-badge">4 перка</span>
+            <span class="category-badge">6 перков</span>
           </div>
           <div class="perks-grid">
             <div
@@ -984,6 +984,123 @@
             </div>
             <div
               class="perk-card"
+              data-type="count"
+              data-base-cost="0.02,0.05,0.1,0.2,0.35"
+              data-id="micro_choices"
+            >
+              <div class="perk-header">
+                <span class="perk-title">Микровыборы игрока</span>
+                <label class="perk-toggle">
+                  <input type="checkbox" />
+                  <span class="perk-toggle-slider"></span>
+                </label>
+              </div>
+              <p class="perk-description">
+                Выборы в диалогах и ситуациях, слабо влияющие на сюжет: тон
+                ответа, мелкие последствия, атмосфера.
+              </p>
+              <div class="quality-control">
+                <div class="quality-label">
+                  <span>Качество</span>
+                  <span class="quality-value">1</span>
+                </div>
+                <input
+                  type="range"
+                  min="1"
+                  max="5"
+                  value="1"
+                  class="quality-slider"
+                />
+                <div class="quality-levels">
+                  <div class="quality-level active"></div>
+                  <div class="quality-level"></div>
+                  <div class="quality-level"></div>
+                  <div class="quality-level"></div>
+                  <div class="quality-level"></div>
+                </div>
+                <div class="quality-description">
+                  Уровень 1: Качество низкое — варианты ответов почти не отличаются
+                  по последствиям, мир не реагирует.
+                </div>
+              </div>
+              <div class="quantity-control">
+                <div class="quality-label">
+                  <span>Количество микровыборов</span>
+                  <span class="quantity-display">0</span>
+                </div>
+                <div class="quantity-input">
+                  <input
+                    type="number"
+                    min="0"
+                    value="0"
+                    class="quantity-number"
+                  />
+                </div>
+              </div>
+              <div class="cost-display">
+                Стоимость: <strong>0 чел-лет</strong>
+              </div>
+            </div>
+            <div
+              class="perk-card"
+              data-type="count"
+              data-base-cost="0.15,0.3,0.6,1.0,1.5"
+              data-id="macro_choices"
+            >
+              <div class="perk-header">
+                <span class="perk-title">Макровыборы игрока</span>
+                <label class="perk-toggle">
+                  <input type="checkbox" />
+                  <span class="perk-toggle-slider"></span>
+                </label>
+              </div>
+              <p class="perk-description">
+                Ключевые решения, ведущие к разным концовкам и веткам сюжета.
+              </p>
+              <div class="quality-control">
+                <div class="quality-label">
+                  <span>Качество</span>
+                  <span class="quality-value">1</span>
+                </div>
+                <input
+                  type="range"
+                  min="1"
+                  max="5"
+                  value="1"
+                  class="quality-slider"
+                />
+                <div class="quality-levels">
+                  <div class="quality-level active"></div>
+                  <div class="quality-level"></div>
+                  <div class="quality-level"></div>
+                  <div class="quality-level"></div>
+                  <div class="quality-level"></div>
+                </div>
+                <div class="quality-description">
+                  Уровень 1: Качество низкое — развилка примитивная, последствия
+                  поверхностные или неочевидные.
+                </div>
+              </div>
+              <div class="quantity-control">
+                <div class="quality-label">
+                  <span>Количество макровыборов / концовок</span>
+                  <span class="quantity-display">0</span>
+                </div>
+                <div class="quantity-input">
+                  <input
+                    type="number"
+                    min="0"
+                    value="0"
+                    class="quantity-number"
+                  />
+                </div>
+              </div>
+              <div class="cost-display">
+                Стоимость: <strong>0 чел-лет</strong>
+              </div>
+            </div>
+            <div
+              class="perk-card"
               data-type="fixed"
               data-base-cost="5,12,25,45,75"
               data-id="character_editor"
@@ -1032,7 +1149,7 @@
           <!-- Системы выживания и достижений -->
           <div class="category-divider">
             <h2 class="category-title">⚡ Системы геймплея</h2>
-            <span class="category-badge">5 перков</span>
+            <span class="category-badge">7 перков</span>
           </div>
           <div class="perks-grid">
             <div
@@ -1308,6 +1425,96 @@
               </div>
               <div class="cost-display">
                 Стоимость: <strong>0 чел-лет</strong>
+              </div>
+            </div>
+            <div
+              class="perk-card"
+              data-type="fixed"
+              data-base-cost="8,20,42,75,125"
+              data-id="mission_variety"
+            >
+              <div class="perk-header">
+                <span class="perk-title">Вариативность миссий</span>
+                <label class="perk-toggle">
+                  <input type="checkbox" />
+                  <span class="perk-toggle-slider"></span>
+                </label>
+              </div>
+              <p class="perk-description">
+                Возможность проходить миссии разными способами: бой, стелс,
+                дипломатия, обходные пути.
+              </p>
+              <div class="quality-control">
+                <div class="quality-label">
+                  <span>Качество</span>
+                  <span class="quality-value">1</span>
+                </div>
+                <input
+                  type="range"
+                  min="1"
+                  max="5"
+                  value="1"
+                  class="quality-slider"
+                />
+                <div class="quality-levels">
+                  <div class="quality-level active"></div>
+                  <div class="quality-level"></div>
+                  <div class="quality-level"></div>
+                  <div class="quality-level"></div>
+                  <div class="quality-level"></div>
+                </div>
+                <div class="quality-description">
+                  Уровень 1: Один основной способ прохождения. Уровень 5: Несколько
+                  полноценных путей с разными механиками и наградами.
+                </div>
+              </div>
+              <div class="cost-display">
+                Стоимость: <strong>8 чел-лет</strong>
+              </div>
+            </div>
+            <div
+              class="perk-card"
+              data-type="fixed"
+              data-base-cost="10,25,52,95,155"
+              data-id="stealth"
+            >
+              <div class="perk-header">
+                <span class="perk-title">Стелс</span>
+                <label class="perk-toggle">
+                  <input type="checkbox" />
+                  <span class="perk-toggle-slider"></span>
+                </label>
+              </div>
+              <p class="perk-description">
+                Механика скрытности: тени, звук, линия обзора, отвлечение врагов,
+                скрытые убийства.
+              </p>
+              <div class="quality-control">
+                <div class="quality-label">
+                  <span>Качество</span>
+                  <span class="quality-value">1</span>
+                </div>
+                <input
+                  type="range"
+                  min="1"
+                  max="5"
+                  value="1"
+                  class="quality-slider"
+                />
+                <div class="quality-levels">
+                  <div class="quality-level active"></div>
+                  <div class="quality-level"></div>
+                  <div class="quality-level"></div>
+                  <div class="quality-level"></div>
+                  <div class="quality-level"></div>
+                </div>
+                <div class="quality-description">
+                  Уровень 1: Базовый стелс — тень и шум. Уровень 5: Глубокий стелс
+                  — линия обзора, отвлечение, скрытые убийства, индикатор внимания.
+                </div>
+              </div>
+              <div class="cost-display">
+                Стоимость: <strong>10 чел-лет</strong>
               </div>
             </div>
           </div>
@@ -2758,7 +2965,10 @@
                 </tbody>
               </table>
               <div class="stat-bugs" id="bugsBlock">
-                <span>Ожидаемое кол-во багов (без QA — выше, возможен патч после релиза)</span>
+                <span
+                  >Ожидаемое кол-во багов (без QA — выше, возможен патч после
+                  релиза)</span
+                >
                 <strong id="expectedBugs">—</strong>
               </div>
             </div>
@@ -2969,6 +3179,20 @@
           "Уровень 4: Секретные комнаты и скрытые пути. Пример: локации в Bloodborne — сложная архитектура с 10+ комнатами, секретными проходами и ловушками.",
           "Уровень 5: Полностью интерактивные локации. Пример: локации в Hitman — десятки комнат, разрушаемость, динамическое освещение, каждый предмет можно использовать, множество решений для задач.",
         ],
+        micro_choices: [
+          "Уровень 1: Качество низкое — варианты ответов почти не отличаются по последствиям, мир не реагирует. Пример: диалоги в старых RPG — разный текст, один и тот же исход, без отклика мира.",
+          "Уровень 2: Качество базовое — тон выбора отражается в репликах НПС, отношение персонажей меняется. Пример: Mass Effect — парагон/ренегат влияет на комментарии спутников, но последствия локальны.",
+          "Уровень 3: Качество хорошее — выборы имеют заметные последствия (награда, ветка диалога, репутация). Пример: The Witcher 3 — выбор в разговоре меняет награду или судьбу второстепенного персонажа, мир отзывается логично.",
+          "Уровень 4: Качество высокое — микровыборы вплетены в отношения и мир, накопленные решения влияют на тон и контекст. Пример: Dragon Age: Inquisition — мелкие выборы меняют комментарии спутников, атмосферу и отношение фракций.",
+          "Уровень 5: Качество максимальное — каждый выбор ощущается осмысленным, мир последовательно реагирует на тон и стиль игрока, письмо глубокое. Пример: Disco Elysium — выборы не «пустые», мир запоминает и отзывается связно.",
+        ],
+        macro_choices: [
+          "Уровень 1: Качество низкое — развилка примитивная, последствия поверхностные или неочевидные. Пример: один ключевой выбор в финале без глубины последствий.",
+          "Уровень 2: Качество базовое — последствия ясны, сценарий связный. Пример: Mass Effect 2 — ключевые решения влияют на состав команды и выживание в финале, последствия понятны игроку.",
+          "Уровень 3: Качество хорошее — развилки хорошо прописаны, концовки ощущаются заслуженными. Пример: The Witcher 3 — решения в квестах определяют финал и судьбы персонажей, последствия логичны.",
+          "Уровень 4: Качество высокое — отложенные последствия, выборы в начале отзываются к финалу, концовки разнообразны по смыслу. Пример: Dragon Age: Origins — ранние выборы влияют на финал, концовки полноценно различаются.",
+          "Уровень 5: Качество максимальное — макровыборы морально сложные, последствия глубоко вплетены в сюжет, каждая концовка ощущается уникальной и заслуженной. Пример: Detroit: Become Human — выборы имеют вес, концовки отражают путь игрока без ощущения «просто другой текст».",
+        ],
         character_editor: [
           "Уровень 1: Базовый выбор пола и цвета волос. Пример: редактор в Mass Effect 1 — минимум опций, но работает стабильно без багов.",
           "Уровень 2: Кастомизация внешности. Пример: редактор в Skyrim — настройка лица, телосложения, цвета кожи с предпросмотром.",
@@ -2996,6 +3220,20 @@
           "Уровень 3: Креативные цели без гриндинга. Пример: достижения в Celeste — «Пройдите уровень без смертей» — сложные, но справедливые цели, мотивирующие на мастерство.",
           "Уровень 4: Достижения мотивируют к новым прохождениям. Пример: достижения в Hades — уникальные награды за разные стили игры, побуждающие к повторным прохождениям.",
           "Уровень 5: Сообщество создаёт челленджи. Пример: достижения в Dark Souls — сложные цели («Пройдите игру без улучшения оружия») порождают челленджи в сообществе.",
+        ],
+        mission_variety: [
+          "Уровень 1: Один основной способ прохождения. Пример: линейные миссии — дойти до точки, устранить цель, без альтернативных путей.",
+          "Уровень 2: 2 способа (бой или обход). Пример: миссии в Far Cry — можно штурмовать или подкрадываться, награда одна.",
+          "Уровень 3: Несколько путей с разной тактикой. Пример: Dishonored — стелс, бой, паркур, магия — каждый путь полноценен.",
+          "Уровень 4: Вариативность с разными наградами и последствиями. Пример: Deus Ex — выбор подхода влияет на диалоги, награды и концовку миссии.",
+          "Уровень 5: Миссии как песочница с множеством решений. Пример: Hitman — десятки способов устранения цели, каждый с уникальной анимацией и последствиями.",
+        ],
+        stealth: [
+          "Уровень 1: Базовый стелс — тень и шум. Пример: ранний Splinter Cell — в тени не видно, шум привлекает врагов.",
+          "Уровень 2: Линия обзора и отвлечение. Пример: Metal Gear Solid — враги имеют конус обзора, можно кидать предметы для отвлечения.",
+          "Уровень 3: Скрытые убийства и тела. Пример: Dishonored — тихие убийства, можно прятать тела, враги ищут пропавших.",
+          "Уровень 4: Индикатор внимания и сложный ИИ. Пример: Hitman — индикатор подозрения, враги реагируют на подозрительное поведение и пропажу союзников.",
+          "Уровень 5: Глубокий стелс с полным набором механик. Пример: Metal Gear Solid V — тени, звук, линия обзора, отвлечение, скрытые убийства, индикатор внимания, враги адаптируются к стилю игрока.",
         ],
         main_characters: [
           "Уровень 1: Персонаж без «деревянности». Пример: главные герои в классических играх (Prince of Persia) — базовая мотивация, простая арка развития, но без технических багов анимации.",
@@ -3277,10 +3515,18 @@
             const card = this.closest(".perk-card");
             card.querySelector(".quantity-display").textContent = this.value;
             updateCostDisplay(card);
-            const buildSizeCard = document.querySelector(".perk-card[data-id=\"build_size\"]");
-            const testingCard = document.querySelector(".perk-card[data-id=\"testing\"]");
+            const buildSizeCard = document.querySelector(
+              '.perk-card[data-id="build_size"]',
+            );
+            const testingCard = document.querySelector(
+              '.perk-card[data-id="testing"]',
+            );
+            const missionVarietyCard = document.querySelector(
+              '.perk-card[data-id="mission_variety"]',
+            );
             if (buildSizeCard) updateCostDisplay(buildSizeCard);
             if (testingCard) updateCostDisplay(testingCard);
+            if (missionVarietyCard) updateCostDisplay(missionVarietyCard);
             calculateTotal();
             updateProgress();
             saveToStorage();
@@ -3439,18 +3685,29 @@
           });
       }
       function getContentStats() {
-        let totalHours = 0, totalQuests = 0, totalCharacters = 0, worldSize = 0, closedLocs = 0;
+        let totalHours = 0,
+          totalQuests = 0,
+          totalCharacters = 0,
+          worldSize = 0,
+          closedLocs = 0;
         document.querySelectorAll(".perk-card").forEach((card) => {
           if (!card.querySelector(".perk-toggle input").checked) return;
           const title = card.querySelector(".perk-title")?.textContent || "";
-          const q = parseInt(card.querySelector(".quantity-number")?.value) || 0;
+          const q =
+            parseInt(card.querySelector(".quantity-number")?.value) || 0;
           if (title.includes("Основной сюжет")) totalHours = q;
           else if (title.includes("Побочные квесты")) totalQuests = q;
           else if (title.includes("Главные персонажи")) totalCharacters = q;
           else if (title.includes("Открытый мир")) worldSize = q;
           else if (title.includes("Закрытые локации")) closedLocs = q;
         });
-        return { totalHours, totalQuests, totalCharacters, worldSize, closedLocs };
+        return {
+          totalHours,
+          totalQuests,
+          totalCharacters,
+          worldSize,
+          closedLocs,
+        };
       }
       function getBaseSizeGB() {
         const s = getContentStats();
@@ -3462,7 +3719,12 @@
       }
       function getGameplayHoursScale() {
         const s = getContentStats();
-        return s.totalHours + s.totalQuests * 0.15 + s.closedLocs / 4000 + s.worldSize * 0.5;
+        return (
+          s.totalHours +
+          s.totalQuests * 0.15 +
+          s.closedLocs / 4000 +
+          s.worldSize * 0.5
+        );
       }
       function updateCostDisplay(card) {
         if (!card.querySelector(".perk-toggle input").checked) {
@@ -3478,6 +3740,9 @@
         } else if (card.dataset.id === "testing") {
           const scale = Math.max(5, getGameplayHoursScale());
           multiplier = 0.4 + scale / 45;
+        } else if (card.dataset.id === "mission_variety") {
+          const scale = Math.max(0, getGameplayHoursScale());
+          multiplier = 0.5 + scale / 40;
         }
         const quality = parseInt(card.querySelector(".quality-slider").value);
         const costPerUnit = baseCosts[quality - 1] * multiplier;
@@ -3499,10 +3764,18 @@
       }
       function calculateTotal() {
         if (isLoading) return;
-        const buildSizeCard = document.querySelector(".perk-card[data-id=\"build_size\"]");
-        const testingCard = document.querySelector(".perk-card[data-id=\"testing\"]");
+        const buildSizeCard = document.querySelector(
+          '.perk-card[data-id="build_size"]',
+        );
+        const testingCard = document.querySelector(
+          '.perk-card[data-id="testing"]',
+        );
+        const missionVarietyCard = document.querySelector(
+          '.perk-card[data-id="mission_variety"]',
+        );
         if (buildSizeCard) updateCostDisplay(buildSizeCard);
         if (testingCard) updateCostDisplay(testingCard);
+        if (missionVarietyCard) updateCostDisplay(missionVarietyCard);
         let total = 0;
         let activeCount = 0;
         let totalHours = 0;
@@ -3546,7 +3819,7 @@
           totalCharacters;
         document.getElementById("worldSize").textContent = worldSize + " км²";
         document.getElementById("closedLocations").textContent =
-          closedLocs + " м²";
+          closedLocs * 100 + " м²";
         findClosestGame(total);
         updateParamsTables();
         updateDevLog();
@@ -3554,7 +3827,8 @@
       }
       function getPerkLevel(perkId) {
         const card = document.querySelector(`.perk-card[data-id="${perkId}"]`);
-        if (!card || !card.querySelector(".perk-toggle input").checked) return 0;
+        if (!card || !card.querySelector(".perk-toggle input").checked)
+          return 0;
         return parseInt(card.querySelector(".quality-slider")?.value) || 0;
       }
       function updateParamsTables() {
@@ -3564,32 +3838,45 @@
         const optLevel = getPerkLevel("optimization");
         const loadOptLevel = getPerkLevel("load_optimization");
         const qaLevel = getPerkLevel("testing");
-        const totalCost = parseFloat(document.getElementById("totalCost")?.textContent || 0);
+        const totalCost = parseFloat(
+          document.getElementById("totalCost")?.textContent || 0,
+        );
 
-        const sizeMult = buildLevel === 0 ? 1 : 1 - (buildLevel * 0.08);
+        const sizeMult = buildLevel === 0 ? 1 : 1 - buildLevel * 0.08;
         const installedGB = Math.max(0.5, baseSizeGB * sizeMult);
         const compressedGB = Math.max(0.3, installedGB * 0.65);
 
-        document.getElementById("sizeCompressed").textContent = compressedGB.toFixed(1);
-        document.getElementById("sizeInstalled").textContent = installedGB.toFixed(1);
+        document.getElementById("sizeCompressed").textContent =
+          compressedGB.toFixed(1);
+        document.getElementById("sizeInstalled").textContent =
+          installedGB.toFixed(1);
 
         const g = graphicsLevel || 1;
         const opt = optLevel;
         const fpsModern = 60;
-        const fpsMid = Math.max(15, [55, 48, 38, 28, 22][g - 1] + (opt ? opt * 4 : 0));
-        const fpsOld = Math.max(10, [42, 28, 18, 12, 8][g - 1] + (opt ? opt * 5 : 0));
+        const fpsMid = Math.max(
+          15,
+          [55, 48, 38, 28, 22][g - 1] + (opt ? opt * 4 : 0),
+        );
+        const fpsOld = Math.max(
+          10,
+          [42, 28, 18, 12, 8][g - 1] + (opt ? opt * 5 : 0),
+        );
         document.getElementById("fpsModern").textContent = fpsModern + "+ FPS";
         document.getElementById("fpsMid").textContent = fpsMid + " FPS";
         document.getElementById("fpsOld").textContent = fpsOld + " FPS";
 
         const loadBase = 2 + installedGB * 0.15;
         const loadReduce = loadOptLevel * 0.12;
-        const loadMod = Math.max(1, (loadBase * (1 - loadReduce)) * 0.4);
-        const loadMid = Math.max(3, (loadBase * (1 - loadReduce * 0.7)) * 1.2);
-        const loadOld = Math.max(8, (loadBase * (1 - loadReduce * 0.5)) * 2.5);
-        document.getElementById("loadModern").textContent = loadMod.toFixed(1) + " с";
-        document.getElementById("loadMid").textContent = loadMid.toFixed(1) + " с";
-        document.getElementById("loadOld").textContent = loadOld.toFixed(1) + " с";
+        const loadMod = Math.max(1, loadBase * (1 - loadReduce) * 0.4);
+        const loadMid = Math.max(3, loadBase * (1 - loadReduce * 0.7) * 1.2);
+        const loadOld = Math.max(8, loadBase * (1 - loadReduce * 0.5) * 2.5);
+        document.getElementById("loadModern").textContent =
+          loadMod.toFixed(1) + " с";
+        document.getElementById("loadMid").textContent =
+          loadMid.toFixed(1) + " с";
+        document.getElementById("loadOld").textContent =
+          loadOld.toFixed(1) + " с";
 
         const baseBugs = Math.max(0, Math.round(totalCost / 18));
         const hasQA = qaLevel > 0;
@@ -3600,7 +3887,10 @@
           bugsVal.textContent = "минимально (критические отловлены до релиза)";
           bugsEl.classList.add("low");
         } else if (hasQA) {
-          const expectedBugs = Math.max(0, Math.round(baseBugs / (1 + qaLevel * 0.45)));
+          const expectedBugs = Math.max(
+            0,
+            Math.round(baseBugs / (1 + qaLevel * 0.45)),
+          );
           bugsVal.textContent = expectedBugs;
           if (expectedBugs > 15) bugsEl.classList.add("high");
           else if (expectedBugs > 5) bugsEl.classList.add("medium");
@@ -3629,17 +3919,28 @@
         { p: 100, text: "Тестирование завершено. Готово к релизу." },
       ];
       function updateDevLog() {
-        const invested = parseInt(document.getElementById("investedInput")?.value) || 0;
-        const totalCost = parseFloat(document.getElementById("totalCost")?.textContent || 0);
-        const progress = totalCost > 0 ? Math.min(100, Math.round((invested / totalCost) * 100)) : 0;
-        const lines = devLogPhases.filter((x) => progress >= x.p).map((x) => x.text);
+        const invested =
+          parseInt(document.getElementById("investedInput")?.value) || 0;
+        const totalCost = parseFloat(
+          document.getElementById("totalCost")?.textContent || 0,
+        );
+        const progress =
+          totalCost > 0
+            ? Math.min(100, Math.round((invested / totalCost) * 100))
+            : 0;
+        const lines = devLogPhases
+          .filter((x) => progress >= x.p)
+          .map((x) => x.text);
         const container = document.getElementById("devLog");
         if (!container) return;
         if (lines.length === 0) {
-          container.innerHTML = '<div class="dev-log-line">Ожидание начала разработки...</div>';
+          container.innerHTML =
+            '<div class="dev-log-line">Ожидание начала разработки...</div>';
           return;
         }
-        container.innerHTML = lines.map((t) => `<div class="dev-log-line">${t}</div>`).join("");
+        container.innerHTML = lines
+          .map((t) => `<div class="dev-log-line">${t}</div>`)
+          .join("");
       }
       function findClosestGame(cost) {
         if (cost === 0) {
