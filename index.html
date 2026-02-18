@@ -349,11 +349,57 @@
         top: 30px;
         height: fit-content;
       }
-      .summary-header {
+.summary-header {
         text-align: center;
         margin-bottom: 25px;
         padding-bottom: 20px;
         border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+      }
+      .game-cover {
+        width: 100%;
+        max-width: 300px;
+        height: 400px;
+        margin: 0 auto 20px;
+        border-radius: 12px;
+        background: var(--bg-input);
+        border: 2px dashed var(--text-muted);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        cursor: pointer;
+        overflow: hidden;
+        transition: var(--transition);
+        position: relative;
+      }
+      .game-cover:hover {
+        border-color: var(--accent);
+        transform: scale(1.02);
+      }
+      .game-cover img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        display: none;
+      }
+      .game-cover.has-image img {
+        display: block;
+      }
+      .game-cover.has-image .cover-placeholder {
+        display: none;
+      }
+      .cover-placeholder {
+        text-align: center;
+        color: var(--text-muted);
+        padding: 20px;
+      }
+      .cover-placeholder svg {
+        width: 64px;
+        height: 64px;
+        margin-bottom: 10px;
+        opacity: 0.5;
+      }
+      .cover-placeholder span {
+        font-size: 0.9rem;
       }
       .game-name-display {
         font-size: 2rem;
@@ -361,8 +407,7 @@
         margin-bottom: 10px;
         color: var(--accent-secondary);
         min-height: 2.5rem;
-      }
-      .game-desc-display {
+      }      .game-desc-display {
         font-size: 0.95rem;
         color: var(--text-secondary);
         min-height: 3rem;
@@ -2955,14 +3000,22 @@
         </div>
         <!-- Правая колонка: итоги -->
         <div class="right-column">
-          <div class="summary-card">
+<div class="summary-card">
             <div class="summary-header">
+              <div class="game-cover" id="gameCover" title="Нажмите, чтобы добавить обложку">
+                <img id="gameCoverImage" alt="Обложка игры" />
+                <div class="cover-placeholder">
+                  <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z" />
+                  </svg>
+                  <span>Нажмите, чтобы добавить обложку</span>
+                </div>
+              </div>
               <div class="game-name-display" id="summaryName">Без названия</div>
               <div class="game-desc-display" id="summaryDesc">
                 Описание отсутствует
               </div>
-            </div>
-            <div class="summary-stats">
+            </div>            <div class="summary-stats">
               <div class="stat-item">
                 <span class="stat-label">Активных перков:</span>
                 <span class="stat-value" id="activePerks">0</span>
@@ -3489,16 +3542,35 @@
               this.value || "Без названия";
             saveToStorage();
           });
-        document
+document
           .getElementById("gameDesc")
           .addEventListener("input", function () {
             document.getElementById("summaryDesc").textContent =
               this.value || "Описание отсутствует";
             saveToStorage();
           });
+        // Обложка игры
+        const gameCover = document.getElementById("gameCover");
+        const gameCoverImage = document.getElementById("gameCoverImage");
+        gameCover.addEventListener("click", function () {
+          const currentUrl = gameCoverImage.src;
+          const newUrl = prompt(
+            "Введите ссылку на обложку игры:",
+            currentUrl && currentUrl !== window.location.href ? currentUrl : ""
+          );
+          if (newUrl !== null) {
+            if (newUrl.trim()) {
+              gameCoverImage.src = newUrl.trim();
+              gameCover.classList.add("has-image");
+            } else {
+              gameCoverImage.src = "";
+              gameCover.classList.remove("has-image");
+            }
+saveToStorage();
+          }
+        });
         // Переключение перков
-        document.querySelectorAll(".perk-toggle input").forEach((toggle) => {
-          toggle.addEventListener("change", function () {
+        document.querySelectorAll(".perk-toggle input").forEach((toggle) => {          toggle.addEventListener("change", function () {
             const card = this.closest(".perk-card");
             const isActive = this.checked;
             card.classList.toggle("active", isActive);
@@ -3674,13 +3746,13 @@
         document
           .getElementById("exportBtn")
           .addEventListener("click", function () {
-            const data = {
-              gameName: document.getElementById("gameName").value,
-              gameDesc: document.getElementById("gameDesc").value,
-              investedYears: document.getElementById("investedInput").value,
-              perks: {},
-            };
-            document.querySelectorAll(".perk-card").forEach((card) => {
+const data = {
+          gameName: document.getElementById("gameName").value,
+          gameDesc: document.getElementById("gameDesc").value,
+          gameCover: document.getElementById("gameCoverImage").src,
+          investedYears: document.getElementById("investedInput").value,
+          perks: {},
+        };            document.querySelectorAll(".perk-card").forEach((card) => {
               const id = card.dataset.id;
               if (!id) return;
               data.perks[id] = {
@@ -4111,13 +4183,15 @@
       }
       function resetAll() {
         isLoading = true;
-        // Сброс формы
+// Сброс формы
         document.getElementById("gameName").value = "";
         document.getElementById("gameDesc").value = "";
         document.getElementById("summaryName").textContent = "Без названия";
         document.getElementById("summaryDesc").textContent =
           "Описание отсутствует";
-        // Сброс вложенных человеко-лет
+        // Сброс обложки
+        document.getElementById("gameCoverImage").src = "";
+        document.getElementById("gameCover").classList.remove("has-image");        // Сброс вложенных человеко-лет
         document.getElementById("investedInput").value = "0";
         document.getElementById("investedDisplay").textContent = "0";
         document.getElementById("progressBar").style.width = "0%";
@@ -4198,9 +4272,14 @@
             document.getElementById("gameName").value = data.gameName;
             document.getElementById("summaryName").textContent = data.gameName;
           }
-          if (data.gameDesc) {
+if (data.gameDesc) {
             document.getElementById("gameDesc").value = data.gameDesc;
             document.getElementById("summaryDesc").textContent = data.gameDesc;
+          }
+          // Загрузка обложки
+          if (data.gameCover) {
+            document.getElementById("gameCoverImage").src = data.gameCover;
+            document.getElementById("gameCover").classList.add("has-image");
           }
           // Загрузка вложенных человеко-лет
           if (data.investedYears) {
