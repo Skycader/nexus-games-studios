@@ -1073,6 +1073,67 @@
             <div
               class="perk-card"
               data-type="count"
+              data-base-cost="1,2,3,4,5"
+              data-id="notes"
+            >
+              <div class="perk-header">
+                <span class="perk-title">📄 Записки и голозаписи</span>
+                <label class="perk-toggle">
+                  <input type="checkbox" />
+                  <span class="perk-toggle-slider"></span>
+                </label>
+              </div>
+              <p class="perk-description">
+                Коллекционные предметы с фоновым лором: записки, дневники,
+                письма, голозаписи. Для игроков, которые читают всё подряд ради
+                погружения.
+              </p>
+              <div class="quality-control">
+                <div class="quality-label">
+                  <span>Качество</span>
+                  <span class="quality-value">1</span>
+                </div>
+                <input
+                  type="range"
+                  min="1"
+                  max="5"
+                  value="1"
+                  class="quality-slider"
+                />
+                <div class="quality-levels">
+                  <div class="quality-level active"></div>
+                  <div class="quality-level"></div>
+                  <div class="quality-level"></div>
+                  <div class="quality-level"></div>
+                  <div class="quality-level"></div>
+                </div>
+                <div class="quality-description">
+                  Уровень 1: Базовый текст без ошибок и противоречий лору.
+                  Пример: простые записки в Skyrim — короткие описания событий и
+                  предметов.
+                </div>
+              </div>
+              <div class="quantity-control">
+                <div class="quality-label">
+                  <span>Количество элементов (100 шт)</span>
+                  <span class="quantity-display">0</span>
+                </div>
+                <div class="quantity-input">
+                  <input
+                    type="number"
+                    min="0"
+                    value="0"
+                    class="quantity-number"
+                  />
+                </div>
+              </div>
+              <div class="cost-display">
+                Стоимость: <strong>0 чел-лет</strong>
+              </div>
+            </div>
+            <div
+              class="perk-card"
+              data-type="count"
               data-base-cost="0.02,0.05,0.1,0.2,0.35"
               data-id="micro_choices"
             >
@@ -4327,6 +4388,20 @@
           "Уровень 3: Реалистичные повреждения. Пример: GTA IV — детализированные повреждения, реалистичная физика вождения.",
           "Уровень 4: Разные классы транспорта. Пример: GTA V — машины, самолёты, вертолёты, лодки, велосипеды, уникальная физика для каждого.",
           "Уровень 5: Идеальная физика и разнообразие. Пример: Forza Horizon — сотни машин с уникальной физикой, реалистичные повреждения, погодные условия.",
+        ],
+        notes: [
+          "Уровень 1: Базовый текст без ошибок и противоречий лору. Пример: простые записки в Skyrim — короткие описания событий и предметов.",
+          "Уровень 2: Личные истории с эмоциональным оттенком и стилизацией (рукописный шрифт). Пример: дневники в The Witcher 3 — раскрывают backstory NPC.",
+          "Уровень 3: Голозаписи с базовой озвучкой (1 голос). Пример: аудиозаписи в Fallout 4 — атмосферные, с шумами фона.",
+          "Уровень 4: Разнообразные голоса, ветвящиеся записи (альтернативные версии). Пример: записи в Cyberpunk 2077 — эмоциональные, с несколькими актёрами.",
+          "Уровень 5: Премиум-лор с интерактивом и наградами. Пример: коллекционные записи в Outer Wilds — влияют на понимание сюжета, премия за нарратив.",
+        ],
+        anti_piracy: [
+          "Уровень 1: Серийный номер или простая Steam-активация. Пример: базовая защита инди-игр — легко обойти оффлайн.",
+          "Уровень 2: Периодическая онлайн-проверка (1 раз в сессию). Пример: Uplay в старых Assassin's Creed — требует интернета разово.",
+          "Уровень 3: Denuvo-lite (взламывается через недели). Пример: средняя защита AAA — влияет minimally на perf.",
+          "Уровень 4: Привязка к железу + античит. Пример: BattlEye + HWID в онлайн-играх — сложно обойти без эмуляции.",
+          "Уровень 5: Продвинутая вечная защита без лагов. Пример: не взламывается годами, как мечта издателей — 0% пиратства на релизе.",
         ],
       }; // Ключ для localStorage
       const STORAGE_KEY = "gameDevPlanner_v4";
