@@ -3159,7 +3159,52 @@
                 Стоимость: <strong>0 чел-лет</strong>
               </div>
             </div>
-
+            <div
+              class="perk-card"
+              data-type="fixed"
+              data-base-cost="0.5,1.5,4,10,25"
+              data-id="anti_piracy"
+            >
+              <div class="perk-header">
+                <span class="perk-title">Защита от пиратства</span>
+                <label class="perk-toggle">
+                  <input type="checkbox" />
+                  <span class="perk-toggle-slider"></span>
+                </label>
+              </div>
+              <p class="perk-description">
+                DRM, онлайн-активация, аппаратная привязка, античит,
+                Denuvo-подобные системы. Защищает продажи на релизе и первые
+                месяцы, но может влиять на производительность и репутацию.
+              </p>
+              <div class="quality-control">
+                <div class="quality-label">
+                  <span>Качество</span>
+                  <span class="quality-value">1</span>
+                </div>
+                <input
+                  type="range"
+                  min="1"
+                  max="5"
+                  value="1"
+                  class="quality-slider"
+                />
+                <div class="quality-levels">
+                  <div class="quality-level active"></div>
+                  <div class="quality-level"></div>
+                  <div class="quality-level"></div>
+                  <div class="quality-level"></div>
+                  <div class="quality-level"></div>
+                </div>
+                <div class="quality-description">
+                  Уровень 1: Серийный номер или простая Steam-активация. Пример:
+                  базовая защита инди-игр — легко обойти оффлайн.
+                </div>
+              </div>
+              <div class="cost-display">
+                Стоимость: <strong>0.5 чел-лет</strong>
+              </div>
+            </div>
             <div
               class="perk-card"
               data-type="count"
