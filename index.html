@@ -3788,7 +3788,8 @@
           totalQuests = 0,
           totalCharacters = 0,
           worldSize = 0,
-          closedLocs = 0;
+          closedLocs = 0,
+          procGenTemplates = 0;
         document.querySelectorAll(".perk-card").forEach((card) => {
           if (!card.querySelector(".perk-toggle input").checked) return;
           const title = card.querySelector(".perk-title")?.textContent || "";
@@ -3799,6 +3800,8 @@
           else if (title.includes("Главные персонажи")) totalCharacters = q;
           else if (title.includes("Открытый мир")) worldSize = q;
           else if (title.includes("Закрытые локации")) closedLocs = q;
+          else if (title.includes("Процедурная генерация мира"))
+            procGenTemplates = q;
         });
         return {
           totalHours,
@@ -3806,16 +3809,16 @@
           totalCharacters,
           worldSize,
           closedLocs,
-        };
-      }
+          procGenTemplates,
+        };      }
       function getBaseSizeGB() {
         const s = getContentStats();
         const base = 2;
         const fromHours = s.totalHours * 0.25;
         const fromLocs = Math.min(s.closedLocs / 3000, 30);
         const fromWorld = s.worldSize * 0.6;
-        return Math.max(1, base + fromHours + fromLocs + fromWorld);
-      }
+        const fromProcGen = s.procGenTemplates * 0.15;
+        return Math.max(1, base + fromHours + fromLocs + fromWorld + fromProcGen);      }
       function getGameplayHoursScale() {
         const s = getContentStats();
         return (
