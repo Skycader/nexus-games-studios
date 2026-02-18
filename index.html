@@ -1225,11 +1225,10 @@
             </div>
           </div>
           <!-- Системы выживания и достижений -->
-          <div class="category-divider">
+<div class="category-divider">
             <h2 class="category-title">⚡ Системы геймплея</h2>
-            <span class="category-badge">7 перков</span>
-          </div>
-          <div class="perks-grid">
+            <span class="category-badge">10 перков</span>
+          </div>          <div class="perks-grid">
             <div
               class="perk-card"
               data-type="fixed"
@@ -1591,13 +1590,190 @@
                   — линия обзора, отвлечение, скрытые убийства, индикатор внимания.
                 </div>
               </div>
-              <div class="cost-display">
+<div class="cost-display">
                 Стоимость: <strong>10 чел-лет</strong>
               </div>
             </div>
+            <div
+              class="perk-card"
+              data-type="count"
+              data-base-cost="0.1,0.3,0.6,1.2,2.0"
+              data-id="parkour"
+            >
+              <div class="perk-header">
+                <span class="perk-title">Паркур</span>
+                <label class="perk-toggle">
+                  <input type="checkbox" />
+                  <span class="perk-toggle-slider"></span>
+                </label>
+              </div>
+              <p class="perk-description">
+                Система передвижения: прыжки, лазание, бег по стенам, сальто,
+                скольжение. Количество анимаций и возможностей перемещения.
+              </p>
+              <div class="quality-control">
+                <div class="quality-label">
+                  <span>Качество</span>
+                  <span class="quality-value">1</span>
+                </div>
+                <input
+                  type="range"
+                  min="1"
+                  max="5"
+                  value="1"
+                  class="quality-slider"
+                />
+                <div class="quality-levels">
+                  <div class="quality-level active"></div>
+                  <div class="quality-level"></div>
+                  <div class="quality-level"></div>
+                  <div class="quality-level"></div>
+                  <div class="quality-level"></div>
+                </div>
+                <div class="quality-description">
+                  Уровень 1: Базовые прыжки и лазание. Пример: Assassin's Creed
+                  1 — простые прыжки, базовое лазание по стенам, без сложных
+                  трюков.
+                </div>
+              </div>
+              <div class="quantity-control">
+                <div class="quality-label">
+                  <span>Количество анимаций</span>
+                  <span class="quantity-display">0</span>
+                </div>
+                <div class="quantity-input">
+                  <input
+                    type="number"
+                    min="0"
+                    value="0"
+                    class="quantity-number"
+                  />
+                </div>
+              </div>
+              <div class="cost-display">
+                Стоимость: <strong>0 чел-лет</strong>
+              </div>
+            </div>
+            <div
+              class="perk-card"
+              data-type="count"
+              data-base-cost="0.2,0.5,1.0,2.0,3.5"
+              data-id="combat_system"
+            >
+              <div class="perk-header">
+                <span class="perk-title">Боевая система</span>
+                <label class="perk-toggle">
+                  <input type="checkbox" />
+                  <span class="perk-toggle-slider"></span>
+                </label>
+              </div>
+              <p class="perk-description">
+                Механики боя: ближний бой, дальний бой, магия, комбо, уклонения.
+                Количество моделей оружия и боевых анимаций.
+              </p>
+              <div class="quality-control">
+                <div class="quality-label">
+                  <span>Качество</span>
+                  <span class="quality-value">1</span>
+                </div>
+                <input
+                  type="range"
+                  min="1"
+                  max="5"
+                  value="1"
+                  class="quality-slider"
+                />
+                <div class="quality-levels">
+                  <div class="quality-level active"></div>
+                  <div class="quality-level"></div>
+                  <div class="quality-level"></div>
+                  <div class="quality-level"></div>
+                  <div class="quality-level"></div>
+                </div>
+                <div class="quality-description">
+                  Уровень 1: Базовая атака и блок. Пример: Dark Souls 1 — простая
+                  система боя с атакой, блоком и уклонением, без комбо.
+                </div>
+              </div>
+              <div class="quantity-control">
+                <div class="quality-label">
+                  <span>Количество моделей оружия</span>
+                  <span class="quantity-display">0</span>
+                </div>
+                <div class="quantity-input">
+                  <input
+                    type="number"
+                    min="0"
+                    value="0"
+                    class="quantity-number"
+                  />
+                </div>
+              </div>
+              <div class="cost-display">
+                Стоимость: <strong>0 чел-лет</strong>
+              </div>
+            </div>
+            <div
+              class="perk-card"
+              data-type="count"
+              data-base-cost="0.3,0.8,1.5,2.8,4.5"
+              data-id="transport_system"
+            >
+              <div class="perk-header">
+                <span class="perk-title">Система транспорта</span>
+                <label class="perk-toggle">
+                  <input type="checkbox" />
+                  <span class="perk-toggle-slider"></span>
+                </label>
+              </div>
+              <p class="perk-description">
+                Транспортные средства: машины, лошади, корабли, летательные
+                аппараты. Количество моделей транспорта и их физика.
+              </p>
+              <div class="quality-control">
+                <div class="quality-label">
+                  <span>Качество</span>
+                  <span class="quality-value">1</span>
+                </div>
+                <input
+                  type="range"
+                  min="1"
+                  max="5"
+                  value="1"
+                  class="quality-slider"
+                />
+                <div class="quality-levels">
+                  <div class="quality-level active"></div>
+                  <div class="quality-level"></div>
+                  <div class="quality-level"></div>
+                  <div class="quality-level"></div>
+                  <div class="quality-level"></div>
+                </div>
+                <div class="quality-description">
+                  Уровень 1: Базовая физика транспорта. Пример: GTA 3 — простые
+                  машины с базовой физикой, без сложных повреждений.
+                </div>
+              </div>
+              <div class="quantity-control">
+                <div class="quality-label">
+                  <span>Количество моделей транспорта</span>
+                  <span class="quantity-display">0</span>
+                </div>
+                <div class="quantity-input">
+                  <input
+                    type="number"
+                    min="0"
+                    value="0"
+                    class="quantity-number"
+                  />
+                </div>
+              </div>
+              <div class="cost-display">
+                Стоимость: <strong>0 чел-лет</strong>
+              </div>
+            </div>
           </div>
-          <!-- Персонажи -->
-          <div class="category-divider">
+          <!-- Персонажи -->          <div class="category-divider">
             <h2 class="category-title">👥 Персонажи</h2>
             <span class="category-badge">2 перка</span>
           </div>
@@ -3511,15 +3687,35 @@
           "Уровень 4: Идеальная стабильность на 5+ платформах. Пример: мультиплатформа как в Minecraft — один код, стабильная работа на ПК, консолях, мобилках, даже на Raspberry Pi.",
           "Уровень 5: Единый код для всех платформ без ответвлений. Пример: идеал как в мечтах — один билд компилируется под все платформы, включая будущие (без переписывания под новые консоли).",
         ],
-        localization: [
+localization: [
           "Уровень 1: Машинный перевод + правка. Пример: базовая локализация инди-игр — текст понятен, но без литературной выразительности, озвучки нет.",
           "Уровень 2: Профессиональный перевод без озвучки. Пример: локализация как в ранних инди-хитах — качественный текст, идиомы адаптированы, но только субтитры.",
           "Уровень 3: Перевод + базовая озвучка. Пример: озвучка как в средних проектах — актёры среднего уровня, синхронизация губ приблизительная, но без артефактов.",
           "Уровень 4: Качественная озвучка актёрами. Пример: озвучка как в The Witcher 3 — профессиональные актёры, эмоциональная выразительность, синхронизация губ на уровне кино.",
           "Уровень 5: Озвучка звёздами. Пример: звёздная озвучка как в Голливуде — Кевин Спейси в *Call of Duty*, Геральт озвучен звездой польского кино, маркетинг на озвучке.",
         ],
-      };
-      // Ключ для localStorage
+        parkour: [
+          "Уровень 1: Базовые прыжки и лазание. Пример: Assassin's Creed 1 — простые прыжки, базовое лазание по стенам, без сложных трюков.",
+          "Уровень 2: Прыжки через препятствия. Пример: Assassin's Creed 2 — прыжки через барьеры, базовый паркур по крышам, без сложных комбо.",
+          "Уровень 3: Сложные трюки и комбо. Пример: Mirror's Edge — бег по стенам, сальто, скольжение, комбо из нескольких движений.",
+          "Уровень 4: Свободное передвижение по вертикали. Пример: Dying Light 2 — паркур по зданиям, использование крюка, сложные маршруты по вертикали.",
+          "Уровень 5: Идеальная физика и отзывчивость. Пример: Assassin's Creed Odyssey — плавные анимации, отсутствие застреваний, интуитивное управление паркуром.",
+        ],
+        combat_system: [
+          "Уровень 1: Базовая атака и блок. Пример: Dark Souls 1 — простая система боя с атакой, блоком и уклонением, без комбо.",
+          "Уровень 2: Лёгкие и тяжёлые атаки. Пример: Skyrim — разные типы атак, базовые комбо, парирование.",
+          "Уровень 3: Комбо и специальные приёмы. Пример: Devil May Cry — сложные комбо, специальные приёмы, стиль боя влияет на эффективность.",
+          "Уровень 4: Разные стили боя для каждого оружия. Пример: Dark Souls 3 — каждое оружие имеет уникальный сет анимаций, разные стили боя.",
+          "Уровень 5: Глубокая боевая система с мастерством. Пример: Sekiro — парирование, контратаки, разные стили боя, высокий порог вхождения.",
+        ],
+        transport_system: [
+          "Уровень 1: Базовая физика транспорта. Пример: GTA 3 — простые машины с базовой физикой, без сложных повреждений.",
+          "Уровень 2: Разные типы транспорта. Пример: GTA Vice City — машины, мотоциклы, лодки, базовая физика для каждого типа.",
+          "Уровень 3: Реалистичные повреждения. Пример: GTA IV — детализированные повреждения, реалистичная физика вождения.",
+          "Уровень 4: Разные классы транспорта. Пример: GTA V — машины, самолёты, вертолёты, лодки, велосипеды, уникальная физика для каждого.",
+          "Уровень 5: Идеальная физика и разнообразие. Пример: Forza Horizon — сотни машин с уникальной физикой, реалистичные повреждения, погодные условия.",
+        ],
+      };      // Ключ для localStorage
       const STORAGE_KEY = "gameDevPlanner_v4";
       // Флаг для предотвращения рекурсивных вызовов при загрузке
       let isLoading = false;
