@@ -349,13 +349,13 @@
         top: 30px;
         height: fit-content;
       }
-.summary-header {
+      .summary-header {
         text-align: center;
         margin-bottom: 25px;
         padding-bottom: 20px;
         border-bottom: 1px solid rgba(255, 255, 255, 0.1);
       }
-.game-cover {
+      .game-cover {
         width: 100%;
         max-width: 300px;
         height: 400px;
@@ -392,7 +392,8 @@
       }
       .game-cover.has-image .cover-placeholder {
         display: none;
-      }      .cover-placeholder {
+      }
+      .cover-placeholder {
         text-align: center;
         color: var(--text-muted);
         padding: 20px;
@@ -412,7 +413,8 @@
         margin-bottom: 10px;
         color: var(--accent-secondary);
         min-height: 2.5rem;
-      }      .game-desc-display {
+      }
+      .game-desc-display {
         font-size: 0.95rem;
         color: var(--text-secondary);
         min-height: 3rem;
@@ -706,6 +708,14 @@
       .btn-import-export:hover {
         box-shadow: 0 6px 20px rgba(0, 206, 201, 0.6);
         background: linear-gradient(135deg, #0083b0, #006380);
+      }
+      .btn-primary {
+        background: linear-gradient(135deg, var(--accent), var(--accent-hover));
+        box-shadow: 0 4px 15px rgba(108, 92, 231, 0.4);
+      }
+      .btn-primary:hover {
+        box-shadow: 0 6px 20px rgba(108, 92, 231, 0.6);
+        background: linear-gradient(135deg, var(--accent-hover), #4a3cb8);
       }
       .category-divider {
         margin: 40px 0 25px;
@@ -1097,8 +1107,8 @@
                   <div class="quality-level"></div>
                 </div>
                 <div class="quality-description">
-                  Уровень 1: Качество низкое — варианты ответов почти не отличаются
-                  по последствиям, мир не реагирует.
+                  Уровень 1: Качество низкое — варианты ответов почти не
+                  отличаются по последствиям, мир не реагирует.
                 </div>
               </div>
               <div class="quantity-control">
@@ -1225,10 +1235,11 @@
             </div>
           </div>
           <!-- Системы выживания и достижений -->
-<div class="category-divider">
+          <div class="category-divider">
             <h2 class="category-title">⚡ Системы геймплея</h2>
             <span class="category-badge">10 перков</span>
-          </div>          <div class="perks-grid">
+          </div>
+          <div class="perks-grid">
             <div
               class="perk-card"
               data-type="fixed"
@@ -1541,8 +1552,8 @@
                   <div class="quality-level"></div>
                 </div>
                 <div class="quality-description">
-                  Уровень 1: Один основной способ прохождения. Уровень 5: Несколько
-                  полноценных путей с разными механиками и наградами.
+                  Уровень 1: Один основной способ прохождения. Уровень 5:
+                  Несколько полноценных путей с разными механиками и наградами.
                 </div>
               </div>
               <div class="cost-display">
@@ -1563,8 +1574,8 @@
                 </label>
               </div>
               <p class="perk-description">
-                Механика скрытности: тени, звук, линия обзора, отвлечение врагов,
-                скрытые убийства.
+                Механика скрытности: тени, звук, линия обзора, отвлечение
+                врагов, скрытые убийства.
               </p>
               <div class="quality-control">
                 <div class="quality-label">
@@ -1586,11 +1597,12 @@
                   <div class="quality-level"></div>
                 </div>
                 <div class="quality-description">
-                  Уровень 1: Базовый стелс — тень и шум. Уровень 5: Глубокий стелс
-                  — линия обзора, отвлечение, скрытые убийства, индикатор внимания.
+                  Уровень 1: Базовый стелс — тень и шум. Уровень 5: Глубокий
+                  стелс — линия обзора, отвлечение, скрытые убийства, индикатор
+                  внимания.
                 </div>
               </div>
-<div class="cost-display">
+              <div class="cost-display">
                 Стоимость: <strong>10 чел-лет</strong>
               </div>
             </div>
@@ -1691,8 +1703,8 @@
                   <div class="quality-level"></div>
                 </div>
                 <div class="quality-description">
-                  Уровень 1: Базовая атака и блок. Пример: Dark Souls 1 — простая
-                  система боя с атакой, блоком и уклонением, без комбо.
+                  Уровень 1: Базовая атака и блок. Пример: Dark Souls 1 —
+                  простая система боя с атакой, блоком и уклонением, без комбо.
                 </div>
               </div>
               <div class="quantity-control">
@@ -1773,7 +1785,8 @@
               </div>
             </div>
           </div>
-          <!-- Персонажи -->          <div class="category-divider">
+          <!-- Персонажи -->
+          <div class="category-divider">
             <h2 class="category-title">👥 Персонажи</h2>
             <span class="category-badge">2 перка</span>
           </div>
@@ -2069,8 +2082,8 @@
                 <div class="quality-description">
                   Уровень 1: Базовая генерация простых структур. Пример:
                   подземелья в классических Rogue-like — простые комнаты и
-                  коридоры, минимальное разнообразие биомов, возможны
-                  артефакты генерации.
+                  коридоры, минимальное разнообразие биомов, возможны артефакты
+                  генерации.
                 </div>
               </div>
               <div class="quantity-control">
@@ -3181,13 +3194,27 @@
         </div>
         <!-- Правая колонка: итоги -->
         <div class="right-column">
-<div class="summary-card">
+          <div class="summary-card">
             <div class="summary-header">
-              <div class="game-cover" id="gameCover" title="Нажмите, чтобы добавить обложку">
+              <div
+                class="game-cover"
+                id="gameCover"
+                title="Нажмите, чтобы добавить обложку"
+              >
                 <img id="gameCoverImage" alt="Обложка игры" />
                 <div class="cover-placeholder">
-                  <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z" />
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    stroke="currentColor"
+                  >
+                    <path
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      stroke-width="2"
+                      d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"
+                    />
                   </svg>
                   <span>Нажмите, чтобы добавить обложку</span>
                 </div>
@@ -3196,7 +3223,8 @@
               <div class="game-desc-display" id="summaryDesc">
                 Описание отсутствует
               </div>
-            </div>            <div class="summary-stats">
+            </div>
+            <div class="summary-stats">
               <div class="stat-item">
                 <span class="stat-label">Активных перков:</span>
                 <span class="stat-value" id="activePerks">0</span>
@@ -3318,8 +3346,15 @@
                 min="0"
                 value="0"
                 step="1"
-                style="margin-bottom: 15px"
+                style="display: none"
               />
+              <button
+                id="addInvestedBtn"
+                class="btn btn-primary"
+                style="width: 100%; margin-bottom: 15px"
+              >
+                Добавить
+              </button>
               <div class="progress-label">
                 <span>Прогресс разработки</span>
                 <span id="progressPercent">0%</span>
@@ -3358,7 +3393,9 @@
             <div class="comparison-card">
               <div class="comparison-title">Похожие игры:</div>
               <div class="comparison-list" id="comparisonList">
-                <div class="comparison-empty" id="comparisonEmpty">— Укажите перки для подбора аналогов</div>
+                <div class="comparison-empty" id="comparisonEmpty">
+                  — Укажите перки для подбора аналогов
+                </div>
               </div>
             </div>
             <button class="btn" id="calculateBtn">🔄 Пересчитать</button>
@@ -3375,42 +3412,618 @@
       // Профиль игры: все значения 0–1 (нормализованы)
       // openWorld, worldSize, mainStory, sideQuests, stealth, missionVariety, storyDepth, choices, survival, crafting, characterDepth
       const gameComparisons = [
-        { name: "Minecraft (Alpha)", desc: "Процедурный базис, минимум ручного контента", profile: { openWorld: 1, worldSize: 0.2, mainStory: 0, sideQuests: 0, stealth: 0, missionVariety: 0, storyDepth: 0.1, choices: 0, survival: 0.8, crafting: 1, characterDepth: 0 } },
-        { name: "Portal 1", desc: "Короткая камерная игра, одна ключевая механика", profile: { openWorld: 0, worldSize: 0, mainStory: 0.15, sideQuests: 0, stealth: 0, missionVariety: 0.3, storyDepth: 0.3, choices: 0, survival: 0, crafting: 0, characterDepth: 0.2 } },
-        { name: "Half-Life 1", desc: "Линейный коридорный шутер, база для жанра", profile: { openWorld: 0, worldSize: 0, mainStory: 0.4, sideQuests: 0, stealth: 0.2, missionVariety: 0.2, storyDepth: 0.4, choices: 0, survival: 0, crafting: 0, characterDepth: 0.3 } },
-        { name: "BioShock 2", desc: "Повторное использование ассетов и механик первой части", profile: { openWorld: 0, worldSize: 0, mainStory: 0.5, sideQuests: 0.1, stealth: 0, missionVariety: 0.3, storyDepth: 0.6, choices: 0.3, survival: 0, crafting: 0, characterDepth: 0.5 } },
-        { name: "Dead Space", desc: "Узкоспециализированный хоррор, упор на звук и расчлененку", profile: { openWorld: 0, worldSize: 0, mainStory: 0.5, sideQuests: 0, stealth: 0, missionVariety: 0.2, storyDepth: 0.5, choices: 0, survival: 0, crafting: 0, characterDepth: 0.5 } },
-        { name: "Crysis 1", desc: "Технологичная песочница, но сюжетно довольно короткая", profile: { openWorld: 0, worldSize: 0.3, mainStory: 0.3, sideQuests: 0, stealth: 0.2, missionVariety: 0.4, storyDepth: 0.3, choices: 0, survival: 0, crafting: 0, characterDepth: 0.3 } },
-        { name: "Metro 2033", desc: "Линейные туннели, высокая детализация окружения", profile: { openWorld: 0, worldSize: 0, mainStory: 0.5, sideQuests: 0, stealth: 0.4, missionVariety: 0.3, storyDepth: 0.6, choices: 0.2, survival: 0, crafting: 0, characterDepth: 0.4 } },
-        { name: "Dead Space 2", desc: "Рост масштаба, больше уникальных ситуаций и врагов", profile: { openWorld: 0, worldSize: 0, mainStory: 0.6, sideQuests: 0, stealth: 0, missionVariety: 0.3, storyDepth: 0.5, choices: 0, survival: 0, crafting: 0, characterDepth: 0.5 } },
-        { name: "Crysis 2", desc: "Вертикальный геймплей в городе, больше скриптов", profile: { openWorld: 0, worldSize: 0, mainStory: 0.4, sideQuests: 0, stealth: 0.2, missionVariety: 0.4, storyDepth: 0.4, choices: 0, survival: 0, crafting: 0, characterDepth: 0.4 } },
-        { name: "Crysis 3", desc: "Пиковая графика, новые механики охоты, но малая длина", profile: { openWorld: 0, worldSize: 0, mainStory: 0.35, sideQuests: 0, stealth: 0.3, missionVariety: 0.5, storyDepth: 0.4, choices: 0, survival: 0, crafting: 0, characterDepth: 0.4 } },
-        { name: "Half-Life 2", desc: "Разнообразие глав: гравипушка, транспорт, хоррор, война", profile: { openWorld: 0, worldSize: 0, mainStory: 0.6, sideQuests: 0, stealth: 0.2, missionVariety: 0.5, storyDepth: 0.6, choices: 0, survival: 0, crafting: 0, characterDepth: 0.5 } },
-        { name: "Far Cry 1", desc: "Огромные открытые уровни и сложный для того времени ИИ", profile: { openWorld: 0, worldSize: 0.4, mainStory: 0.4, sideQuests: 0.1, stealth: 0.4, missionVariety: 0.5, storyDepth: 0.4, choices: 0, survival: 0, crafting: 0, characterDepth: 0.3 } },
-        { name: "S.T.A.L.K.E.R.: Тень Чернобыля", desc: "Система симуляции жизни A-Life и сложная структура мира", profile: { openWorld: 1, worldSize: 0.3, mainStory: 0.5, sideQuests: 0.2, stealth: 0.3, missionVariety: 0.5, storyDepth: 0.5, choices: 0.2, survival: 0, crafting: 0, characterDepth: 0.4 } },
-        { name: "BioShock Infinite", desc: "Экстремальная проработка арта и ИИ-напарника", profile: { openWorld: 0, worldSize: 0, mainStory: 0.5, sideQuests: 0, stealth: 0, missionVariety: 0.3, storyDepth: 0.6, choices: 0.3, survival: 0, crafting: 0, characterDepth: 0.6 } },
-        { name: "Far Cry 2", desc: "Системный мир: распространение огня, износ оружия, малярия", profile: { openWorld: 1, worldSize: 0.4, mainStory: 0.4, sideQuests: 0.2, stealth: 0.4, missionVariety: 0.6, storyDepth: 0.4, choices: 0.2, survival: 0.2, crafting: 0, characterDepth: 0.4 } },
-        { name: "Far Cry 3", desc: "Масса контента: охота, аванпосты, крафт, побочные квесты", profile: { openWorld: 1, worldSize: 0.5, mainStory: 0.5, sideQuests: 0.6, stealth: 0.5, missionVariety: 0.7, storyDepth: 0.5, choices: 0.3, survival: 0, crafting: 0.4, characterDepth: 0.5 } },
-        { name: "Skyrim", desc: "Гигантское количество квестов, подземелий и систем", profile: { openWorld: 1, worldSize: 0.8, mainStory: 0.7, sideQuests: 1, stealth: 0.2, missionVariety: 0.5, storyDepth: 0.7, choices: 0.4, survival: 0, crafting: 0.6, characterDepth: 0.6 } },
-        { name: "Far Cry 4", desc: "Расширение идей FC3, еще больше активностей и коопа", profile: { openWorld: 1, worldSize: 0.5, mainStory: 0.5, sideQuests: 0.7, stealth: 0.5, missionVariety: 0.7, storyDepth: 0.5, choices: 0.3, survival: 0, crafting: 0.4, characterDepth: 0.5 } },
-        { name: "The Witcher 3", desc: "Эталон ручной работы: каждый квест — уникальная история", profile: { openWorld: 1, worldSize: 0.9, mainStory: 0.9, sideQuests: 1, stealth: 0.2, missionVariety: 0.7, storyDepth: 0.95, choices: 0.8, survival: 0, crafting: 0.4, characterDepth: 0.95 } },
-        { name: "GTA V", desc: "Три героя, детальный мегаполис и сотни вложенных механик", profile: { openWorld: 1, worldSize: 0.6, mainStory: 0.8, sideQuests: 0.9, stealth: 0.2, missionVariety: 0.6, storyDepth: 0.7, choices: 0.4, survival: 0, crafting: 0.2, characterDepth: 0.8 } },
-        { name: "Hitman (2016)", desc: "Стелс-песочница, десятки способов устранения цели", profile: { openWorld: 0, worldSize: 0, mainStory: 0.3, sideQuests: 0, stealth: 1, missionVariety: 1, storyDepth: 0.4, choices: 0.3, survival: 0, crafting: 0, characterDepth: 0.4 } },
-        { name: "Metal Gear Solid V", desc: "Открытый мир, глубокий стелс и вариативность миссий", profile: { openWorld: 1, worldSize: 0.5, mainStory: 0.6, sideQuests: 0.3, stealth: 1, missionVariety: 1, storyDepth: 0.6, choices: 0.5, survival: 0, crafting: 0.3, characterDepth: 0.6 } },
-        { name: "Dishonored", desc: "Стелс-экшен с магией и множеством путей прохождения", profile: { openWorld: 0, worldSize: 0, mainStory: 0.4, sideQuests: 0.2, stealth: 1, missionVariety: 1, storyDepth: 0.5, choices: 0.5, survival: 0, crafting: 0, characterDepth: 0.5 } },
-        { name: "Deus Ex: Human Revolution", desc: "RPG-стелс, выбор подхода и развилки сюжета", profile: { openWorld: 0, worldSize: 0, mainStory: 0.5, sideQuests: 0.2, stealth: 0.8, missionVariety: 1, storyDepth: 0.6, choices: 0.6, survival: 0, crafting: 0, characterDepth: 0.6 } },
-        { name: "Elden Ring", desc: "Открытый мир, высокий сюжетный порог, минимум явных выборов", profile: { openWorld: 1, worldSize: 1, mainStory: 0.7, sideQuests: 0.8, stealth: 0.2, missionVariety: 0.6, storyDepth: 0.8, choices: 0.3, survival: 0, crafting: 0.5, characterDepth: 0.6 } },
-        { name: "Red Dead Redemption 2", desc: "Живой мир, глубокий сюжет и проработка персонажей", profile: { openWorld: 1, worldSize: 0.9, mainStory: 0.9, sideQuests: 0.9, stealth: 0.2, missionVariety: 0.5, storyDepth: 0.9, choices: 0.5, survival: 0.2, crafting: 0.3, characterDepth: 0.95 } },
-        { name: "Disco Elysium", desc: "Диалоговая RPG с максимумом выборов и концовок", profile: { openWorld: 0, worldSize: 0, mainStory: 0.5, sideQuests: 0.2, stealth: 0, missionVariety: 0.3, storyDepth: 0.9, choices: 1, survival: 0, crafting: 0, characterDepth: 0.9 } },
-        { name: "Dark Souls", desc: "Линейные уровни, глубокий лор, минимум явного сюжета", profile: { openWorld: 0, worldSize: 0, mainStory: 0.3, sideQuests: 0.2, stealth: 0, missionVariety: 0.3, storyDepth: 0.7, choices: 0.2, survival: 0, crafting: 0.4, characterDepth: 0.4 } },
-        { name: "Mass Effect 2", desc: "Линейная структура, сильные выборы и концовки", profile: { openWorld: 0, worldSize: 0, mainStory: 0.6, sideQuests: 0.3, stealth: 0, missionVariety: 0.4, storyDepth: 0.7, choices: 0.7, survival: 0, crafting: 0, characterDepth: 0.8 } },
-        { name: "Dragon Age: Origins", desc: "Тактическая RPG с развилками и множеством концовок", profile: { openWorld: 0, worldSize: 0, mainStory: 0.7, sideQuests: 0.5, stealth: 0, missionVariety: 0.5, storyDepth: 0.8, choices: 0.9, survival: 0, crafting: 0, characterDepth: 0.8 } },
-        { name: "Subnautica", desc: "Открытый мир, выживание, крафт, исследование", profile: { openWorld: 1, worldSize: 0.4, mainStory: 0.3, sideQuests: 0.2, stealth: 0, missionVariety: 0.5, storyDepth: 0.3, choices: 0, survival: 0.6, crafting: 0.5, characterDepth: 0.3 } },
-        { name: "Valheim", desc: "Процедурный мир, выживание и крафт в сеттингe викингов", profile: { openWorld: 1, worldSize: 0.3, mainStory: 0, sideQuests: 0.2, stealth: 0, missionVariety: 0.4, storyDepth: 0.1, choices: 0, survival: 0.8, crafting: 0.9, characterDepth: 0.2 } },
-        { name: "Hollow Knight", desc: "Метроидвания с атмосферой и скрытым лором", profile: { openWorld: 0, worldSize: 0.15, mainStory: 0.25, sideQuests: 0.1, stealth: 0, missionVariety: 0.2, storyDepth: 0.5, choices: 0, survival: 0, crafting: 0, characterDepth: 0.4 } },
-        { name: "Celeste", desc: "Линейный платформер с коротким сюжетом", profile: { openWorld: 0, worldSize: 0, mainStory: 0.2, sideQuests: 0, stealth: 0, missionVariety: 0, storyDepth: 0.5, choices: 0, survival: 0, crafting: 0, characterDepth: 0.4 } },
-        { name: "Detroit: Become Human", desc: "Кинематографичные развилки и множество концовок", profile: { openWorld: 0, worldSize: 0, mainStory: 0.5, sideQuests: 0, stealth: 0, missionVariety: 0.4, storyDepth: 0.6, choices: 1, survival: 0, crafting: 0, characterDepth: 0.7 } },
-        { name: "Kingdom Come: Deliverance", desc: "Реалистичный открытый мир, выживание и исторический сюжет", profile: { openWorld: 1, worldSize: 0.4, mainStory: 0.6, sideQuests: 0.5, stealth: 0.3, missionVariety: 0.6, storyDepth: 0.6, choices: 0.5, survival: 0.6, crafting: 0.4, characterDepth: 0.6 } },
+        {
+          name: "Minecraft (Alpha)",
+          desc: "Процедурный базис, минимум ручного контента",
+          profile: {
+            openWorld: 1,
+            worldSize: 0.2,
+            mainStory: 0,
+            sideQuests: 0,
+            stealth: 0,
+            missionVariety: 0,
+            storyDepth: 0.1,
+            choices: 0,
+            survival: 0.8,
+            crafting: 1,
+            characterDepth: 0,
+          },
+        },
+        {
+          name: "Portal 1",
+          desc: "Короткая камерная игра, одна ключевая механика",
+          profile: {
+            openWorld: 0,
+            worldSize: 0,
+            mainStory: 0.15,
+            sideQuests: 0,
+            stealth: 0,
+            missionVariety: 0.3,
+            storyDepth: 0.3,
+            choices: 0,
+            survival: 0,
+            crafting: 0,
+            characterDepth: 0.2,
+          },
+        },
+        {
+          name: "Half-Life 1",
+          desc: "Линейный коридорный шутер, база для жанра",
+          profile: {
+            openWorld: 0,
+            worldSize: 0,
+            mainStory: 0.4,
+            sideQuests: 0,
+            stealth: 0.2,
+            missionVariety: 0.2,
+            storyDepth: 0.4,
+            choices: 0,
+            survival: 0,
+            crafting: 0,
+            characterDepth: 0.3,
+          },
+        },
+        {
+          name: "BioShock 2",
+          desc: "Повторное использование ассетов и механик первой части",
+          profile: {
+            openWorld: 0,
+            worldSize: 0,
+            mainStory: 0.5,
+            sideQuests: 0.1,
+            stealth: 0,
+            missionVariety: 0.3,
+            storyDepth: 0.6,
+            choices: 0.3,
+            survival: 0,
+            crafting: 0,
+            characterDepth: 0.5,
+          },
+        },
+        {
+          name: "Dead Space",
+          desc: "Узкоспециализированный хоррор, упор на звук и расчлененку",
+          profile: {
+            openWorld: 0,
+            worldSize: 0,
+            mainStory: 0.5,
+            sideQuests: 0,
+            stealth: 0,
+            missionVariety: 0.2,
+            storyDepth: 0.5,
+            choices: 0,
+            survival: 0,
+            crafting: 0,
+            characterDepth: 0.5,
+          },
+        },
+        {
+          name: "Crysis 1",
+          desc: "Технологичная песочница, но сюжетно довольно короткая",
+          profile: {
+            openWorld: 0,
+            worldSize: 0.3,
+            mainStory: 0.3,
+            sideQuests: 0,
+            stealth: 0.2,
+            missionVariety: 0.4,
+            storyDepth: 0.3,
+            choices: 0,
+            survival: 0,
+            crafting: 0,
+            characterDepth: 0.3,
+          },
+        },
+        {
+          name: "Metro 2033",
+          desc: "Линейные туннели, высокая детализация окружения",
+          profile: {
+            openWorld: 0,
+            worldSize: 0,
+            mainStory: 0.5,
+            sideQuests: 0,
+            stealth: 0.4,
+            missionVariety: 0.3,
+            storyDepth: 0.6,
+            choices: 0.2,
+            survival: 0,
+            crafting: 0,
+            characterDepth: 0.4,
+          },
+        },
+        {
+          name: "Dead Space 2",
+          desc: "Рост масштаба, больше уникальных ситуаций и врагов",
+          profile: {
+            openWorld: 0,
+            worldSize: 0,
+            mainStory: 0.6,
+            sideQuests: 0,
+            stealth: 0,
+            missionVariety: 0.3,
+            storyDepth: 0.5,
+            choices: 0,
+            survival: 0,
+            crafting: 0,
+            characterDepth: 0.5,
+          },
+        },
+        {
+          name: "Crysis 2",
+          desc: "Вертикальный геймплей в городе, больше скриптов",
+          profile: {
+            openWorld: 0,
+            worldSize: 0,
+            mainStory: 0.4,
+            sideQuests: 0,
+            stealth: 0.2,
+            missionVariety: 0.4,
+            storyDepth: 0.4,
+            choices: 0,
+            survival: 0,
+            crafting: 0,
+            characterDepth: 0.4,
+          },
+        },
+        {
+          name: "Crysis 3",
+          desc: "Пиковая графика, новые механики охоты, но малая длина",
+          profile: {
+            openWorld: 0,
+            worldSize: 0,
+            mainStory: 0.35,
+            sideQuests: 0,
+            stealth: 0.3,
+            missionVariety: 0.5,
+            storyDepth: 0.4,
+            choices: 0,
+            survival: 0,
+            crafting: 0,
+            characterDepth: 0.4,
+          },
+        },
+        {
+          name: "Half-Life 2",
+          desc: "Разнообразие глав: гравипушка, транспорт, хоррор, война",
+          profile: {
+            openWorld: 0,
+            worldSize: 0,
+            mainStory: 0.6,
+            sideQuests: 0,
+            stealth: 0.2,
+            missionVariety: 0.5,
+            storyDepth: 0.6,
+            choices: 0,
+            survival: 0,
+            crafting: 0,
+            characterDepth: 0.5,
+          },
+        },
+        {
+          name: "Far Cry 1",
+          desc: "Огромные открытые уровни и сложный для того времени ИИ",
+          profile: {
+            openWorld: 0,
+            worldSize: 0.4,
+            mainStory: 0.4,
+            sideQuests: 0.1,
+            stealth: 0.4,
+            missionVariety: 0.5,
+            storyDepth: 0.4,
+            choices: 0,
+            survival: 0,
+            crafting: 0,
+            characterDepth: 0.3,
+          },
+        },
+        {
+          name: "S.T.A.L.K.E.R.: Тень Чернобыля",
+          desc: "Система симуляции жизни A-Life и сложная структура мира",
+          profile: {
+            openWorld: 1,
+            worldSize: 0.3,
+            mainStory: 0.5,
+            sideQuests: 0.2,
+            stealth: 0.3,
+            missionVariety: 0.5,
+            storyDepth: 0.5,
+            choices: 0.2,
+            survival: 0,
+            crafting: 0,
+            characterDepth: 0.4,
+          },
+        },
+        {
+          name: "BioShock Infinite",
+          desc: "Экстремальная проработка арта и ИИ-напарника",
+          profile: {
+            openWorld: 0,
+            worldSize: 0,
+            mainStory: 0.5,
+            sideQuests: 0,
+            stealth: 0,
+            missionVariety: 0.3,
+            storyDepth: 0.6,
+            choices: 0.3,
+            survival: 0,
+            crafting: 0,
+            characterDepth: 0.6,
+          },
+        },
+        {
+          name: "Far Cry 2",
+          desc: "Системный мир: распространение огня, износ оружия, малярия",
+          profile: {
+            openWorld: 1,
+            worldSize: 0.4,
+            mainStory: 0.4,
+            sideQuests: 0.2,
+            stealth: 0.4,
+            missionVariety: 0.6,
+            storyDepth: 0.4,
+            choices: 0.2,
+            survival: 0.2,
+            crafting: 0,
+            characterDepth: 0.4,
+          },
+        },
+        {
+          name: "Far Cry 3",
+          desc: "Масса контента: охота, аванпосты, крафт, побочные квесты",
+          profile: {
+            openWorld: 1,
+            worldSize: 0.5,
+            mainStory: 0.5,
+            sideQuests: 0.6,
+            stealth: 0.5,
+            missionVariety: 0.7,
+            storyDepth: 0.5,
+            choices: 0.3,
+            survival: 0,
+            crafting: 0.4,
+            characterDepth: 0.5,
+          },
+        },
+        {
+          name: "Skyrim",
+          desc: "Гигантское количество квестов, подземелий и систем",
+          profile: {
+            openWorld: 1,
+            worldSize: 0.8,
+            mainStory: 0.7,
+            sideQuests: 1,
+            stealth: 0.2,
+            missionVariety: 0.5,
+            storyDepth: 0.7,
+            choices: 0.4,
+            survival: 0,
+            crafting: 0.6,
+            characterDepth: 0.6,
+          },
+        },
+        {
+          name: "Far Cry 4",
+          desc: "Расширение идей FC3, еще больше активностей и коопа",
+          profile: {
+            openWorld: 1,
+            worldSize: 0.5,
+            mainStory: 0.5,
+            sideQuests: 0.7,
+            stealth: 0.5,
+            missionVariety: 0.7,
+            storyDepth: 0.5,
+            choices: 0.3,
+            survival: 0,
+            crafting: 0.4,
+            characterDepth: 0.5,
+          },
+        },
+        {
+          name: "The Witcher 3",
+          desc: "Эталон ручной работы: каждый квест — уникальная история",
+          profile: {
+            openWorld: 1,
+            worldSize: 0.9,
+            mainStory: 0.9,
+            sideQuests: 1,
+            stealth: 0.2,
+            missionVariety: 0.7,
+            storyDepth: 0.95,
+            choices: 0.8,
+            survival: 0,
+            crafting: 0.4,
+            characterDepth: 0.95,
+          },
+        },
+        {
+          name: "GTA V",
+          desc: "Три героя, детальный мегаполис и сотни вложенных механик",
+          profile: {
+            openWorld: 1,
+            worldSize: 0.6,
+            mainStory: 0.8,
+            sideQuests: 0.9,
+            stealth: 0.2,
+            missionVariety: 0.6,
+            storyDepth: 0.7,
+            choices: 0.4,
+            survival: 0,
+            crafting: 0.2,
+            characterDepth: 0.8,
+          },
+        },
+        {
+          name: "Hitman (2016)",
+          desc: "Стелс-песочница, десятки способов устранения цели",
+          profile: {
+            openWorld: 0,
+            worldSize: 0,
+            mainStory: 0.3,
+            sideQuests: 0,
+            stealth: 1,
+            missionVariety: 1,
+            storyDepth: 0.4,
+            choices: 0.3,
+            survival: 0,
+            crafting: 0,
+            characterDepth: 0.4,
+          },
+        },
+        {
+          name: "Metal Gear Solid V",
+          desc: "Открытый мир, глубокий стелс и вариативность миссий",
+          profile: {
+            openWorld: 1,
+            worldSize: 0.5,
+            mainStory: 0.6,
+            sideQuests: 0.3,
+            stealth: 1,
+            missionVariety: 1,
+            storyDepth: 0.6,
+            choices: 0.5,
+            survival: 0,
+            crafting: 0.3,
+            characterDepth: 0.6,
+          },
+        },
+        {
+          name: "Dishonored",
+          desc: "Стелс-экшен с магией и множеством путей прохождения",
+          profile: {
+            openWorld: 0,
+            worldSize: 0,
+            mainStory: 0.4,
+            sideQuests: 0.2,
+            stealth: 1,
+            missionVariety: 1,
+            storyDepth: 0.5,
+            choices: 0.5,
+            survival: 0,
+            crafting: 0,
+            characterDepth: 0.5,
+          },
+        },
+        {
+          name: "Deus Ex: Human Revolution",
+          desc: "RPG-стелс, выбор подхода и развилки сюжета",
+          profile: {
+            openWorld: 0,
+            worldSize: 0,
+            mainStory: 0.5,
+            sideQuests: 0.2,
+            stealth: 0.8,
+            missionVariety: 1,
+            storyDepth: 0.6,
+            choices: 0.6,
+            survival: 0,
+            crafting: 0,
+            characterDepth: 0.6,
+          },
+        },
+        {
+          name: "Elden Ring",
+          desc: "Открытый мир, высокий сюжетный порог, минимум явных выборов",
+          profile: {
+            openWorld: 1,
+            worldSize: 1,
+            mainStory: 0.7,
+            sideQuests: 0.8,
+            stealth: 0.2,
+            missionVariety: 0.6,
+            storyDepth: 0.8,
+            choices: 0.3,
+            survival: 0,
+            crafting: 0.5,
+            characterDepth: 0.6,
+          },
+        },
+        {
+          name: "Red Dead Redemption 2",
+          desc: "Живой мир, глубокий сюжет и проработка персонажей",
+          profile: {
+            openWorld: 1,
+            worldSize: 0.9,
+            mainStory: 0.9,
+            sideQuests: 0.9,
+            stealth: 0.2,
+            missionVariety: 0.5,
+            storyDepth: 0.9,
+            choices: 0.5,
+            survival: 0.2,
+            crafting: 0.3,
+            characterDepth: 0.95,
+          },
+        },
+        {
+          name: "Disco Elysium",
+          desc: "Диалоговая RPG с максимумом выборов и концовок",
+          profile: {
+            openWorld: 0,
+            worldSize: 0,
+            mainStory: 0.5,
+            sideQuests: 0.2,
+            stealth: 0,
+            missionVariety: 0.3,
+            storyDepth: 0.9,
+            choices: 1,
+            survival: 0,
+            crafting: 0,
+            characterDepth: 0.9,
+          },
+        },
+        {
+          name: "Dark Souls",
+          desc: "Линейные уровни, глубокий лор, минимум явного сюжета",
+          profile: {
+            openWorld: 0,
+            worldSize: 0,
+            mainStory: 0.3,
+            sideQuests: 0.2,
+            stealth: 0,
+            missionVariety: 0.3,
+            storyDepth: 0.7,
+            choices: 0.2,
+            survival: 0,
+            crafting: 0.4,
+            characterDepth: 0.4,
+          },
+        },
+        {
+          name: "Mass Effect 2",
+          desc: "Линейная структура, сильные выборы и концовки",
+          profile: {
+            openWorld: 0,
+            worldSize: 0,
+            mainStory: 0.6,
+            sideQuests: 0.3,
+            stealth: 0,
+            missionVariety: 0.4,
+            storyDepth: 0.7,
+            choices: 0.7,
+            survival: 0,
+            crafting: 0,
+            characterDepth: 0.8,
+          },
+        },
+        {
+          name: "Dragon Age: Origins",
+          desc: "Тактическая RPG с развилками и множеством концовок",
+          profile: {
+            openWorld: 0,
+            worldSize: 0,
+            mainStory: 0.7,
+            sideQuests: 0.5,
+            stealth: 0,
+            missionVariety: 0.5,
+            storyDepth: 0.8,
+            choices: 0.9,
+            survival: 0,
+            crafting: 0,
+            characterDepth: 0.8,
+          },
+        },
+        {
+          name: "Subnautica",
+          desc: "Открытый мир, выживание, крафт, исследование",
+          profile: {
+            openWorld: 1,
+            worldSize: 0.4,
+            mainStory: 0.3,
+            sideQuests: 0.2,
+            stealth: 0,
+            missionVariety: 0.5,
+            storyDepth: 0.3,
+            choices: 0,
+            survival: 0.6,
+            crafting: 0.5,
+            characterDepth: 0.3,
+          },
+        },
+        {
+          name: "Valheim",
+          desc: "Процедурный мир, выживание и крафт в сеттингe викингов",
+          profile: {
+            openWorld: 1,
+            worldSize: 0.3,
+            mainStory: 0,
+            sideQuests: 0.2,
+            stealth: 0,
+            missionVariety: 0.4,
+            storyDepth: 0.1,
+            choices: 0,
+            survival: 0.8,
+            crafting: 0.9,
+            characterDepth: 0.2,
+          },
+        },
+        {
+          name: "Hollow Knight",
+          desc: "Метроидвания с атмосферой и скрытым лором",
+          profile: {
+            openWorld: 0,
+            worldSize: 0.15,
+            mainStory: 0.25,
+            sideQuests: 0.1,
+            stealth: 0,
+            missionVariety: 0.2,
+            storyDepth: 0.5,
+            choices: 0,
+            survival: 0,
+            crafting: 0,
+            characterDepth: 0.4,
+          },
+        },
+        {
+          name: "Celeste",
+          desc: "Линейный платформер с коротким сюжетом",
+          profile: {
+            openWorld: 0,
+            worldSize: 0,
+            mainStory: 0.2,
+            sideQuests: 0,
+            stealth: 0,
+            missionVariety: 0,
+            storyDepth: 0.5,
+            choices: 0,
+            survival: 0,
+            crafting: 0,
+            characterDepth: 0.4,
+          },
+        },
+        {
+          name: "Detroit: Become Human",
+          desc: "Кинематографичные развилки и множество концовок",
+          profile: {
+            openWorld: 0,
+            worldSize: 0,
+            mainStory: 0.5,
+            sideQuests: 0,
+            stealth: 0,
+            missionVariety: 0.4,
+            storyDepth: 0.6,
+            choices: 1,
+            survival: 0,
+            crafting: 0,
+            characterDepth: 0.7,
+          },
+        },
+        {
+          name: "Kingdom Come: Deliverance",
+          desc: "Реалистичный открытый мир, выживание и исторический сюжет",
+          profile: {
+            openWorld: 1,
+            worldSize: 0.4,
+            mainStory: 0.6,
+            sideQuests: 0.5,
+            stealth: 0.3,
+            missionVariety: 0.6,
+            storyDepth: 0.6,
+            choices: 0.5,
+            survival: 0.6,
+            crafting: 0.4,
+            characterDepth: 0.6,
+          },
+        },
       ];
       // Описания уровней качества для каждого перка (полностью переработаны с примерами)
       const qualityDescriptions = {
@@ -3687,7 +4300,7 @@
           "Уровень 4: Идеальная стабильность на 5+ платформах. Пример: мультиплатформа как в Minecraft — один код, стабильная работа на ПК, консолях, мобилках, даже на Raspberry Pi.",
           "Уровень 5: Единый код для всех платформ без ответвлений. Пример: идеал как в мечтах — один билд компилируется под все платформы, включая будущие (без переписывания под новые консоли).",
         ],
-localization: [
+        localization: [
           "Уровень 1: Машинный перевод + правка. Пример: базовая локализация инди-игр — текст понятен, но без литературной выразительности, озвучки нет.",
           "Уровень 2: Профессиональный перевод без озвучки. Пример: локализация как в ранних инди-хитах — качественный текст, идиомы адаптированы, но только субтитры.",
           "Уровень 3: Перевод + базовая озвучка. Пример: озвучка как в средних проектах — актёры среднего уровня, синхронизация губ приблизительная, но без артефактов.",
@@ -3715,7 +4328,7 @@ localization: [
           "Уровень 4: Разные классы транспорта. Пример: GTA V — машины, самолёты, вертолёты, лодки, велосипеды, уникальная физика для каждого.",
           "Уровень 5: Идеальная физика и разнообразие. Пример: Forza Horizon — сотни машин с уникальной физикой, реалистичные повреждения, погодные условия.",
         ],
-      };      // Ключ для localStorage
+      }; // Ключ для localStorage
       const STORAGE_KEY = "gameDevPlanner_v4";
       // Флаг для предотвращения рекурсивных вызовов при загрузке
       let isLoading = false;
@@ -3743,21 +4356,21 @@ localization: [
               this.value || "Без названия";
             saveToStorage();
           });
-document
+        document
           .getElementById("gameDesc")
           .addEventListener("input", function () {
             document.getElementById("summaryDesc").textContent =
               this.value || "Описание отсутствует";
             saveToStorage();
           });
-// Обложка игры
+        // Обложка игры
         const gameCover = document.getElementById("gameCover");
         const gameCoverImage = document.getElementById("gameCoverImage");
         gameCover.addEventListener("click", function () {
           const currentUrl = gameCoverImage.src;
           const newUrl = prompt(
             "Введите ссылку на обложку игры:",
-            currentUrl && currentUrl !== window.location.href ? currentUrl : ""
+            currentUrl && currentUrl !== window.location.href ? currentUrl : "",
           );
           if (newUrl !== null) {
             if (newUrl.trim()) {
@@ -3767,12 +4380,13 @@ document
               gameCoverImage.src = "";
               gameCover.classList.remove("has-image");
             }
-saveToStorage();
+            saveToStorage();
           }
         });
         // Переключение перков
         document.querySelectorAll(".perk-toggle input").forEach((toggle) => {
-          toggle.addEventListener("change", function () {            const card = this.closest(".perk-card");
+          toggle.addEventListener("change", function () {
+            const card = this.closest(".perk-card");
             const isActive = this.checked;
             card.classList.toggle("active", isActive);
             // Включение/выключение инпутов
@@ -3841,16 +4455,28 @@ saveToStorage();
             saveToStorage();
           });
         });
-        // Изменение вложенных человеко-лет
+        // Кнопка добавления вложенных человеко-лет
         document
-          .getElementById("investedInput")
-          .addEventListener("input", function () {
-            if (this.value < 0) this.value = 0;
-            document.getElementById("investedDisplay").textContent = this.value;
-            updateProgress();
-            saveToStorage();
-          });
-        // Кнопка пересчёта
+          .getElementById("addInvestedBtn")
+          .addEventListener("click", function () {
+            const currentInvested =
+              parseInt(document.getElementById("investedInput").value) || 0;
+            const addValue = prompt(
+              "Введите количество человеко-лет для добавления (можно использовать отрицательные значения для коррекции):",
+              "",
+            );
+            if (addValue !== null) {
+              const value = parseFloat(addValue);
+              if (!isNaN(value)) {
+                const newInvested = currentInvested + value;
+                document.getElementById("investedInput").value = newInvested;
+                document.getElementById("investedDisplay").textContent =
+                  newInvested;
+                updateProgress();
+                saveToStorage();
+              }
+            }
+          }); // Кнопка пересчёта
         document
           .getElementById("calculateBtn")
           .addEventListener("click", function () {
@@ -3873,13 +4499,14 @@ saveToStorage();
             document.querySelectorAll(".perk-card").forEach((card) => {
               if (!card.querySelector(".perk-toggle input").checked) return;
               const perkId = card.dataset.id;
-              const title = card.querySelector(".perk-title")?.textContent?.trim() || "";
-              const quality = parseInt(
-                card.querySelector(".quality-slider")?.value,
-                10
-              ) || 1;
+              const title =
+                card.querySelector(".perk-title")?.textContent?.trim() || "";
+              const quality =
+                parseInt(card.querySelector(".quality-slider")?.value, 10) || 1;
               const qualityText =
-                perkId && qualityDescriptions[perkId] && qualityDescriptions[perkId][quality - 1]
+                perkId &&
+                qualityDescriptions[perkId] &&
+                qualityDescriptions[perkId][quality - 1]
                   ? qualityDescriptions[perkId][quality - 1]
                   : `Качество ${quality}`;
               let part = `• ${title} — ${qualityText}`;
@@ -3899,7 +4526,7 @@ saveToStorage();
                 () => alert("Скопировано в буфер обмена."),
                 () => {
                   fallbackCopy(text);
-                }
+                },
               );
             } else {
               fallbackCopy(text);
@@ -3947,13 +4574,14 @@ saveToStorage();
         document
           .getElementById("exportBtn")
           .addEventListener("click", function () {
-const data = {
-          gameName: document.getElementById("gameName").value,
-          gameDesc: document.getElementById("gameDesc").value,
-          gameCover: document.getElementById("gameCoverImage").src,
-          investedYears: document.getElementById("investedInput").value,
-          perks: {},
-        };            document.querySelectorAll(".perk-card").forEach((card) => {
+            const data = {
+              gameName: document.getElementById("gameName").value,
+              gameDesc: document.getElementById("gameDesc").value,
+              gameCover: document.getElementById("gameCoverImage").src,
+              investedYears: document.getElementById("investedInput").value,
+              perks: {},
+            };
+            document.querySelectorAll(".perk-card").forEach((card) => {
               const id = card.dataset.id;
               if (!id) return;
               data.perks[id] = {
@@ -4083,7 +4711,8 @@ const data = {
           worldSize,
           closedLocs,
           procGenTemplates,
-        };      }
+        };
+      }
       function getBaseSizeGB() {
         const s = getContentStats();
         const base = 2;
@@ -4091,7 +4720,11 @@ const data = {
         const fromLocs = Math.min(s.closedLocs / 3000, 30);
         const fromWorld = s.worldSize * 0.6;
         const fromProcGen = s.procGenTemplates * 0.15;
-        return Math.max(1, base + fromHours + fromLocs + fromWorld + fromProcGen);      }
+        return Math.max(
+          1,
+          base + fromHours + fromLocs + fromWorld + fromProcGen,
+        );
+      }
       function getGameplayHoursScale() {
         const s = getContentStats();
         return (
@@ -4208,12 +4841,14 @@ const data = {
       }
       function getPerkQuantity(perkId) {
         const card = document.querySelector(`.perk-card[data-id="${perkId}"]`);
-        if (!card || !card.querySelector(".perk-toggle input").checked) return 0;
+        if (!card || !card.querySelector(".perk-toggle input").checked)
+          return 0;
         const numInput = card.querySelector(".quantity-number");
         return numInput ? parseInt(numInput.value) || 0 : 0;
       }
       function getCurrentPerkProfile() {
-        const openWorldActive = getPerkLevel("open_world") > 0 || getPerkQuantity("open_world") > 0;
+        const openWorldActive =
+          getPerkLevel("open_world") > 0 || getPerkQuantity("open_world") > 0;
         const openWorldQ = getPerkQuantity("open_world");
         const mainStoryQ = getPerkQuantity("main_story");
         const mainStoryL = getPerkLevel("main_story");
@@ -4230,11 +4865,15 @@ const data = {
           sideQuests: sideQuestsQ > 0 ? Math.min(1, sideQuestsQ / 100) : 0,
           stealth: getPerkLevel("stealth") / 5,
           missionVariety: getPerkLevel("mission_variety") / 5,
-          storyDepth: (loreL > 0 || mainStoryL > 0) ? ((loreL + mainStoryL) / 10) : 0,
-          choices: (macroL > 0 || microL > 0) ? ((macroL + microL) / 10) : 0,
+          storyDepth:
+            loreL > 0 || mainStoryL > 0 ? (loreL + mainStoryL) / 10 : 0,
+          choices: macroL > 0 || microL > 0 ? (macroL + microL) / 10 : 0,
           survival: getPerkLevel("survival_system") / 5,
           crafting: getPerkLevel("crafting") / 5,
-          characterDepth: Math.min(1, (Math.min(1, mainCharsQ / 15) + npcsL / 5) / 2),
+          characterDepth: Math.min(
+            1,
+            (Math.min(1, mainCharsQ / 15) + npcsL / 5) / 2,
+          ),
         };
       }
       function updateParamsTables() {
@@ -4356,24 +4995,41 @@ const data = {
         const emptyEl = document.getElementById("comparisonEmpty");
         if (!hasAny) {
           if (emptyEl) emptyEl.style.display = "block";
-          listEl.querySelectorAll(".comparison-item").forEach((el) => el.remove());
+          listEl
+            .querySelectorAll(".comparison-item")
+            .forEach((el) => el.remove());
           if (!listEl.contains(emptyEl)) listEl.appendChild(emptyEl);
           return;
         }
         if (emptyEl) emptyEl.style.display = "none";
-        const weighted = { openWorld: 1, worldSize: 1.2, mainStory: 1.1, sideQuests: 1, stealth: 1.3, missionVariety: 1.2, storyDepth: 1.1, choices: 1.1, survival: 1, crafting: 0.9, characterDepth: 1 };
+        const weighted = {
+          openWorld: 1,
+          worldSize: 1.2,
+          mainStory: 1.1,
+          sideQuests: 1,
+          stealth: 1.3,
+          missionVariety: 1.2,
+          storyDepth: 1.1,
+          choices: 1.1,
+          survival: 1,
+          crafting: 0.9,
+          characterDepth: 1,
+        };
         const scored = gameComparisons.map((game) => {
           let dist = 0;
           keys.forEach((k) => {
             const w = weighted[k] || 1;
-            const d = (profile[k] - game.profile[k]) * (profile[k] - game.profile[k]);
+            const d =
+              (profile[k] - game.profile[k]) * (profile[k] - game.profile[k]);
             dist += w * d;
           });
           return { game, dist };
         });
         scored.sort((a, b) => a.dist - b.dist);
         const top = scored.slice(0, 5);
-        listEl.querySelectorAll(".comparison-item").forEach((el) => el.remove());
+        listEl
+          .querySelectorAll(".comparison-item")
+          .forEach((el) => el.remove());
         if (listEl.contains(emptyEl)) emptyEl.remove();
         top.forEach(({ game }) => {
           const item = document.createElement("div");
@@ -4384,7 +5040,7 @@ const data = {
       }
       function resetAll() {
         isLoading = true;
-// Сброс формы
+        // Сброс формы
         document.getElementById("gameName").value = "";
         document.getElementById("gameDesc").value = "";
         document.getElementById("summaryName").textContent = "Без названия";
@@ -4392,7 +5048,7 @@ const data = {
           "Описание отсутствует";
         // Сброс обложки
         document.getElementById("gameCoverImage").src = "";
-        document.getElementById("gameCover").classList.remove("has-image");        // Сброс вложенных человеко-лет
+        document.getElementById("gameCover").classList.remove("has-image"); // Сброс вложенных человеко-лет
         document.getElementById("investedInput").value = "0";
         document.getElementById("investedDisplay").textContent = "0";
         document.getElementById("progressBar").style.width = "0%";
@@ -4437,16 +5093,17 @@ const data = {
         isLoading = false;
       }
       // === ФУНКЦИИ СОХРАНЕНИЯ ===
-function saveToStorage() {
+      function saveToStorage() {
         if (isLoading) return;
         const data = {
           gameName: document.getElementById("gameName").value,
           gameDesc: document.getElementById("gameDesc").value,
           gameCover: document.getElementById("gameCoverImage").src,
           investedYears: document.getElementById("investedInput").value,
-perks: {},
+          perks: {},
         };
-        document.querySelectorAll(".perk-card").forEach((card) => {          const id = card.dataset.id;
+        document.querySelectorAll(".perk-card").forEach((card) => {
+          const id = card.dataset.id;
           if (!id) return;
           data.perks[id] = {
             active: card.querySelector(".perk-toggle input").checked,
@@ -4468,12 +5125,12 @@ perks: {},
           if (!saved) return;
           isLoading = true;
           const data = JSON.parse(saved);
-// Загрузка основной информации
+          // Загрузка основной информации
           if (data.gameName) {
             document.getElementById("gameName").value = data.gameName;
             document.getElementById("summaryName").textContent = data.gameName;
           }
-if (data.gameDesc) {
+          if (data.gameDesc) {
             document.getElementById("gameDesc").value = data.gameDesc;
             document.getElementById("summaryDesc").textContent = data.gameDesc;
           }
@@ -4559,7 +5216,8 @@ if (data.gameDesc) {
         // Обновление отображения
         document.getElementById("progressBar").style.width = progress + "%";
         document.getElementById("progressPercent").textContent = progress + "%";
-        document.getElementById("remainingYears").textContent = remaining;
+        document.getElementById("remainingYears").textContent =
+          Math.floor(remaining);
         updateParamsTables();
         updateDevLog();
         const progressBar = document.getElementById("progressBar");
